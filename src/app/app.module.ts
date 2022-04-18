@@ -51,10 +51,9 @@ import { PresentationPageComponent } from './pages/presentation-page/presentatio
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
@@ -65,7 +64,16 @@ import { PresentationPageComponent } from './pages/presentation-page/presentatio
     providePerformance(() => getPerformance()),
     provideRemoteConfig(() => getRemoteConfig()),
     provideStorage(() => getStorage()),
-    BrowserAnimationsModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   providers: [
     ScreenTrackingService,UserTrackingService
