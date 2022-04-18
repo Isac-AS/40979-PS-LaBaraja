@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "labaraja-8ffea": {
+      "hosting": {
+        "LaBaraja": [
+          "labaraja-8ffea"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "labaraja-8ffea"
+  }
+}

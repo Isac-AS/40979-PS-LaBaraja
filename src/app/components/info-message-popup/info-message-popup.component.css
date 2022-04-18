@@ -1,0 +1,15 @@
+p {
+    padding: 2em;
+    font-size: 3em;
+    margin: -0.55em;
+  }
+  
+  @media (max-width: 798px) {
+    p {
+      padding: 1em;
+      font-size: 1.8em;
+      margin: -0.7em;
+    }
+  }
+  
+  
