@@ -38,6 +38,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 // Components
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
 import { PresentationPageComponent } from './pages/presentation-page/presentation-page.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { PresentationPageComponent } from './pages/presentation-page/presentatio
     LoginPageComponent,
     InfoMessagePopupComponent,
     PresentationPageComponent,
+    RegisterPageComponent,
     
   ],
   imports: [
