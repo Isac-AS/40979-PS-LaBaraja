@@ -37,6 +37,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 // Components
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
+import { AjustesComponentComponent } from './ajustes-component/ajustes-component.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { InfoMessagePopupComponent } from './components/info-message-popup/info-
     HomePageComponent,
     LoginPageComponent,
     InfoMessagePopupComponent,
+    AjustesComponentComponent,
     
   ],
   imports: [
