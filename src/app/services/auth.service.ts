@@ -40,6 +40,4 @@ export class AuthService {
     const currentUid = await this.getUid();
     return currentUid === this.adminUid;
   }
-
-
 }

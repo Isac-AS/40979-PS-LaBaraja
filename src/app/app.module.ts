@@ -4,8 +4,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AppRoutingModule} from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from '@angular/platform-browser';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 // Angular Fire imports
 import { AngularFireModule} from "@angular/fire/compat";
 import { provideAuth,getAuth } from '@angular/fire/auth';
@@ -37,6 +37,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 // Components
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
+import { PresentationPageComponent } from './pages/presentation-page/presentation-page.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { InfoMessagePopupComponent } from './components/info-message-popup/info-
     HomePageComponent,
     LoginPageComponent,
     InfoMessagePopupComponent,
+    PresentationPageComponent,
     
   ],
   imports: [
