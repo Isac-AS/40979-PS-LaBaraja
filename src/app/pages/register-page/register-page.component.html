@@ -43,7 +43,8 @@
           <input type="password"
                 class="form-control"
                 placeholder="Contraseña"
-                formControlName="password">
+                formControlName="password"
+                (input) = "onPasswordChange()">
           <div *ngIf="newUser.get('password')!.invalid &&
                     (newUser.get('password')!.dirty ||
                     newUser.get('password')!.touched)"
@@ -62,12 +63,13 @@
           <input type="password"
                 class="form-control"
                 placeholder="Repetir contraseña"
-                formControlName="alt_password">
+                formControlName="alt_password"
+                (input) = "onPasswordChange()">
           <div *ngIf="newUser.get('alt_password')!.invalid &&
                     (newUser.get('alt_password')!.dirty ||
                     newUser.get('alt_password')!.touched)"
               class="errorMessage">
-            <p *ngIf="newUser.hasError('notSame')">
+            <p *ngIf="confirm_password.hasError('mismatch')">
               Las contraseñas deben coincidir
             </p>
           </div>
