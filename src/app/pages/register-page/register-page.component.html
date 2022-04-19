@@ -1,97 +1,87 @@
-<section id="flexContainer">
+<div id="flexContainer">
   <img src="https://economipedia.com/wp-content/uploads/test-de-estr%C3%A9s.png" alt="logo" />
-    
-  <form [formGroup]="registerForm" (ngSubmit)="register()">
-      <button type="button"
-              id="clearFormButton"
-              (click)="clearForm()">
-        <span class="material-icons">cleaning_services</span>
-        <u>Limpiar datos</u>
-      </button>
-  
-      <label for="name"><b>Nombre de usuario</b></label><br>
+  <div id="formContainer">
+    <form [formGroup]="newUser" (ngSubmit)="onSubmit()">
+      
+      <label for="email"> Correo eléctronico o nombre de usuario </label>
       <input type="text"
-             class="form-control"
-             placeholder="Nombre"
-             id="name"
-             formControlName="name">
-      <div *ngIf="registerForm.get('name')!.invalid &&
-                (registerForm.get('name')!.dirty ||
-                 registerForm.get('name')!.touched)"
-           class="errorMessage">
-        <p *ngIf="registerForm.get('name')!.errors?.['required']">
+            class="form-control"
+            placeholder="Correo Electrónico"
+            formControlName="email">
+      <div *ngIf="newUser.get('email')!.invalid &&
+                (newUser.get('email')!.dirty ||
+                newUser.get('email')!.touched)"
+          class="errorMessage">
+        <p *ngIf="newUser.get('email')!.errors?.['required']">
           Campo Obligatorio
         </p>
-        <p *ngIf="registerForm.get('name')!.errors?.['minlength']">
+        <p *ngIf="newUser.get('email')!.errors?.['email']">
+          Debe introducir una dirección de correo electrónico
+        </p>
+      </div>
+
+      <label for="username"> Nombre de Usuario </label>
+      <input type="text"
+            class="form-control"
+            placeholder="Nombre de usuario"
+            formControlName="username">
+      <div *ngIf="newUser.get('username')!.invalid &&
+                (newUser.get('username')!.dirty ||
+                newUser.get('username')!.touched)"
+          class="errorMessage">
+        <p *ngIf="newUser.get('username')!.errors?.['required']">
+          Campo Obligatorio
+        </p>
+        <p *ngIf="newUser.get('username')!.errors?.['minlength']">
           Debe tener una longitud mínima de 6 caracteres
         </p>
       </div>
 
-      <label for="email"><b>Correo electrónico</b></label><br>
-      <input type="text"
-             class="form-control"
-             placeholder="Correo Electrónico"
-             id="email"
-             formControlName="email">
-      <div *ngIf="registerForm.get('email')!.invalid &&
-                (registerForm.get('email')!.dirty ||
-                 registerForm.get('email')!.touched)"
-           class="errorMessage">
-        <p *ngIf="registerForm.get('email')!.errors?.['required']">
-          Campo Obligatorio
-        </p>
-        <p *ngIf="registerForm.get('email')!.errors?.['email']">
-          Debe introducir una dirección de correo electrónico
-        </p>
-      </div>
-      
-      <div style="display: flex;">
-        <div style="flex-direction: column;">
-          <label for="passwd1">Contraseña</label><br>
-            <input type="password"
-                  class="form-control"
-                  placeholder="Contraseña"
-                  id="passwd1"
-                  formControlName="password">
-            <div *ngIf="registerForm.get('password')!.invalid &&
-                      (registerForm.get('password')!.dirty ||
-                      registerForm.get('password')!.touched)"
-                class="errorMessage">
-              <p *ngIf="registerForm.get('password')!.errors?.['required']">
-                Campo Obligatorio
-              </p>
-              <p *ngIf="registerForm.get('password')!.errors?.['minlength']">
-                Debe tener una longitud mínima de 6 caracteres
-              </p>
-            </div>
+      <div id="passwordFlex">
+        <div id="passwordFlex1">
+          <label for="password"> Contraseña </label>
+          <input type="password"
+                class="form-control"
+                placeholder="Contraseña"
+                formControlName="password">
+          <div *ngIf="newUser.get('password')!.invalid &&
+                    (newUser.get('password')!.dirty ||
+                    newUser.get('password')!.touched)"
+              class="errorMessage">
+            <p *ngIf="newUser.get('password')!.errors?.['required']">
+              Campo Obligatorio
+            </p>
+            <p *ngIf="newUser.get('password')!.errors?.['minlength']">
+              Debe tener una longitud mínima de 6 caracteres
+            </p>
+          </div>
         </div>
-        <div style="flex-direction: column;"> 
-          <label for="passwd2">Contraseña</label><br>
-            <input type="password"
-                  class="form-control"
-                  placeholder="Contraseña"
-                  id="passwd2"
-                  formControlName="password">
-            <div *ngIf="registerForm.get('password')!.invalid &&
-                      (registerForm.get('password')!.dirty ||
-                      registerForm.get('password')!.touched)"
-                class="errorMessage">
-              <p *ngIf="registerForm.get('password')!.errors?.['required']">
-                Campo Obligatorio
-              </p>
-              <p *ngIf="registerForm.get('password')!.errors?.['minlength']">
-                Debe tener una longitud mínima de 6 caracteres
-              </p>
-            </div>
+
+        <div id="passwordFlex2">
+          <label for="alt_password"> Repetir contraseña </label>
+          <input type="password"
+                class="form-control"
+                placeholder="Repetir contraseña"
+                formControlName="alt_password">
+          <div *ngIf="newUser.get('alt_password')!.invalid &&
+                    (newUser.get('alt_password')!.dirty ||
+                    newUser.get('alt_password')!.touched)"
+              class="errorMessage">
+            <p *ngIf="newUser.get('alt_password')!.errors?.['required']">
+              Campo Obligatorio
+            </p>
+            <p *ngIf="newUser.get('alt_password')!.errors?.['minlength']">
+              Debe tener una longitud mínima de 6 caracteres
+            </p>
+          </div>
         </div>
       </div>
-  
+
       <button type="submit"
-              [disabled]="!registerForm.valid">
+              [disabled]="!newUser.valid">
         Registrarse
       </button>
     </form>
-</section>
-  
-  
-  
+    <label id="wantToLogin">¿Ya estás registrado? <a routerLink="/login" id="login">Inicia sesión</a></label>
+  </div>
+</div>

@@ -1,85 +1,112 @@
 #flexContainer{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 6% auto;
-  max-width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 2% auto;
+    max-width: 70%;
 }
 
-  img {
-      width: 45%;
-      height: auto;
-  }
-  
-  h1 {
-    color: #FFFFFF;
-    font-size: 3.5em;
-    font-weight: 500;
-    margin: 1em 0 0.6em 35%;
-  }
-  
-  form {
+#flexContainer img{
+    width: 15%;
+    height: auto;
+}
+
+#formContainer {
     display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-  }
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    margin-top: 5%;
+    min-width: 70%;
+}
+
+#formContainer form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 5%;
+}
+
+label {
+    font-weight: 900;
+    font-size: large;
+    margin-bottom: 1%;
+}
+
+input {
+    background: #F0F0F0;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    min-width: 25%;
+    min-height: 30px;
+    margin-bottom: 3%;
+    font-size: 18px;
+}
+
+#formContainer form button {
+    background: #15580F;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    font-size: 25px;
+    font-weight: normal;
+    padding: 0.3em;
+    color: white;
+    margin: 1% auto 0 auto;
+}
   
-  input {
-    padding: 1em;
-    font-size: 1.5em;
-    border-radius: 15px;
-    border: none;
-    margin-top: 1em;
-  }
+#formContainer form button:hover{
+    cursor: pointer;
+}
+
+#passwordFlex{
+    display: flex;
+    margin-bottom: 3%;
+}
+
+#passwordFlex1{
+    display: flex;
+    flex-direction: column;
+    margin: auto auto auto 0;
+}
+
+#passwordFlex1 label{
+    margin-bottom: 3%;
+}
+
+#passwordFlex2{
+    display: flex;
+    flex-direction: column;
+    margin: auto 0 auto auto;
+}
+
+#passwordFlex2 label{
+    margin-bottom: 3%;
+}
+
+#formContainer #wantToLogin {
+
+    font-size: medium;
+    font-weight: 600;
+    margin-bottom: 2%;
+    text-align: center;
+}
   
-  button {
-    padding: 1em 20px;
-    font-size: 1.8em;
-    margin: 1em 0;
-  }
+#formContainer #login {
   
-  .ng-valid {
+    text-decoration-line: underline;
+    color: #15580F;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.ng-valid {
     border-left: 5px solid #42A948; /* green */
-  }
+}
   
-  .ng-invalid:not(form) {
+.ng-invalid:not(form) {
     border-left: 5px solid #a94442; /* red */
-  }
-  
-  #clearFormButton {
-    align-self: flex-start;
-    font-size: 1.5em;
-    margin: 1em 0 0 35%;
-  }
-  
-  hr {
-    width: 60%;
-    align-self: center;
-  }
-  
-  h2 {
-    color: #FFFFFF;
-    font-size: 2em;
-    margin-top: 1em;
-    margin-bottom: 0;
-    align-self: center;
-  }
-  
-  #buttonHolder {
-    align-self: center;
-    margin: 0;
-  }
-  
-  @media (max-width: 768px) {
-    h1 {
-      align-self: center;
-      margin: 1em 0 0 0;
-    }
-  
-    #clearFormButton {
-      align-self: center;
-      margin: 1em 0 0 0;
-    }
-  }
-  
+}
