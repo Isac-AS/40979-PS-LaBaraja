@@ -67,13 +67,7 @@
                     (newUser.get('alt_password')!.dirty ||
                     newUser.get('alt_password')!.touched)"
               class="errorMessage">
-            <p *ngIf="newUser.get('alt_password')!.errors?.['required']">
-              Campo Obligatorio
-            </p>
-            <p *ngIf="newUser.get('alt_password')!.errors?.['minlength']">
-              Debe tener una longitud mínima de 6 caracteres
-            </p>
-            <p *ngIf="newUser.get('alt_password')!.errors?.['']">
+            <p *ngIf="newUser.hasError('notSame')">
               Las contraseñas deben coincidir
             </p>
           </div>
