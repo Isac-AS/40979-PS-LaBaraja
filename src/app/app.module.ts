@@ -34,13 +34,14 @@ import { AppComponent } from './app.component';
 // Pages
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
-
-// Components
-import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
 import { PresentationPageComponent } from './pages/presentation-page/presentation-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { SalaPageComponent } from './pages/sala-page/sala-page.component';
+
+// Components
+import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
+import { PseudoheaderComponent } from './components/pseudoheader/pseudoheader.component';
 
 
 @NgModule({
@@ -52,7 +53,12 @@ import { SalaPageComponent } from './pages/sala-page/sala-page.component';
     PresentationPageComponent,
     RegisterPageComponent,
     ProfilePageComponent,
+<<<<<<< HEAD
     SalaPageComponent
+=======
+    PseudoheaderComponent
+    
+>>>>>>> origin/master
   ],
   imports: [
     BrowserModule,

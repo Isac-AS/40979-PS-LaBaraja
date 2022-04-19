@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {FormBuilder, Validators} from "@angular/forms";
-import {MessagePopupPair, Product, User} from "../../models/interfaces";
+import {MessagePopupPair, User} from "../../models/interfaces";
 import {MatDialog} from "@angular/material/dialog";
 import {databaseService} from "../../services/database.service";
 import {InfoMessagePopupComponent} from "../../components/info-message-popup/info-message-popup.component";
@@ -33,7 +33,8 @@ export class ProfilePageComponent implements OnInit {
     uid: '',
     password: '',
     profile: 'regular',
-    shoppingCart: ['']
+    friendList: [''],
+    inbox: ['']
   }
 
   constructor(
@@ -83,7 +84,7 @@ export class ProfilePageComponent implements OnInit {
   update() {
     const data = this.databaseElement;
     data.uid = this.uid;
-    this.database.updateDocument<Product>(data, this.path, data.uid).then(async (_) => {
+    this.database.updateDocument<User>(data, this.path, data.uid).then(async (_) => {
       await this.utils.openMessageDialog({
         message: 'Producto Modificado con éxito!',
         status: true
