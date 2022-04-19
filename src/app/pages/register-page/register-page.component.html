@@ -73,6 +73,9 @@
             <p *ngIf="newUser.get('alt_password')!.errors?.['minlength']">
               Debe tener una longitud mínima de 6 caracteres
             </p>
+            <p *ngIf="newUser.get('alt_password')!.errors?.['']">
+              Las contraseñas deben coincidir
+            </p>
           </div>
         </div>
       </div>
