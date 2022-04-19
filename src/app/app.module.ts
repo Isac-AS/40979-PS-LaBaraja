@@ -4,8 +4,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AppRoutingModule} from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from '@angular/platform-browser';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 // Angular Fire imports
 import { AngularFireModule} from "@angular/fire/compat";
 import { provideAuth,getAuth } from '@angular/fire/auth';
@@ -37,7 +37,12 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 // Components
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
+<<<<<<< HEAD
 import { AjustesComponentComponent } from './ajustes-component/ajustes-component.component';
+=======
+import { PresentationPageComponent } from './pages/presentation-page/presentation-page.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
+>>>>>>> origin/Raúl
 
 
 @NgModule({
@@ -46,15 +51,19 @@ import { AjustesComponentComponent } from './ajustes-component/ajustes-component
     HomePageComponent,
     LoginPageComponent,
     InfoMessagePopupComponent,
+<<<<<<< HEAD
     AjustesComponentComponent,
+=======
+    PresentationPageComponent,
+    RegisterPageComponent,
+>>>>>>> origin/Raúl
     
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
@@ -65,7 +74,16 @@ import { AjustesComponentComponent } from './ajustes-component/ajustes-component
     providePerformance(() => getPerformance()),
     provideRemoteConfig(() => getRemoteConfig()),
     provideStorage(() => getStorage()),
-    BrowserAnimationsModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   providers: [
     ScreenTrackingService,UserTrackingService

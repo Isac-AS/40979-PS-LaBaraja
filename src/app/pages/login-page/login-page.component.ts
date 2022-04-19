@@ -1,4 +1,4 @@
-import {Router} from "@angular/router";
+import { Router} from "@angular/router";
 import { Validators } from '@angular/forms';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';

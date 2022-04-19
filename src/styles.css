@@ -9,13 +9,14 @@
 
 html, body { height: 100%; }
 
-body {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+
+body{
     background-color: #15580F;
     border: 5px solid #FFFFFF;
     box-sizing: border-box;
+    position: fixed;
+    left: 0; 
+    bottom: 0;
+    top: 0; 
+    right: 0;
 }
