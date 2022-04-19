@@ -2,9 +2,11 @@ import { Router } from "@angular/router";
 import { AbstractControl, FormBuilder, FormControl, FormGroupDirective, NgForm, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
+import {databaseService} from "../../services/database.service";
 import { CustomUtilsService } from "../../services/customUtils.service";
 import { group } from "console";
 import { ErrorStateMatcher } from "@angular/material/core";
+import { User } from "../../models/interfaces";
 
 @Component({
   selector: 'app-register-page',
@@ -21,30 +23,47 @@ export class RegisterPageComponent implements OnInit {
     alt_password : ['', [Validators.required]]
   });
 
+  userData: User = {
+    name: '',
+    email: '',
+    uid: '',
+    password: '',
+    profile: "regular"
+  };
+
+  path: string = 'users';
+
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private authFirebase: AuthService,
+    private auth: AuthService,
+    private db: databaseService,
     private utils: CustomUtilsService
   ) { }
 
   ngOnInit(): void { }
 
-  async onSubmit() {
-    const res = await this.authFirebase.login(this.newUser.value.email,
-                                              this.newUser.value.password)
-      .catch( error => {
-        this.utils.openMessageDialog( {
-          message: 'Error: Nombre de usuario o contraseña incorrectos',
-          status: false
+  async register() {
+
+    this.userData.name = this.newUser.value.username;
+    this.userData.email = this.newUser.value.email;
+    this.userData.password = this.newUser.value.password;
+
+    const res = await this.auth.register(this.userData).catch( error => {
+      this.utils.openMessageDialog( {
+        message: 'Error: No se puedo crear la cuenta de usuario',
+        status: false
         })
-      });
+    });
+
     if (res) {
       await this.utils.openMessageDialog( {
-        message: 'Bienvenido!',
-        status: true
-      })
-      await this.router.navigate(['/home']);
+          message: 'Éxito en la creación de la cuenta',
+          status: true
+        })
+        this.userData.uid = res.user!.uid;
+        await this.db.createDocument(this.userData, this.path, this.userData.uid);
+        await this.router.navigate(['/login']);
     }
   }
 

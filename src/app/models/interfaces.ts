@@ -20,7 +20,6 @@
     uid: string;
     password: string;
     profile: 'admin' | 'regular';
-    shoppingCart: string[];
   }
   
   
