@@ -1,6 +1,15 @@
-#pageContainer {
-    display: flex;
-    flex-flow: column nowrap;
+#flexContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 6% auto;
+  max-width: 70%;
+}
+
+  img {
+      width: 45%;
+      height: auto;
   }
   
   h1 {
