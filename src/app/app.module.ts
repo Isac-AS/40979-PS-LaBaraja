@@ -34,11 +34,14 @@ import { AppComponent } from './app.component';
 // Pages
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { PresentationPageComponent } from './pages/presentation-page/presentation-page.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { FriendsListComponent } from './pages/friends-list/friends-list.component';
 
 // Components
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
-import { PresentationPageComponent } from './pages/presentation-page/presentation-page.component';
-import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { PseudoheaderComponent } from './components/pseudoheader/pseudoheader.component';
 
 
 @NgModule({
@@ -50,8 +53,16 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
     PresentationPageComponent,
     RegisterPageComponent,
     ProfilePageComponent,
+<<<<<<< HEAD
     FriendsListComponent,
     PseudoheaderComponent
+=======
+<<<<<<< HEAD
+    FriendsListComponent,
+=======
+    PseudoheaderComponent
+>>>>>>> 1bfeb9d883e3c31f0b9d88765ddac3a7c32b22    
+>>>>>>> 30f3a76991b0749358477265c24dd74699db6215
   ],
   imports: [
     BrowserModule,
