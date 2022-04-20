@@ -49,7 +49,9 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
     InfoMessagePopupComponent,
     PresentationPageComponent,
     RegisterPageComponent,
-    
+    ProfilePageComponent,
+    FriendsListComponent,
+    PseudoheaderComponent
   ],
   imports: [
     BrowserModule,
