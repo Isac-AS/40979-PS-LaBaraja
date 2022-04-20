@@ -13,7 +13,6 @@ body {
     border: solid #FFFFFF 5px;
     padding: 0 1em;
     margin: 1em;
-<<<<<<< HEAD
 }
 
 .appName1{
@@ -48,45 +47,3 @@ body {
 
     transform: rotate(-180deg);
 }
-
-
-=======
-}
-<<<<<<< HEAD
-}
-
-.appName1{
-    position: absolute;
-    top: 0;
-    left: 1.5%;
-    font-family: 'IBM Plex Sans Condensed';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 47px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    
-    color: #FFFFFF;
-}
-
-.appName2 {
-    position: absolute;
-    right: 1.5%;
-    bottom: -1.4%;
-    font-family: 'IBM Plex Sans Condensed';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 47px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #FFFFFF;
-
-    transform: rotate(-180deg);
-}
-=======
->>>>>>> 1bfeb9d883e3c31f0b9d88765ddac3a7c32b2257
->>>>>>> 30f3a76991b0749358477265c24dd74699db6215

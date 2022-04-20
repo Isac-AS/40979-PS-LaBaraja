@@ -53,16 +53,8 @@ import { PseudoheaderComponent } from './components/pseudoheader/pseudoheader.co
     PresentationPageComponent,
     RegisterPageComponent,
     ProfilePageComponent,
-<<<<<<< HEAD
     FriendsListComponent,
     PseudoheaderComponent
-=======
-<<<<<<< HEAD
-    FriendsListComponent,
-=======
-    PseudoheaderComponent
->>>>>>> 1bfeb9d883e3c31f0b9d88765ddac3a7c32b22    
->>>>>>> 30f3a76991b0749358477265c24dd74699db6215
   ],
   imports: [
     BrowserModule,
