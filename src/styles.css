@@ -1,24 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 * {
-    /*margin: 0;*/
-    /*padding: 0;*/
+    margin: 0;
+    padding: 0;
     list-style: none;
     text-decoration: none;
     font-family: 'IBM Plex Sans Condensed', serif;
 }
 
-html, body { height: 100%; }
-
-
 body {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
     background-color: #15580F;
-    border: 5px solid #FFFFFF;
     box-sizing: border-box;
+    border: solid #FFFFFF 5px;
+    padding: 0 1em;
+    margin: 1em;
+}
+<<<<<<< HEAD
 }
 
 .appName1{
@@ -53,3 +49,5 @@ body {
 
     transform: rotate(-180deg);
 }
+=======
+>>>>>>> 1bfeb9d883e3c31f0b9d88765ddac3a7c32b2257
