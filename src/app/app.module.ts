@@ -40,6 +40,7 @@ import { InfoMessagePopupComponent } from './components/info-message-popup/info-
 import { PresentationPageComponent } from './pages/presentation-page/presentation-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { FriendsListComponent } from './pages/friends-list/friends-list.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     PresentationPageComponent,
     RegisterPageComponent,
     ProfilePageComponent,
+    FriendsListComponent,
     
   ],
   imports: [

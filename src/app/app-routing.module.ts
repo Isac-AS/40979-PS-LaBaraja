@@ -6,6 +6,7 @@ import { PresentationPageComponent } from './pages/presentation-page/presentatio
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import {AngularFireAuthGuard} from "@angular/fire/compat/auth-guard";
+import { FriendsListComponent } from './pages/friends-list/friends-list.component';
 
 const routes: Routes = [
   {path: '', component: PresentationPageComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
   {path: 'register', component: RegisterPageComponent},
   {path: 'account', component: ProfilePageComponent, canActivate: [AngularFireAuthGuard]},
+  {path: 'friends', component: FriendsListComponent},
 ];
 
 @NgModule({
