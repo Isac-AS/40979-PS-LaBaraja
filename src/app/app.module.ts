@@ -39,6 +39,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
 import { PresentationPageComponent } from './pages/presentation-page/presentation-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { GameFinalScoreComponent } from './pages/game-final-score/game-final-score.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
     InfoMessagePopupComponent,
     PresentationPageComponent,
     RegisterPageComponent,
+    GameFinalScoreComponent,
     
   ],
   imports: [
