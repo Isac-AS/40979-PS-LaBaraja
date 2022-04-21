@@ -24,15 +24,6 @@ export class FriendsListComponent implements OnInit {
     friendList: [''],
     inbox: ['']
   };
-  friend: User = {
-    name: '',
-    email: '',
-    uid: '',
-    password: '',
-    profile: 'regular',
-    friendList: [''],
-    inbox: ['']
-  };
   friendsNames: String[] = [];
 
   constructor(
@@ -49,10 +40,9 @@ export class FriendsListComponent implements OnInit {
         this.observable.subscribe(async res => {
           this.user = await res;
           for (let uuid of this.user.friendList) {
-            const friendObservable = this.db.readDocument<User>(this.path, uuid);
+            const friendObservable: Observable<any> = this.db.readDocument<User>(this.path, uuid);
             friendObservable.subscribe(async result => {
-              this.friend = result;
-              this.friendsNames.push()
+              this.friendsNames.push(result.name);
             })
           }
         });
