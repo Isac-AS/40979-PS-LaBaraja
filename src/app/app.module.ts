@@ -42,6 +42,7 @@ import { SalaPageComponent } from './pages/sala-page/sala-page.component';
 // Components
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
 import { PseudoheaderComponent } from './components/pseudoheader/pseudoheader.component';
+import { SalaPageDialog1Component } from './components/sala-page-dialog1/sala-page-dialog1.component';
 
 
 @NgModule({
@@ -53,12 +54,9 @@ import { PseudoheaderComponent } from './components/pseudoheader/pseudoheader.co
     PresentationPageComponent,
     RegisterPageComponent,
     ProfilePageComponent,
-<<<<<<< HEAD
-    SalaPageComponent
-=======
-    PseudoheaderComponent
-    
->>>>>>> origin/master
+    SalaPageComponent,
+    PseudoheaderComponent,
+    SalaPageDialog1Component
   ],
   imports: [
     BrowserModule,

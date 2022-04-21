@@ -1,0 +1,21 @@
+#pageContainer {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.background_dialog1{
+    background-color: white;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-right: 30%;
+    margin-left: 30%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.buttom_back{
+    background-color: white;
+    border: none;
+    height: 30px;
+    width: 30px;
+}

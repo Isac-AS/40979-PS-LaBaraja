@@ -6,6 +6,7 @@ import { PresentationPageComponent } from './pages/presentation-page/presentatio
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { SalaPageComponent } from './pages/sala-page/sala-page.component';
+import { SalaPageDialog1Component } from './components/sala-page-dialog1/sala-page-dialog1.component';
 import {AngularFireAuthGuard} from "@angular/fire/compat/auth-guard";
 
 const routes: Routes = [
@@ -14,8 +15,8 @@ const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
   {path: 'register', component: RegisterPageComponent},
   {path: 'sala', component: SalaPageComponent},
+  {path: 'sala_dialog1', component: SalaPageDialog1Component},
   {path: 'account', component: ProfilePageComponent, canActivate: [AngularFireAuthGuard]},
-  
 ];
 
 @NgModule({
