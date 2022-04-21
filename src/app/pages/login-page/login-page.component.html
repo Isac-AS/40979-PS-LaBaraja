@@ -1,15 +1,17 @@
-<div id="pageContainer">
-    <h1>Iniciar Sesión</h1>
-    <form [formGroup]="credentials" (ngSubmit)="onSubmit()">
-  
+<div id="flexContainer">
+  <img src="https://economipedia.com/wp-content/uploads/test-de-estr%C3%A9s.png" alt="logo" />
+  <div id="formContainer">
+    <form [formGroup]="credentials" (ngSubmit)="onSubmit()" id="formStyle">
+      
+      <label for="email"> Correo eléctronico o nombre de usuario </label>
       <input type="text"
-             class="form-control"
-             placeholder="Correo Electrónico"
-             formControlName="email">
+            class="form-control"
+            placeholder="Correo Electrónico"
+            formControlName="email">
       <div *ngIf="credentials.get('email')!.invalid &&
                 (credentials.get('email')!.dirty ||
-                 credentials.get('email')!.touched)"
-           class="errorMessage">
+                credentials.get('email')!.touched)"
+          class="errorMessage">
         <p *ngIf="credentials.get('email')!.errors?.['required']">
           Campo Obligatorio
         </p>
@@ -17,15 +19,16 @@
           Debe introducir una dirección de correo electrónico
         </p>
       </div>
-  
+
+      <label for="password"> Contraseña </label>
       <input type="password"
-             class="form-control"
-             placeholder="Contraseña"
-             formControlName="password">
+            class="form-control"
+            placeholder="Contraseña"
+            formControlName="password">
       <div *ngIf="credentials.get('password')!.invalid &&
                 (credentials.get('password')!.dirty ||
-                 credentials.get('password')!.touched)"
-           class="errorMessage">
+                credentials.get('password')!.touched)"
+          class="errorMessage">
         <p *ngIf="credentials.get('password')!.errors?.['required']">
           Campo Obligatorio
         </p>
@@ -33,22 +36,12 @@
           Debe tener una longitud mínima de 6 caracteres
         </p>
       </div>
-  
+
       <button type="submit"
               [disabled]="!credentials.valid">
         Iniciar sesión
       </button>
     </form>
-  
-    <hr>
-    <h2>¿Eres nuevo cliente?</h2>
-    <div id="buttonHolder">
-      <button routerLink="/register">
-        <span class="material-icons">accessibility_new</span>
-        <u>Crea una cuenta!</u>
-      </button>
-    </div>
+    <label id="wantToRegister">¿No estás registrado? <a routerLink="/register" id="register">Regístrate</a></label>
   </div>
-  
-  
-  
+</div>
