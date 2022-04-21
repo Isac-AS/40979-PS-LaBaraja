@@ -1,12 +1,10 @@
 import { Router } from "@angular/router";
+import { User } from "../../models/interfaces";
 import { AbstractControl, FormBuilder, FormControl, FormGroupDirective, NgForm, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import {databaseService} from "../../services/database.service";
 import { CustomUtilsService } from "../../services/customUtils.service";
-import { group } from "console";
-import { ErrorStateMatcher } from "@angular/material/core";
-import { User } from "../../models/interfaces";
 
 @Component({
   selector: 'app-register-page',
