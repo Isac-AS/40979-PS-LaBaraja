@@ -1,0 +1,32 @@
+<header>
+    <!-- 
+        Not logged in buttons 
+        Keep in mind its flex-flow row-reverse,
+        so place them reversely
+    -->
+    <button *ngIf="!isLoggedIn" routerLink="/register">
+        <span class="material-icons">how_to_reg</span>
+        <u>Registrarse</u>
+    </button>
+    <button *ngIf="!isLoggedIn" routerLink="/login">
+        <span class="material-icons">login</span>
+        <u>Iniciar Sesión</u>
+    </button>
+    <button *ngIf="!isLoggedIn" routerLink="">
+        <span class="material-icons">home</span>
+    </button>
+
+
+    <!-- Logged in buttons -->
+    <button (click)="logOut()" *ngIf="isLoggedIn">
+        <span class="material-icons">logout</span>
+        <u>Cerrar Sesion</u>
+    </button>
+    <button *ngIf="isLoggedIn" routerLink="/account">
+        <span class="material-icons">account_circle</span>
+        <u>Perfil</u>
+    </button>
+    <button *ngIf="isLoggedIn" routerLink="/home">
+        <span class="material-icons">home</span>
+    </button>
+</header>

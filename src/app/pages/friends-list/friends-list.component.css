@@ -1,0 +1,72 @@
+.flexContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 6% auto;
+}
+
+.tittleField1{
+    padding: 0.2em 0.2em;
+
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+
+.tittleField2{
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border-radius: 10px;
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+
+.tittleField2 strong{
+    font-size: calc(16px + 1vw);
+    padding: 0.1em 1em;
+}
+
+.friendsContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+    margin-top: 1.5%;
+    padding-top: 1.5%;
+    background: #FFFFFF;
+    border-radius: 10px;
+    width: 50%;
+    height: 420px;
+}
+
+.returnButton{
+    background-color: #FFFFFF;
+    align-items: center;
+    display: flex;
+    border: 0px;
+}
+
+.friendsContainer .friendList{
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.5em;
+
+    background-color: aqua;
+    height: 340px;
+    width: 80%;
+}
+
+.friendsContainer .friendList .friendInfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    margin-bottom: 0.7em;
+}
+
+.friendsButtonsContainer{
+    display: flex;
+    align-items: center;
+}

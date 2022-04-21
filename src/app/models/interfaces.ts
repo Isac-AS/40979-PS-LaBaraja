@@ -1,18 +1,6 @@
 /*
   #################### Database elements ####################
  */
-  export interface Product {
-    id: any;
-    name: string;
-    extendedName: string;
-    description: string;
-    price: number;
-    priceWithoutTax: number;
-    brand: string;
-    imageUrl: string;
-    category: 'headphones' | 'laptops' | 'furniture' | 'sports' | 'phones' | 'games' | 'clothing' | '';
-    discount: number;
-  }
   
   export interface User {
     name: string;
@@ -20,6 +8,8 @@
     uid: string;
     password: string;
     profile: 'admin' | 'regular';
+    friendList: string[];
+    inbox: any[];
   }
   
   

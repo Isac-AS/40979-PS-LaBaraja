@@ -1,0 +1,21 @@
+header {
+    position: absolute;
+    right: 1em;
+    display: flex;
+    flex-flow: row-reverse nowrap;
+}
+
+button {
+    padding: 5px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin: 0.5em 1em 0 0;
+    border: none;
+    border-radius: 5px;
+}
+
+button u {
+    font-size: 1.2em;
+    font-weight: 600;
+}
