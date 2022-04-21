@@ -1,26 +1,26 @@
 // Basic imports
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { AppRoutingModule} from "./app-routing.module";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Angular Fire imports
-import { AngularFireModule} from "@angular/fire/compat";
-import { provideAuth,getAuth } from '@angular/fire/auth';
+import { AngularFireModule } from "@angular/fire/compat";
+import { provideAuth, getAuth } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
-import { AngularFireAuthModule} from "@angular/fire/compat/auth";
-import { provideStorage,getStorage } from '@angular/fire/storage';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
-import { AngularFirestoreModule} from "@angular/fire/compat/firestore";
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { provideFunctions,getFunctions } from '@angular/fire/functions';
-import { provideMessaging,getMessaging } from '@angular/fire/messaging';
-import { providePerformance,getPerformance } from '@angular/fire/performance';
-import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
-import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { provideStorage, getStorage } from '@angular/fire/storage';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideDatabase, getDatabase } from '@angular/fire/database';
+import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideFunctions, getFunctions } from '@angular/fire/functions';
+import { provideMessaging, getMessaging } from '@angular/fire/messaging';
+import { providePerformance, getPerformance } from '@angular/fire/performance';
+import { provideRemoteConfig, getRemoteConfig } from '@angular/fire/remote-config';
+import { provideAnalytics, getAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
 
 // Angular Material imports
 import { MatIconModule } from "@angular/material/icon";
@@ -45,49 +45,46 @@ import { PseudoheaderComponent } from './components/pseudoheader/pseudoheader.co
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomePageComponent,
-    LoginPageComponent,
-    InfoMessagePopupComponent,
-    PresentationPageComponent,
-    RegisterPageComponent,
-    ProfilePageComponent,
-<<<<<<< HEAD
-    FriendsListComponent,
-=======
-    PseudoheaderComponent
->>>>>>> 1bfeb9d883e3c31f0b9d88765ddac3a7c32b22    
-  ],
-  imports: [
-    BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    AngularFireAuthModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAnalytics(() => getAnalytics()),
-    provideAuth(() => getAuth()),
-    provideDatabase(() => getDatabase()),
-    provideFirestore(() => getFirestore()),
-    provideFunctions(() => getFunctions()),
-    provideMessaging(() => getMessaging()),
-    providePerformance(() => getPerformance()),
-    provideRemoteConfig(() => getRemoteConfig()),
-    provideStorage(() => getStorage()),
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatInputModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    ReactiveFormsModule
-  ],
-  providers: [
-    ScreenTrackingService,UserTrackingService
-  ],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		HomePageComponent,
+		LoginPageComponent,
+		InfoMessagePopupComponent,
+		PresentationPageComponent,
+		RegisterPageComponent,
+		ProfilePageComponent,
+		FriendsListComponent,
+		PseudoheaderComponent
+	],
+	imports: [
+		BrowserModule,
+		AngularFireModule.initializeApp(environment.firebase),
+		AngularFirestoreModule,
+		AngularFireAuthModule,
+		provideFirebaseApp(() => initializeApp(environment.firebase)),
+		provideAnalytics(() => getAnalytics()),
+		provideAuth(() => getAuth()),
+		provideDatabase(() => getDatabase()),
+		provideFirestore(() => getFirestore()),
+		provideFunctions(() => getFunctions()),
+		provideMessaging(() => getMessaging()),
+		providePerformance(() => getPerformance()),
+		provideRemoteConfig(() => getRemoteConfig()),
+		provideStorage(() => getStorage()),
+		AppRoutingModule,
+		FormsModule,
+		HttpClientModule,
+		BrowserAnimationsModule,
+		MatIconModule,
+		MatInputModule,
+		MatButtonModule,
+		MatDialogModule,
+		MatFormFieldModule,
+		ReactiveFormsModule
+	],
+	providers: [
+		ScreenTrackingService, UserTrackingService
+	],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
