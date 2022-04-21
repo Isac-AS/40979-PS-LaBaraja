@@ -4,11 +4,11 @@
         Keep in mind its flex-flow row-reverse,
         so place them reversely
     -->
-    <button *ngIf="!isLoggedIn" routerLink="/register">
+    <button *ngIf="!isLoggedIn" (click)="openRegisterDialog()">
         <span class="material-icons">how_to_reg</span>
         <u>Registrarse</u>
     </button>
-    <button *ngIf="!isLoggedIn" routerLink="/login">
+    <button *ngIf="!isLoggedIn" (click)="openLoginDialog()">
         <span class="material-icons">login</span>
         <u>Iniciar Sesión</u>
     </button>

@@ -12,8 +12,10 @@ export class InfoMessagePopupComponent implements OnInit {
   message : string;
   status: boolean;
 
-  constructor(public dialogRef: MatDialogRef<InfoMessagePopupComponent>,
-              @Inject(MAT_DIALOG_DATA) public data:MessagePopupPair) {
+  constructor(
+    public dialogRef: MatDialogRef<InfoMessagePopupComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:MessagePopupPair
+    ) {
     this.message = data.message;
     this.status = data.status;
   }

@@ -1,10 +1,11 @@
 import { Router } from "@angular/router";
 import { User } from "../../models/interfaces";
-import { AbstractControl, FormBuilder, FormControl, FormGroupDirective, NgForm, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import {databaseService} from "../../services/database.service";
 import { CustomUtilsService } from "../../services/customUtils.service";
+import { MatDialogRef } from "@angular/material/dialog";
 
 @Component({
   selector: 'app-register-page',
@@ -38,7 +39,8 @@ export class RegisterPageComponent implements OnInit {
     private fb: FormBuilder,
     private auth: AuthService,
     private db: databaseService,
-    private utils: CustomUtilsService
+    private utils: CustomUtilsService,
+    public dialogRef: MatDialogRef<RegisterPageComponent>
   ) { }
 
   ngOnInit(): void { }

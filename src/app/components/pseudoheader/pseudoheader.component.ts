@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { LoginPageComponent } from 'src/app/pages/login-page/login-page.component';
+import { RegisterPageComponent } from 'src/app/pages/register-page/register-page.component';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -26,24 +28,26 @@ export class PseudoheaderComponent implements OnInit {
 
   logOut() {
     const res = this.auth.logout().catch(async error => {
-      await alert('Parece haber habido un problema. Inténtelo de nuevo.')
+      alert('Parece haber habido un problema. Inténtelo de nuevo.')
     });
     this.router.navigate(['/login']);
   }
 
-  openDialog(): void {
-    /*const dialogRef = this.dialog.open(HeaderResponsiveDialogComponent, {
-      data: { login: this.isLoggedIn,
-              admin: this.isAdmin
-            },
-      width: '70%',
-      height: '100%',
-      position: {
-        left: '0px'
-      }
+  openLoginDialog(): void {
+    const dialogRef = this.dialog.open(LoginPageComponent, {
+      width: "70%",
+      height: "70%"
+
     });
-    dialogRef.afterClosed().subscribe(res => {
-    });*/
+    dialogRef.afterClosed().subscribe(res => {});
+  }
+
+  openRegisterDialog(): void {
+    const dialogRef = this.dialog.open(RegisterPageComponent, {
+      width: "70%",
+      height: "70%"
+    });
+    dialogRef.afterClosed().subscribe(res => {});
   }
 
 }
