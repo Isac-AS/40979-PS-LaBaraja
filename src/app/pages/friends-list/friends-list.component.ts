@@ -14,8 +14,26 @@ import { Observable } from "rxjs";
 })
 export class FriendsListComponent implements OnInit {
   path: string = 'users';
-  observable: Observable<any> | unknown;
-
+  observable: Observable<any> | undefined;
+  user: User = {
+    name: '',
+    email: '',
+    uid: '',
+    password: '',
+    profile: 'regular',
+    friendList: [''],
+    inbox: ['']
+  };
+  friend: User = {
+    name: '',
+    email: '',
+    uid: '',
+    password: '',
+    profile: 'regular',
+    friendList: [''],
+    inbox: ['']
+  };
+  friendsNames: String[] = [];
 
   constructor(
     private router: Router,
@@ -23,10 +41,28 @@ export class FriendsListComponent implements OnInit {
     private db: databaseService,
     private utils: CustomUtilsService
   ) { 
+    const promise = this.auth.getUid();
+    promise.then(async r => {
+      if (r){
+        this.path = 'users';
+        this.observable = this.db.readDocument<User>(this.path, await r);
+        this.observable.subscribe(async res => {
+          this.user = await res;
+          for (let uuid of this.user.friendList) {
+            const friendObservable = this.db.readDocument<User>(this.path, uuid);
+            friendObservable.subscribe(async result => {
+              this.friend = result;
+              this.friendsNames.push()
+            })
+          }
+        });
+      }
+    })
+
   }
+  
 
   ngOnInit(): void {
-    
   }
 
 }
