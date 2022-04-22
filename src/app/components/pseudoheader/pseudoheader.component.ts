@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { LoginPageComponent } from 'src/app/pages/login-page/login-page.component';
-import { RegisterPageComponent } from 'src/app/pages/register-page/register-page.component';
+import { LoginPageComponent } from 'src/app/components/login-page/login-page.component';
+import { RegisterPageComponent } from 'src/app/components/register-page/register-page.component';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
