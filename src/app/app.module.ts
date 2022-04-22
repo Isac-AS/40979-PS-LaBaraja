@@ -34,12 +34,15 @@ import { AppComponent } from './app.component';
 // Pages
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { PresentationPageComponent } from './pages/presentation-page/presentation-page.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { FriendsListComponent } from './pages/friends-list/friends-list.component';
 
 // Components
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
-import { PresentationPageComponent } from './pages/presentation-page/presentation-page.component';
-import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { GameFinalScoreComponent } from './pages/game-final-score/game-final-score.component';
+import { PseudoheaderComponent } from './components/pseudoheader/pseudoheader.component';
 
 
 @NgModule({
@@ -52,6 +55,9 @@ import { GameFinalScoreComponent } from './pages/game-final-score/game-final-sco
     RegisterPageComponent,
     GameFinalScoreComponent,
     
+    ProfilePageComponent,
+    FriendsListComponent,
+    PseudoheaderComponent
   ],
   imports: [
     BrowserModule,
