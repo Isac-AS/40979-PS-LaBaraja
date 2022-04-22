@@ -35,15 +35,14 @@ export class PseudoheaderComponent implements OnInit {
 
   openLoginDialog(): void {
     const dialogRef = this.dialog.open(LoginPageComponent, {
-
+      minWidth: "40%"
     });
     dialogRef.afterClosed().subscribe(res => {});
   }
 
   openRegisterDialog(): void {
     const dialogRef = this.dialog.open(RegisterPageComponent, {
-      width: "70%",
-      height: "70%"
+      minWidth: "40%"
     });
     dialogRef.afterClosed().subscribe(res => {});
   }
