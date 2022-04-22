@@ -29,4 +29,7 @@
     <button *ngIf="isLoggedIn" routerLink="/home">
         <span class="material-icons">home</span>
     </button>
+    <button *ngIf="isLoggedIn" (click)="openRegisterDialog()">
+        <span class="material-icons">notifications</span>
+    </button>
 </header>

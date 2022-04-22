@@ -39,9 +39,10 @@ import { FriendsListComponent } from './pages/friends-list/friends-list.componen
 
 // Components
 import { LoginPageComponent } from './components/login-page/login-page.component';
+import { PseudoheaderComponent } from './components/pseudoheader/pseudoheader.component';
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
-import { PseudoheaderComponent } from './components/pseudoheader/pseudoheader.component';
+import { NotoficationDialogComponent } from './components/notofication-Dialog/notofication-Dialog.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { PseudoheaderComponent } from './components/pseudoheader/pseudoheader.co
 		RegisterPageComponent,
 		ProfilePageComponent,
 		FriendsListComponent,
-		PseudoheaderComponent
+		PseudoheaderComponent,
+		NotoficationDialogComponent
 	],
 	imports: [
 		BrowserModule,

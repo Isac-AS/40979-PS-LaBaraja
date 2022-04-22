@@ -50,4 +50,8 @@ export class PseudoheaderComponent implements OnInit {
     dialogRef.afterClosed().subscribe(res => {});
   }
 
+  openNotificationDialog(): void {
+    
+  }
+
 }
