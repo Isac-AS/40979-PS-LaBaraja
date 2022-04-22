@@ -33,9 +33,10 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { AppComponent } from './app.component';
 // Pages
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { PresentationPageComponent } from './pages/presentation-page/presentation-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { FriendsListComponent } from './pages/friends-list/friends-list.component';
+import { GameFinalScoreComponent } from './pages/game-final-score/game-final-score.component';
+import { PresentationPageComponent } from './pages/presentation-page/presentation-page.component';
 
 // Components
 import { LoginPageComponent } from './components/login-page/login-page.component';
@@ -56,7 +57,8 @@ import { NotoficationDialogComponent } from './components/notofication-Dialog/no
 		ProfilePageComponent,
 		FriendsListComponent,
 		PseudoheaderComponent,
-		NotoficationDialogComponent
+		NotoficationDialogComponent,
+		GameFinalScoreComponent
 	],
 	imports: [
 		BrowserModule,
