@@ -1,18 +1,3 @@
-#flexContainer{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 2% auto;
-  max-width: 70%;
-}
-
-#flexContainer img{
-
-  width: 15%;
-  height: auto;
-}
-
 #formContainer {
 
   display: flex;
@@ -21,8 +6,8 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: #FFFFFF;
   border-radius: 10px;
-  margin-top: 5%;
   min-width: 70%;
+
 }
 
 #formContainer #formStyle{
@@ -31,23 +16,7 @@
   justify-content: center;
   flex-direction: column;
   padding: 5%;
-}
 
-
-#formContainer #wantToRegister {
-
-  font-family: 'IBM Plex Sans Condensed';
-  font-size: medium;
-  font-weight: 600;
-  margin-bottom: 2%;
-  text-align: center;
-}
-
-#formContainer #register {
-
-  text-decoration-line: underline;
-  color: #15580F;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #formContainer #formStyle label{
@@ -87,6 +56,23 @@
 
 #formContainer #formStyle button:hover{
   cursor: pointer;
+}
+
+#formContainer #wantToRegister {
+
+  font-family: 'IBM Plex Sans Condensed';
+  font-size: medium;
+  font-weight: 600;
+  margin-bottom: 2%;
+  text-align: center;
+}
+
+#formContainer #register {
+
+  text-decoration-line: underline;
+  color: #15580F;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 
 .ng-valid {

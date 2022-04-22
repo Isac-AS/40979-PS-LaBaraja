@@ -35,8 +35,6 @@ export class PseudoheaderComponent implements OnInit {
 
   openLoginDialog(): void {
     const dialogRef = this.dialog.open(LoginPageComponent, {
-      width: "70%",
-      height: "70%"
 
     });
     dialogRef.afterClosed().subscribe(res => {});
