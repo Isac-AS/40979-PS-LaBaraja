@@ -1,10 +1,43 @@
 <main>
     <section id="pageContainer" class="background_dialog1">
-        <button class="buttom_back">
-            <span class="material-icons">
-                arrow_back
-            </span>
-        </button>
+        <div id="userContainer">
+            <button class="buttom_back" routerLink="/sala">
+                <span class="material-icons">
+                    arrow_back
+                </span>
+            </button>
+
+            <div class="txt_volver">
+                <b>Volver</b>
+            </div>
+        </div>
         
+
+        <div class="txt_invitar_amigo">
+           <b>Invitar amigo</b> 
+        </div>
+
+        <div id="userContainer" class="margin_user">
+            <span class="material-icons icon_available">
+                fiber_manual_record
+            </span>
+            <div class="txt_user">
+                <b>user 1</b>
+            </div>
+            <button class="button_inv margin_button_inv">
+                <b>Invitar</b>
+            </button>
+        </div>
+
+        <form>
+            <div id="pageContainer">
+                <label class="txt_invitar_amigo">
+                    <b>Invitar Usuario</b>
+                </label>
+                <input class="form" value="Introducir nombre de usuario">
+                <input type="button" class="button_inv_user margin_button_inv_user" value="Enviar Invitacion">
+            </div>
+            
+        </form>
     </section>
 </main>
