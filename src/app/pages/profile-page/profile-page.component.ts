@@ -1,11 +1,9 @@
-import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
+import {User} from "../../models/interfaces";
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {MessagePopupPair, User} from "../../models/interfaces";
-import {MatDialog} from "@angular/material/dialog";
-import {databaseService} from "../../services/database.service";
-import {InfoMessagePopupComponent} from "../../components/info-message-popup/info-message-popup.component";
 import {AuthService} from "../../services/auth.service";
+import {databaseService} from "../../services/database.service";
 import {CustomUtilsService} from "../../services/customUtils.service";
 
 @Component({
@@ -33,8 +31,8 @@ export class ProfilePageComponent implements OnInit {
     uid: '',
     password: '',
     profile: 'regular',
-    friendList: [''],
-    inbox: ['']
+    friendList: [],
+    inbox: []
   }
 
   constructor(
@@ -43,13 +41,11 @@ export class ProfilePageComponent implements OnInit {
     public database: databaseService,
     private utils: CustomUtilsService
   ) {
-    const promise = this.auth.getUid();
-    promise.then(async r => {
-        if (r) {
-          this.uid = await r;
+    const currentUserIdPromise = this.auth.getUid();
+    currentUserIdPromise.then(async currentUserId => {
+        if (currentUserId) {
+          this.uid = currentUserId;
           this.path = 'users';
-          console.log('uid -> ', this.uid)
-          console.log('path -> ', this.path)
           this.observable = this.database.readDocument<User>(this.path, this.uid);
           this.observable.subscribe(async res => {
               this.databaseElement = await res;

@@ -1,9 +1,10 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { LoginPageComponent } from 'src/app/components/login-page/login-page.component';
 import { RegisterPageComponent } from 'src/app/components/register-page/register-page.component';
-import { AuthService } from 'src/app/services/auth.service';
+import { NotificationDialogComponent } from '../notification-Dialog/notification-Dialog.component';
 
 @Component({
   selector: 'app-pseudoheader',
@@ -30,7 +31,7 @@ export class PseudoheaderComponent implements OnInit {
     const res = this.auth.logout().catch(async error => {
       alert('Parece haber habido un problema. Inténtelo de nuevo.')
     });
-    this.router.navigate(['/login']);
+    this.router.navigate(['']);
   }
 
   openLoginDialog(): void {
@@ -51,7 +52,11 @@ export class PseudoheaderComponent implements OnInit {
   }
 
   openNotificationDialog(): void {
-    
+    const dialogRef = this.dialog.open(NotificationDialogComponent, {
+      width: "70%",
+      height: "70%"
+    });
+    dialogRef.afterClosed().subscribe(res => {});
   }
 
 }

@@ -1,0 +1,23 @@
+<div id="flexContainer">
+  <h1>Notificaciones</h1>
+  <div *ngFor="let inboxInfo of inbox; trackBy: trackItem">
+    <div class="inboxMessage" *ngIf="inboxInfo.reason === 'AddFriend'">
+      {{ inboxInfo.senderName }} quiere agregarte como amigo!
+      <button class="accept" (click)="acceptFriendRequest(inboxInfo)">
+        <span class="material-icons">done</span>
+      </button>
+      <button class="reject" (click)="rejectFriendRequest(inboxInfo)">
+        <span class="material-icons">clear</span>
+      </button>
+    </div>
+    <div class="inboxMessage" *ngIf="inboxInfo.reason === 'InviteToGame'">
+      {{ inboxInfo.senderName }} quiere invitarte a jugar!
+      <button class="accept">
+        <span class="material-icons">done</span>
+      </button>
+      <button class="reject">
+        <span class="material-icons">clear</span>
+      </button>
+    </div>
+  </div>
+</div>

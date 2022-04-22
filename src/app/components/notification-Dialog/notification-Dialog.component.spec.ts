@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { NotoficationDialogComponent } from './notofication-Dialog.component';
+import { NotificationDialogComponent } from './notification-Dialog.component';
 
 describe('NotoficationDialogComponent', () => {
-  let component: NotoficationDialogComponent;
-  let fixture: ComponentFixture<NotoficationDialogComponent>;
+  let component: NotificationDialogComponent;
+  let fixture: ComponentFixture<NotificationDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotoficationDialogComponent ]
+      declarations: [ NotificationDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NotoficationDialogComponent);
+    fixture = TestBed.createComponent(NotificationDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

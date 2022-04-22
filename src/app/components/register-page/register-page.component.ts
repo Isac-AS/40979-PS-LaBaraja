@@ -66,7 +66,8 @@ export class RegisterPageComponent implements OnInit {
         this.userData.uid = res.user!.uid;
         this.userData.password = 'null';
         await this.db.createDocument(this.userData, this.path, this.userData.uid);
-        await this.router.navigate(['/login']);
+        this.dialogRef.close();
+        await this.router.navigate(['/home']);
     }
   }
 

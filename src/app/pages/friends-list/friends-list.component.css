@@ -22,6 +22,11 @@
     box-sizing: border-box;
 }
 
+#rotatedIcon {
+    transform: rotate(-180deg); 
+    align-items: flex-end;
+}
+
 .tittleField2 strong{
     font-size: calc(16px + 1vw);
     padding: 0.1em 1em;

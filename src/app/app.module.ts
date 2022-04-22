@@ -43,7 +43,8 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { PseudoheaderComponent } from './components/pseudoheader/pseudoheader.component';
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
-import { NotoficationDialogComponent } from './components/notofication-Dialog/notofication-Dialog.component';
+import { NotificationDialogComponent } from './components/notification-Dialog/notification-Dialog.component';
+import { AddFriendComponent } from './components/add-friend/add-friend.component';
 
 
 @NgModule({
@@ -57,8 +58,9 @@ import { NotoficationDialogComponent } from './components/notofication-Dialog/no
 		ProfilePageComponent,
 		FriendsListComponent,
 		PseudoheaderComponent,
-		NotoficationDialogComponent,
-		GameFinalScoreComponent
+		NotificationDialogComponent,
+		GameFinalScoreComponent,
+  AddFriendComponent
 	],
 	imports: [
 		BrowserModule,
