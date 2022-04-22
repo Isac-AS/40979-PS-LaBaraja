@@ -31,13 +31,15 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    justify-content: space-between;
     
     margin-top: 1.5%;
-    padding-top: 1.5%;
+    padding: 1em;
+
     background: #FFFFFF;
     border-radius: 10px;
     width: 50%;
-    height: 420px;
+    height: 360px;
 }
 
 .returnButton{
@@ -50,10 +52,9 @@
 .friendsContainer .friendList{
     display: flex;
     flex-direction: column;
-    padding-top: 0.5em;
+    overflow-y: scroll;
 
-    background-color: aqua;
-    height: 340px;
+    height: 270px;
     width: 80%;
 }
 
@@ -63,10 +64,23 @@
     justify-content: space-between;
     width: 100%;
 
-    margin-bottom: 0.7em;
+    margin-bottom: 0.5em;
 }
 
 .friendsButtonsContainer{
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.friendsButtonsContainer .friendButton {
+    display: flex;
+    align-items: center;
+    font-size: calc(12px + 0.5vw);
+    color: #FFFFFF;
+    background-color:  #15580F;
+    padding: 0.5em;
+    border: 0px;
+    border-radius: 5px;
 }

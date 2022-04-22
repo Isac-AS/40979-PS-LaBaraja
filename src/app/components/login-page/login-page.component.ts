@@ -4,6 +4,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { AuthService} from "../../services/auth.service";
 import { CustomUtilsService} from "../../services/customUtils.service";
+import { MatDialogRef } from "@angular/material/dialog";
 
 @Component({
   selector: 'app-login-page',
@@ -21,7 +22,8 @@ export class LoginPageComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private authFirebase: AuthService,
-    private utils: CustomUtilsService
+    private utils: CustomUtilsService,
+    public dialogRef: MatDialogRef<LoginPageComponent>
   ) { }
 
   ngOnInit(): void { }
