@@ -43,6 +43,7 @@ import { FriendsListComponent } from './pages/friends-list/friends-list.componen
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
 import { GameFinalScoreComponent } from './pages/game-final-score/game-final-score.component';
 import { PseudoheaderComponent } from './components/pseudoheader/pseudoheader.component';
+import { InvitationPopupComponent } from './invitation-popup/invitation-popup.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { PseudoheaderComponent } from './components/pseudoheader/pseudoheader.co
     
     ProfilePageComponent,
     FriendsListComponent,
-    PseudoheaderComponent
+    PseudoheaderComponent,
+    InvitationPopupComponent
   ],
   imports: [
     BrowserModule,

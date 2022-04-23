@@ -8,6 +8,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import {AngularFireAuthGuard} from "@angular/fire/compat/auth-guard";
 import { FriendsListComponent } from './pages/friends-list/friends-list.component';
+import { InvitationPopupComponent } from './invitation-popup/invitation-popup.component';
 
 const routes: Routes = [
   {path: '', component: PresentationPageComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'game-score', component: GameFinalScoreComponent},
   {path: 'account', component: ProfilePageComponent, canActivate: [AngularFireAuthGuard]},
   {path: 'friends', component: FriendsListComponent},
+  {path: 'invitation-popup', component: InvitationPopupComponent  }
 ];
 
 @NgModule({
