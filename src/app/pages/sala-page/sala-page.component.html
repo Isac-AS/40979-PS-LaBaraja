@@ -12,9 +12,13 @@
             </button>
             <button (click)="openNotificationDialog()">
                 <span class="material-icons">inbox</span>
-                Amigos
+                Buzón
             </button>
-            <button >
+            <button (click)="openFriendListDialog()">
+                <span class="material-icons">group_add</span>
+                Invitar amigos
+            </button>
+            <button *ngIf="currentUserData.lobby === ''">
                 <span class="material-icons">add</span>
                 Crear sala
             </button>

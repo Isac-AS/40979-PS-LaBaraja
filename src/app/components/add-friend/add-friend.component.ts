@@ -43,7 +43,7 @@ export class AddFriendComponent implements OnInit {
 
   addFriend() {
     this.inboxMessage.receiverId = this.id.value;
-    this.db.addFriend(this.inboxMessage);
+    this.db.pushIntoInbox(this.inboxMessage);
     this.dialogRef.close()
   }
 

@@ -10,6 +10,12 @@ export interface User {
   profile: 'admin' | 'regular';
   friendList: FriendInfo[];
   inbox: InboxInfo[];
+  lobby: string;
+}
+
+export interface Lobby {
+  id: string;
+  participants: FriendInfo[];
 }
 
 
@@ -33,7 +39,7 @@ export interface MessagePopupPair {
 }
   
 export interface InboxInfo {
-  reason: 'AddFriend' | 'InviteToGame';
+  reason: 'AddFriend' | 'InviteToLobby';
   senderName: string;
   receiverName: string;
   senderId: string;

@@ -29,7 +29,8 @@ export class RegisterPageComponent implements OnInit {
     password: '',
     profile: "regular",
     friendList : [],
-    inbox : []
+    inbox : [],
+    lobby: ''
   };
 
   path: string = 'users';

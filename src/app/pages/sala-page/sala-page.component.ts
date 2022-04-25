@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { User } from 'firebase/auth';
 import { NotificationDialogComponent } from 'src/app/components/notification-Dialog/notification-Dialog.component';
+import { User } from 'src/app/models/interfaces';
 import { AuthService } from 'src/app/services/auth.service';
 import { databaseService } from 'src/app/services/database.service';
+import { AddFriendsToLobbyComponent } from './add-friends-to-lobby/add-friends-to-lobby.component';
 
 @Component({
   selector: 'app-sala-page',
@@ -12,17 +13,26 @@ import { databaseService } from 'src/app/services/database.service';
 })
 export class SalaPageComponent implements OnInit {
 
-  currentUserData: User |undefined;
+  currentUserData: User = {
+    name: '',
+    email: '',
+    uid: '',
+    password: '',
+    profile: 'regular',
+    friendList: [],
+    inbox: [],
+    lobby: '',
+  };
 
   constructor(
     public dialog: MatDialog,
     private auth: AuthService,
     private db: databaseService,
-  ) { 
+  ) {
     this.auth.getUid().then(async currentUserUid => {
       if (currentUserUid){
         this.db.readDocument<User>('users', currentUserUid).subscribe( async currentUserData => {
-          this.currentUserData = currentUserData;
+          if (currentUserData) this.currentUserData = currentUserData;
         })
       }
     });
@@ -35,6 +45,13 @@ export class SalaPageComponent implements OnInit {
     const dialogRef = this.dialog.open(NotificationDialogComponent, {
       width: "70%",
       height: "70%"
+    });
+    dialogRef.afterClosed().subscribe(res => {});
+  }
+
+  openFriendListDialog(): void {
+    const dialogRef = this.dialog.open(AddFriendsToLobbyComponent, {
+      width: '50%'
     });
     dialogRef.afterClosed().subscribe(res => {});
   }

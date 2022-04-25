@@ -32,7 +32,8 @@ export class ProfilePageComponent implements OnInit {
     password: '',
     profile: 'regular',
     friendList: [],
-    inbox: []
+    inbox: [],
+    lobby: ''
   }
 
   constructor(
