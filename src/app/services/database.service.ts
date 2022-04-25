@@ -73,6 +73,28 @@ export class databaseService {
     });
   }
 
+  acceptLobbyRequest(data: InboxInfo) {
+    let elementFriendInfo = this.generateFriendInfo(data);
+
+    this.readDocument<User>('users', data.receiverId).pipe(take(1)).subscribe(async receiverData => {
+      receiverData!.friendList.push(elementFriendInfo.sender)
+      receiverData!.inbox = this.utils.RemoveElementFromInbox(receiverData!.inbox, data);
+      this.updateDocument<User>(receiverData, 'users', data.receiverId);
+    });
+
+    this.readDocument<User>('users', data.senderId).pipe(take(1)).subscribe(async senderData => {
+      senderData!.friendList.push(elementFriendInfo.receiver)
+      this.updateDocument<User>(senderData, 'users', data.senderId);
+    });
+  }
+
+  rejectLobbyRequest(data: InboxInfo) {
+    this.readDocument<User>('users', data.receiverId).pipe(take(1)).subscribe(async receiverData => {
+      receiverData!.inbox = this.utils.RemoveElementFromInbox(receiverData!.inbox, data);
+      this.updateDocument<User>(receiverData, 'users', data.receiverId);
+    });
+  }
+
   generateFriendInfo(data: InboxInfo) : any {
     let receiverFriendInfo: FriendInfo = {
       name: data.receiverName,

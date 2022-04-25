@@ -30,7 +30,7 @@ export class RegisterPageComponent implements OnInit {
     profile: "regular",
     friendList : [],
     inbox : [],
-    lobby: ''
+    lobby: 'none'
   };
 
   path: string = 'users';

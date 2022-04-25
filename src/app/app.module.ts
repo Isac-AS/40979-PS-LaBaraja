@@ -37,7 +37,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { FriendsListComponent } from './pages/friends-list/friends-list.component';
 import { GameFinalScoreComponent } from './pages/game-final-score/game-final-score.component';
 import { PresentationPageComponent } from './pages/presentation-page/presentation-page.component';
-import { SalaPageComponent } from './pages/sala-page/sala-page.component';
+import { LobbyPageComponent } from './pages/sala-page/lobby-page.component';
 
 // Components
 import { LoginPageComponent } from './components/login-page/login-page.component';
@@ -64,7 +64,7 @@ import { AddFriendsToLobbyComponent } from './pages/sala-page/add-friends-to-lob
 		NotificationDialogComponent,
 		GameFinalScoreComponent,
 		AddFriendComponent,
-		SalaPageComponent,
+		LobbyPageComponent,
 		SalaPageDialog1Component,
 		AddFriendsToLobbyComponent
 	],

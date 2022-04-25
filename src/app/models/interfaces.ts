@@ -10,7 +10,7 @@ export interface User {
   profile: 'admin' | 'regular';
   friendList: FriendInfo[];
   inbox: InboxInfo[];
-  lobby: string;
+  lobby: 'none' | string;
 }
 
 export interface Lobby {

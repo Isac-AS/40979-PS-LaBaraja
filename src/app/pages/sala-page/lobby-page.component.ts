@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationDialogComponent } from 'src/app/components/notification-Dialog/notification-Dialog.component';
-import { User } from 'src/app/models/interfaces';
+import { FriendInfo, Lobby, User } from 'src/app/models/interfaces';
 import { AuthService } from 'src/app/services/auth.service';
 import { databaseService } from 'src/app/services/database.service';
 import { AddFriendsToLobbyComponent } from './add-friends-to-lobby/add-friends-to-lobby.component';
 
 @Component({
-  selector: 'app-sala-page',
-  templateUrl: './sala-page.component.html',
-  styleUrls: ['./sala-page.component.css']
+  selector: 'app-lobby-page',
+  templateUrl: './lobby-page.component.html',
+  styleUrls: ['./lobby-page.component.css']
 })
-export class SalaPageComponent implements OnInit {
+export class LobbyPageComponent implements OnInit {
+
+  currentLobby: Lobby = {
+    id: '',
+    participants : []
+  }
 
   currentUserData: User = {
     name: '',
@@ -33,12 +38,32 @@ export class SalaPageComponent implements OnInit {
       if (currentUserUid){
         this.db.readDocument<User>('users', currentUserUid).subscribe( async currentUserData => {
           if (currentUserData) this.currentUserData = currentUserData;
+          if (currentUserData?.lobby != 'none') {
+            this.db.readDocument<Lobby>('lobbies', currentUserData!?.lobby).subscribe( async usersLobby => {
+              if(usersLobby) this.currentLobby = usersLobby;
+            })
+          }
         })
       }
     });
   }
 
   ngOnInit(): void {
+  }
+
+  createLobby() {
+    const lobby: Lobby = {
+      id: this.db.createId(),
+      participants: [
+        {
+          id: this.currentUserData.uid,
+          name: this.currentUserData.name,
+        }
+      ]
+    }
+    this.db.createDocument<Lobby>(lobby, 'lobbies', lobby.id);
+    this.currentUserData.lobby = lobby.id
+    this.db.updateDocument<User>(this.currentUserData, 'users', this.currentUserData.uid)
   }
 
   openNotificationDialog(): void {
@@ -51,9 +76,15 @@ export class SalaPageComponent implements OnInit {
 
   openFriendListDialog(): void {
     const dialogRef = this.dialog.open(AddFriendsToLobbyComponent, {
+
       width: '50%'
     });
     dialogRef.afterClosed().subscribe(res => {});
   }
+
+  removeFromLobby(friend: FriendInfo) {
+    
+  }
+
 
 }
