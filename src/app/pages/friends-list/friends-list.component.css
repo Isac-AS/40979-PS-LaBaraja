@@ -1,4 +1,4 @@
-.flexContainer{
+#pageContainer{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,37 +6,38 @@
     margin: 6% auto;
 }
 
-.tittleField1{
-    padding: 0.2em 0.2em;
-
-    background: #FFFFFF;
-    border-radius: 10px;
-}
-
-.tittleField2{
-    display: flex;
-    flex-direction: column;
-    background: #FFFFFF;
-    border-radius: 10px;
-    border: 2px solid black;
+#amigos{
+    position: relative;
+    font-size: 5em;
     box-sizing: border-box;
+    border-radius: 15px;
+    border: solid 3px black;
+    width: 25%;
+    margin: 0.5em;
+    padding: 0.6em;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
 }
 
-#rotatedIcon {
-    transform: rotate(-180deg); 
-    align-items: flex-end;
+.topIcon {
+    position: absolute;
+    top: 1.5%;
+    left: 1.5%;
 }
 
-.tittleField2 strong{
-    font-size: calc(16px + 1vw);
-    padding: 0.1em 1em;
+.bottomIcon {
+    position: absolute;
+    right: 1.5%;
+    bottom: 1.5%;
+    transform: rotate(-180deg);
 }
 
-.friendsContainer{
+#friendsContainer{
     display: flex;
     align-items: center;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-flow: column nowrap;
     
     margin-top: 1.5%;
     padding: 1em;
@@ -44,48 +45,51 @@
     background: #FFFFFF;
     border-radius: 10px;
     width: 50%;
-    height: 360px;
+    min-height: 360px;
 }
 
-.returnButton{
-    background-color: #FFFFFF;
-    align-items: center;
+#buttonsContainer {
     display: flex;
-    border: 0px;
-}
-
-.friendsContainer .friendList{
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-
-    height: 270px;
-    width: 80%;
-}
-
-.friendsContainer .friendList .friendInfo{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
     width: 100%;
-
-    margin-bottom: 0.5em;
 }
 
-.friendsButtonsContainer{
+button {
     display: flex;
+    flex-flow: row nowrap;
     align-items: center;
-    justify-content: space-between;
-    width: 80%;
-}
-
-.friendsButtonsContainer .friendButton {
-    display: flex;
-    align-items: center;
-    font-size: calc(12px + 0.5vw);
+    background-color: #15580F;
     color: #FFFFFF;
-    background-color:  #15580F;
-    padding: 0.5em;
-    border: 0px;
+    border: none;
     border-radius: 5px;
+    padding: 0.4em;
+    font-size: 1.4em;
+}
+
+#friendList {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-top: 2em;
+    width: 90%;
+}
+
+.friendRegister {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    width: 100%;
+}
+
+.friendInfoAndActions {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-self: flex-end;
+    flex-grow: 2;
+    justify-content: flex-end;
+}
+
+.friendInfoAndActions .deleteFriendButton {
+    margin-left: 1em;
 }

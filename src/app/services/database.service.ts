@@ -56,7 +56,7 @@ export class databaseService {
 
     this.readDocument<User>('users', data.receiverId).pipe(take(1)).subscribe(async receiverData => {
       receiverData!.friendList.push(elementFriendInfo.sender)
-      receiverData!.inbox = this.utils.RemoveElementFromArray(receiverData!.inbox, data);
+      receiverData!.inbox = this.utils.RemoveElementFromInbox(receiverData!.inbox, data);
       this.updateDocument<User>(receiverData, 'users', data.receiverId);
     });
 
@@ -68,7 +68,7 @@ export class databaseService {
 
   rejectFriendRequest(data: InboxInfo) {
     this.readDocument<User>('users', data.receiverId).pipe(take(1)).subscribe(async receiverData => {
-      receiverData!.inbox = this.utils.RemoveElementFromArray(receiverData!.inbox, data);
+      receiverData!.inbox = this.utils.RemoveElementFromInbox(receiverData!.inbox, data);
       this.updateDocument<User>(receiverData, 'users', data.receiverId);
     });
   }
@@ -83,6 +83,13 @@ export class databaseService {
       id: data.senderId
     }
     return {receiver: receiverFriendInfo, sender: senderFriendInfo}
+  }
+
+  removeFriend(friendInfo: FriendInfo, listOwnerId: string) {
+    this.readDocument<User>('users', listOwnerId).pipe(take(1)).subscribe(async receiverData => {
+      receiverData!.friendList = this.utils.RemoveElementFromFriendList(receiverData!.friendList, friendInfo);
+      this.updateDocument<User>(receiverData, 'users', listOwnerId);
+    });
   }
 
 }
