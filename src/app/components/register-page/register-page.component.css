@@ -1,52 +1,45 @@
-#flexContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: 2% auto;
-    max-width: 70%;
-}
-
-#flexContainer img{
-    width: 15%;
-    height: auto;
-}
-
 #formContainer {
+
     display: flex;
     justify-content: center;
     flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background-color: #FFFFFF;
     border-radius: 10px;
-    margin-top: 5%;
-    min-width: 50%;
+
 }
 
 #formContainer form{
+
     display: flex;
     justify-content: center;
     flex-direction: column;
     padding: 5%;
+
 }
 
 #formContainer form label {
+
     font-weight: 900;
     font-size: large;
     margin-bottom: 1%;
+
 }
 
 #formContainer input {
+
     background: #F0F0F0;
     border: 1px solid #000000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
-    min-height: 30px;
+    min-height: 1.75em;
     margin-bottom: 3%;
     font-size: 18px;
+
 }
 
 #formContainer form button {
+
     background: #15580F;
     border: 1px solid #000000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -55,7 +48,8 @@
     font-weight: normal;
     padding: 0.3em;
     color: white;
-    margin: 0 auto -3% auto;
+    margin: 0 auto -2% auto;
+
 }
   
 #formContainer form button:hover{
@@ -67,14 +61,6 @@
     margin-bottom: 3%;
 }
 
-#passwordFlex #passwordFlex1 label{
-    margin-bottom: 2%;
-}
-
-#passwordFlex #passwordFlex2 label{
-    margin-bottom: 2%;
-}
-
 #passwordFlex1{
     display: flex;
     flex-direction: column;
@@ -82,11 +68,19 @@
     min-width: 45%;
 }
 
+#passwordFlex #passwordFlex1 label{
+    margin-bottom: 2%;
+}
+
 #passwordFlex2{
     display: flex;
     flex-direction: column;
     margin: auto 0 auto auto;
     min-width: 45%;
+}
+
+#passwordFlex #passwordFlex2 label{
+    margin-bottom: 2%;
 }
 
 #formContainer #wantToLogin {

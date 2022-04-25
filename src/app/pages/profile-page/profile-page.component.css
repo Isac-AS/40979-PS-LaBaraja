@@ -1,31 +1,74 @@
 #pageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 2% auto;
+  max-width: 70%;
+}
+
+h1 {
+  color: black;
+  font-size: 2.7em;
+  font-weight: 500;
+  align-self: center;
+  margin: 1em 0 0 0;
+}
+
+#formContainer {
     display: flex;
-    flex-flow: column nowrap;
-  }
-  
-  h1 {
-    color: black;
-    font-size: 2.7em;
-    font-weight: 500;
-    align-self: center;
-    margin: 1em 0 0 0;
-  }
-  
-  form {
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    margin-top: 5%;
+    min-width: 50%;
+}
+
+#formContainer form {
     display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-  }
-  
-  p {
+    justify-content: center;
+    flex-direction: column;
+    padding: 5%;
+}
+
+#formContainer label {
+    font-weight: 900;
+    font-size: large;
+    margin-bottom: 1%;
+}
+
+#formContainer p {
     text-align: center;
-  }
+}
+
+#formContainer input {
+    background: #F0F0F0;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    min-height: 30px;
+    margin-bottom: 3%;
+    font-size: 18px;
+}
   
-  button {
-    padding: 1em 20px;
-    font-size: 1.8em;
-    margin: 1em 0;
-  }
+#formContainer button {
+    background: #15580F;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    font-size: 25px;
+    font-weight: normal;
+    padding: 0.3em;
+    color: white;
+    margin: 2% auto;
+}
+
+#formContainer #clearFormButton {
+  margin-bottom: 5%;
+  margin-top: 0;
+}
   
   .ng-valid {
     border-left: 5px solid #42A948; /* green */
@@ -35,23 +78,6 @@
     border-left: 5px solid #a94442; /* red */
   }
   
-  input {
-    padding: 1em;
-    font-size: 1.5em;
-    border-radius: 15px;
-    border: none;
-    margin-top: 1em;
-    width: 20em;
-  }
-  
-  select {
-    margin-top: 1em;
-    font-size: 1.75em;
-    border-radius: 15px;
-    width: 19em;
-    padding: 0.5em;
-  }
-  
   .inputWithError {
     width: 100%;
     display: flex;
@@ -59,27 +85,6 @@
     justify-content: center;
   }
   
-  @media (min-width: 768px) and (max-width: 1200px) {
-    h1 {
-      font-size: 2em;
-    }
-  }
-  
-  
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 2em;
-    }
-  
-    input {
-      width: 80%;
-    }
-  
-    select{
-      width: 85%;
-    }
-  
-  }
   
   
   
