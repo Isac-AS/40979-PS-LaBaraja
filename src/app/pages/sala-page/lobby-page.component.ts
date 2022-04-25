@@ -66,6 +66,15 @@ export class LobbyPageComponent implements OnInit {
     this.db.updateDocument<User>(this.currentUserData, 'users', this.currentUserData.uid)
   }
 
+  quitLobby() {
+    this.db.removeFromLobby(this.currentLobby, {id: this.currentUserData.uid, name: this.currentUserData.name});
+    this.clearCurrentLobby();
+  }
+
+  removeFromLobby(friend: FriendInfo) {
+    this.db.removeFromLobby(this.currentLobby, friend);
+  }
+
   openNotificationDialog(): void {
     const dialogRef = this.dialog.open(NotificationDialogComponent, {
       width: "70%",
@@ -82,9 +91,10 @@ export class LobbyPageComponent implements OnInit {
     dialogRef.afterClosed().subscribe(res => {});
   }
 
-  removeFromLobby(friend: FriendInfo) {
-    
+  clearCurrentLobby() {
+    this.currentLobby = {
+      id: '',
+      participants : []
+    }
   }
-
-
 }

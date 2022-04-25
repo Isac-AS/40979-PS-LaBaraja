@@ -18,6 +18,7 @@ export class AddFriendsToLobbyComponent implements OnInit {
     receiverId: '',
     senderName: '',
     receiverName: '',
+    lobbyId: '',
   };
   
   constructor(
@@ -32,13 +33,13 @@ export class AddFriendsToLobbyComponent implements OnInit {
           this.friendList = currentUserData!?.friendList;
           this.inboxMessage.senderId = currentUserData!?.uid;
           this.inboxMessage.senderName = currentUserData!?.name;
+          this.inboxMessage.lobbyId = currentUserData!?.lobby;
         })
       }
     });
    }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   sendInvite(friend: FriendInfo){
     this.inboxMessage.receiverId = friend.id;

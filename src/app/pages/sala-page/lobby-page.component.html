@@ -18,6 +18,10 @@
                 <span class="material-icons">group_add</span>
                 Invitar amigos
             </button>
+            <button *ngIf="!(currentUserData.lobby === 'none')" (click)="quitLobby()">
+                <span class="material-icons">logout</span>
+                Salir de la sala
+            </button>
             <button *ngIf="currentUserData.lobby === 'none'" (click)="createLobby()">
                 <span class="material-icons">add</span>
                 Crear sala

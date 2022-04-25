@@ -44,6 +44,7 @@ export interface InboxInfo {
   receiverName: string;
   senderId: string;
   receiverId: string;
+  lobbyId: string;
 }
 
 export interface FriendInfo {

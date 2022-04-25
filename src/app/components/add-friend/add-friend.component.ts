@@ -22,6 +22,7 @@ export class AddFriendComponent implements OnInit {
     receiverId: '',
     senderName: '',
     receiverName: '',
+    lobbyId: '',
   }
 
   constructor(
