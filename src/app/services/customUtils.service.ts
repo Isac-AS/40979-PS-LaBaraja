@@ -8,14 +8,37 @@ import { MatDialog } from "@angular/material/dialog";
 })
 export class CustomUtilsService {
 
+  timeout: number = 0;
+
   constructor(
     public dialog: MatDialog
   ) { }
 
   openMessageDialog(messagePopupPair: MessagePopupPair): void {
     const dialogRef = this.dialog.open(InfoMessagePopupComponent, {
-      data: messagePopupPair
+      data: messagePopupPair,
+      position: {top: '2%'}
     });
+
+    dialogRef.afterOpened().subscribe(_ => {
+      switch (messagePopupPair.status){
+
+        case false:
+          this.timeout = 6000;
+          break;
+        
+        case true:
+          this.timeout = 2500;
+          break;
+        
+        default:
+          this.timeout = 3000;
+      }
+      setTimeout(() => {
+         dialogRef.close();
+      }, this.timeout)
+    });
+
     dialogRef.afterClosed().subscribe(res => {
     });
   }

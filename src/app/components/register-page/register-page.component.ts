@@ -76,7 +76,7 @@ export class RegisterPageComponent implements OnInit {
     if (res) {
       await this.utils.openMessageDialog( {
           message: 'Éxito en la creación de la cuenta',
-          status: true
+          status: true,
         })
         this.userData.uid = res.user!.uid;
         this.userData.password = 'null';
