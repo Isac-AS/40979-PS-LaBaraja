@@ -1,7 +1,10 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { LoginPageComponent } from 'src/app/components/login-page/login-page.component';
+import { RegisterPageComponent } from 'src/app/components/register-page/register-page.component';
+import { NotificationDialogComponent } from '../notification-Dialog/notification-Dialog.component';
 
 @Component({
   selector: 'app-pseudoheader',
@@ -26,24 +29,31 @@ export class PseudoheaderComponent implements OnInit {
 
   logOut() {
     const res = this.auth.logout().catch(async error => {
-      await alert('Parece haber habido un problema. Inténtelo de nuevo.')
+      alert('Parece haber habido un problema. Inténtelo de nuevo.')
     });
-    this.router.navigate(['/login']);
+    this.router.navigate(['']);
   }
 
-  openDialog(): void {
-    /*const dialogRef = this.dialog.open(HeaderResponsiveDialogComponent, {
-      data: { login: this.isLoggedIn,
-              admin: this.isAdmin
-            },
-      width: '70%',
-      height: '100%',
-      position: {
-        left: '0px'
-      }
+  openLoginDialog(): void {
+    const dialogRef = this.dialog.open(LoginPageComponent, {
+      minWidth: "40%"
     });
-    dialogRef.afterClosed().subscribe(res => {
-    });*/
+    dialogRef.afterClosed().subscribe(res => {});
+  }
+
+  openRegisterDialog(): void {
+    const dialogRef = this.dialog.open(RegisterPageComponent, {
+      minWidth: "40%"
+    });
+    dialogRef.afterClosed().subscribe(res => {});
+  }
+
+  openNotificationDialog(): void {
+    const dialogRef = this.dialog.open(NotificationDialogComponent, {
+      width: "70%",
+      height: "70%"
+    });
+    dialogRef.afterClosed().subscribe(res => {});
   }
 
 }

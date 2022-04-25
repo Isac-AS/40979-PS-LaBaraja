@@ -5,7 +5,7 @@
     flex-direction: column;
 }
 
-#amigos{
+#banner{
     position: relative;
     font-size: 5em;
     box-sizing: border-box;
@@ -33,7 +33,7 @@
     transform: rotate(-180deg);
 }
 
-#friendsContainer{
+#mainContainer{
     display: flex;
     align-items: center;
     flex-flow: column nowrap;
@@ -49,6 +49,7 @@
 
 #buttonsContainer {
     display: flex;
+    margin-top: 2em;
     flex-flow: row nowrap;
     justify-content: space-evenly;
     width: 100%;

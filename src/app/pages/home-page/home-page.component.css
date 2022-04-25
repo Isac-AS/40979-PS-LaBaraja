@@ -1,0 +1,45 @@
+#homePageContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+img {
+    width: 17rem;
+    margin-bottom: 3em;
+}
+
+#homePageContainer .twoButtonGroup {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    justify-content: center;
+}
+
+button {
+    position: relative;
+    font-size: 5em;
+    box-sizing: border-box;
+    border-radius: 15px;
+    border: solid 3px black;
+    width: 25%;
+    margin: 0.5em;
+    padding: 0.4em;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.topIcon {
+    position: absolute;
+    top: 1.5%;
+    left: 1.5%;
+}
+
+.bottomIcon {
+    position: absolute;
+    right: 1.5%;
+    bottom: 1.5%;
+    transform: rotate(-180deg);
+}
+

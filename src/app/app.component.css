@@ -1,0 +1,16 @@
+p {
+    font-family: 'IBM Plex Sans Condensed';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 47px;
+    color: #FFFFFF;
+}
+#appNameTop{
+    left: 1.5%;
+}
+
+#appNameBottom {
+    right: 1.5%;
+    transform: rotate(-180deg);
+}
