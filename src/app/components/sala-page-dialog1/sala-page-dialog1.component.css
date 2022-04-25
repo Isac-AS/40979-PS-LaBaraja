@@ -1,0 +1,108 @@
+#pageContainer {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#userContainer {
+    display: flex;
+    flex-flow: row;
+}
+
+.background_dialog1{
+    background-color: white;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-right: 35%;
+    margin-left: 35%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.buttom_back{
+    background-color: white;
+    border: none;
+    height: 30px;
+    width: 30px;
+}
+
+.txt_volver{
+    font-family: IBM Plex Sans Condensed;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0em;
+}
+
+.txt_invitar_amigo{
+    font-family: IBM Plex Sans Condensed;
+    font-size: 24px;
+    line-height: 31px;
+    letter-spacing: 0em;
+    margin-top: 3%;
+    margin-left: 7.5%;
+}
+
+.margin_user{
+    margin-top: 2%;
+}
+
+.icon_available{
+    color: #4ECB71;
+    font-size: 30px;
+    margin-left: 6%;
+}
+
+.txt_user{
+    font-family: IBM Plex Sans Condensed;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0em;
+    margin-left: 5%;
+}
+
+
+.button_inv{
+    background: #15580F;
+    color: white;
+    font-size: 20px;
+    line-height: 26px;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border: none;
+    border-radius: 10px;
+}
+
+.button_inv_user{
+    background: #15580F;
+    color: white;
+    font-size: 20px;
+    line-height: 26px;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    border: none;
+    border-radius: 10px;
+}
+
+.margin_button_inv{
+    margin-left: 37%;
+}
+
+.form{
+    margin-top: 2%;
+    margin-left: 8%;
+    margin-right: 10%;
+    color: #7A767D;
+    font-family: IBM Plex Sans Thai;
+    font-size: 15px;
+    line-height: 22px;
+    text-align: left;
+
+}
+
+.margin_button_inv_user{
+    margin-top: 3%;
+    margin-left: 30%;
+    margin-right: 30%;
+    font-weight: bold;
+}
