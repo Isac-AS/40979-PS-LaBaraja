@@ -1,182 +1,94 @@
-#pageContainer {
+#pageContainer{
     display: flex;
-    flex-flow: column nowrap;
-}
-
-#userContainer {
-    display: flex;
-    flex-flow: row;
-}
-
-.container_sala {
-    display: flex;
-    flex-flow: column;
-} 
-
-.background_subheader {
-    border-radius: 10px;
-    background-color: #FFFFFF;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
-    padding-bottom: 0.5%;
-    padding-top: 0.5%;
-    height: 100px;
-    margin-right: 40%;
-    margin-left: 40%;
     justify-content: center;
-    
+    align-items: center;
+    flex-direction: column;
 }
 
-.border{
-    border: 3px solid #000000;
+#banner{
+    position: relative;
+    font-size: 5em;
     box-sizing: border-box;
-    border-radius: 10px;
-    width: 280px;
-    height: 100px; 
-    display: flex;
-    flex-flow: column nowrap;   
-}
-
-.margin_logo_top {
-    margin-bottom: -2%;
-}
-
-.margin_text_subheader {
-    margin-bottom: -5%;
-}
-
-.text_subheader {
-    color: black;
-    font-family: IBM Plex Sans Condensed;
-    
-    font-size: 36px;
-    line-height: 50px;
-    letter-spacing: 0em;
-    margin-left: 33%;
-
-}
-
-
-.logoSubheaderBottom {
-    justify-content: right;
-    transform: rotate(-180deg);
-    margin-bottom: 10%;
-}
-
-.body_background{
-    border-radius: 10px;    
+    border-radius: 15px;
+    border: solid 3px black;
+    margin: 0.5em;
+    padding: 0.6em;
     background-color: #FFFFFF;
-    margin-top: 3%;
-    margin-left: 32%;
-    margin-right: 32%;
-    padding-top: 1%;
-    padding-bottom: 2%;  
     display: flex;
     flex-flow: column nowrap;
+    align-items: center;
 }
 
-.text_num_jug{
-    font-size: 25px;
-    margin-top: 1.5%;
-    margin-left: 9%;
-}
-
-.margin_user_top{
-    margin-top: 2%;
-}
-
-.margin_user{
-    margin-left: 9%;
-}
-
-.size_img_user{
-    font-size: 35px;
-    
-}
-
-.backgroung_user{
-    background: #15580F;
-    padding-left: 25%;
-    padding-right: 25%;
-    border-radius: 10px;
-    margin-top: 0.6%;
-    margin-left: 3%;
-    margin-bottom: 3%;
-}
-
-.text_user{
-    color: white;
-    font-family: IBM Plex Sans Condensed;
-    font-size: 27px;
-    line-height: 32px;
-    letter-spacing: 0em;
-}
-
-.button_add{
-    background: #15580F;
-    color: white;
-    width: 30px;
-    height: 30px;
-    font-size: 27px;
-    margin-left: 47%;
-}
-
-.margin_modo_juego{
-    margin-top: 3%;
-    margin-left: 9%;
-}
-
-.text_modo_juego{
-    color: black;
-    font-family: IBM Plex Sans Condensed;
-    font-size: 22px;
-    line-height: 32px;
-    letter-spacing: 0em;
-}
-
-.size_select{
-    padding-right: 10%;
-    padding-left: 10%;
-    margin-left: 25%;
-}
-
-.buttom_jugar{
-    background: white;
-    border-radius: 10px;
-    border: 3px solid #000000;
-    height: 50px;
-    width: 150px;
-    
-}
-
-.text_buttom_jugar{
-    color: black;
-    font-family: IBM Plex Sans Condensed;
-    font-size: 22px;
-    line-height: 32px;
-    letter-spacing: 0em;
-    font-weight: bold;
-}
-
-.center_buttom_jugar{
-    margin-top: 3%;
-    margin-left: 35%;
-}
-
-#appNameTop{
+.topIcon {
+    position: absolute;
+    top: 1.5%;
     left: 1.5%;
 }
 
-#appNameBottom {
+.bottomIcon {
+    position: absolute;
     right: 1.5%;
+    bottom: 1.5%;
     transform: rotate(-180deg);
 }
 
-p {
-    font-family: 'IBM Plex Sans Condensed';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 47px;
+#mainContainer{
+    display: flex;
+    align-items: center;
+    flex-flow: column nowrap;
+    
+    margin-top: 1.5%;
+    padding: 1em;
+
+    background: #FFFFFF;
+    border-radius: 10px;
+    width: 50%;
+    min-height: 360px;
+}
+
+#buttonsContainer {
+    display: flex;
+    margin-top: 2em;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+button {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    background-color: #15580F;
     color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    padding: 0.4em;
+    font-size: 1.4em;
+}
+
+#peopleInLobby {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-top: 2em;
+    width: 90%;
+}
+
+.friendRegister {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    width: 100%;
+}
+
+.friendInfoAndActions {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-self: flex-end;
+    flex-grow: 2;
+    justify-content: flex-end;
+}
+
+.friendInfoAndActions .deleteFriendButton {
+    margin-left: 1em;
 }

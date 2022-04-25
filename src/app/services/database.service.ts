@@ -43,7 +43,7 @@ export class databaseService {
     return this.db.createId();
   }
 
-  addFriend(data: InboxInfo): void {
+  pushIntoInbox(data: InboxInfo): void {
     this.readDocument<User>('users', data.receiverId).pipe(take(1)).subscribe(async potentialFriendData => {
       data.receiverName = potentialFriendData!?.name;
       potentialFriendData!.inbox.push(data);
