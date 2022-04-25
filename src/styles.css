@@ -14,3 +14,7 @@ body {
     padding: 0 1em;
     margin: 1em;
 }
+
+button:hover {
+    cursor: pointer;
+}

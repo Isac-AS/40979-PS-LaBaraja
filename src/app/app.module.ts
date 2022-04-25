@@ -1,9 +1,9 @@
 // Basic imports
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Angular Fire imports
@@ -37,14 +37,16 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { FriendsListComponent } from './pages/friends-list/friends-list.component';
 import { GameFinalScoreComponent } from './pages/game-final-score/game-final-score.component';
 import { PresentationPageComponent } from './pages/presentation-page/presentation-page.component';
+import { SalaPageComponent } from './pages/sala-page/sala-page.component';
 
 // Components
 import { LoginPageComponent } from './components/login-page/login-page.component';
+import { AddFriendComponent } from './components/add-friend/add-friend.component';
 import { PseudoheaderComponent } from './components/pseudoheader/pseudoheader.component';
 import { RegisterPageComponent } from './components/register-page/register-page.component';
+import { SalaPageDialog1Component } from './components/sala-page-dialog1/sala-page-dialog1.component';
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
 import { NotificationDialogComponent } from './components/notification-Dialog/notification-Dialog.component';
-import { AddFriendComponent } from './components/add-friend/add-friend.component';
 
 
 @NgModule({
@@ -60,7 +62,9 @@ import { AddFriendComponent } from './components/add-friend/add-friend.component
 		PseudoheaderComponent,
 		NotificationDialogComponent,
 		GameFinalScoreComponent,
-  AddFriendComponent
+    AddFriendComponent,
+    SalaPageComponent,
+    SalaPageDialog1Component
 	],
 	imports: [
 		BrowserModule,
