@@ -1,0 +1,110 @@
+#flexContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 2% auto;
+    max-width: 70%;
+  }
+
+  .tittleField1{
+    padding: 0.2em 0.2em;
+
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+
+.tittleField2{
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border-radius: 10px;
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+
+.tittleField2 strong{
+    font-size: calc(16px + 1vw);
+    padding: 0.1em 1em;
+}
+  
+  #flexContainer img{
+  
+    width: 15%;
+    height: auto;
+  }
+  
+  #scoreContainer {
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    margin-top: 5%;
+    min-height: 50%;
+    min-width: 70%;
+    font-family: 'IBM Plex Sans Condensed';
+  }
+
+  #scoreContainer #userContainer{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: center;
+      min-width: 50%;   
+      margin-top: 2%;
+      border-radius: 20px;
+  }
+
+
+    #scoreContainer #userContainer #username{
+        min-width: 50%;
+        border-radius: 10px;
+        background-color: red;
+        color: white;
+        font-size: 20px;
+    }
+
+    #scoreContainer #userContainer #userPosition{
+        color: gold;
+        font-size: 40px;
+    }
+
+    #scoreContainer #returnButton{
+        display: flex;
+        border-width: 5px;
+        border-color: black;
+        margin-top: 10%;
+        margin-bottom: 5%;
+        background-color: white;
+        font-size: 30px;
+        font-family: 'IBM Plex Sans Condensed';
+    }
+
+    #scoreContainer #GameModeContainer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 5%;
+      min-width: 50%;
+      gap: 20%;
+      border-color: black;
+      border-width: 10px;
+      }
+    
+    #scoreContainer #GameModeContainer #gameModeTitle{
+      font-size: 25px;
+      font-family: 'IBM Plex Sans Condensed';
+      font-weight: bolder;
+      white-space: nowrap;
+
+    }
+
+    #scoreContainer #GameModeContainer #gameModeName{
+      font-size: 25px;
+      font-family: 'IBM Plex Sans Condensed';
+      font-weight: bolder;
+    }

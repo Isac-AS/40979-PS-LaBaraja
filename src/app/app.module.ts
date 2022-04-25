@@ -33,15 +33,18 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { AppComponent } from './app.component';
 // Pages
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { PresentationPageComponent } from './pages/presentation-page/presentation-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { FriendsListComponent } from './pages/friends-list/friends-list.component';
+import { GameFinalScoreComponent } from './pages/game-final-score/game-final-score.component';
+import { PresentationPageComponent } from './pages/presentation-page/presentation-page.component';
 
 // Components
 import { LoginPageComponent } from './components/login-page/login-page.component';
+import { PseudoheaderComponent } from './components/pseudoheader/pseudoheader.component';
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
-import { PseudoheaderComponent } from './components/pseudoheader/pseudoheader.component';
+import { NotificationDialogComponent } from './components/notification-Dialog/notification-Dialog.component';
+import { AddFriendComponent } from './components/add-friend/add-friend.component';
 
 
 @NgModule({
@@ -54,7 +57,10 @@ import { PseudoheaderComponent } from './components/pseudoheader/pseudoheader.co
 		RegisterPageComponent,
 		ProfilePageComponent,
 		FriendsListComponent,
-		PseudoheaderComponent
+		PseudoheaderComponent,
+		NotificationDialogComponent,
+		GameFinalScoreComponent,
+  AddFriendComponent
 	],
 	imports: [
 		BrowserModule,

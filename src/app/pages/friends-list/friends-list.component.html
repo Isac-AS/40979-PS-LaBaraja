@@ -1,127 +1,42 @@
-<p class="appName1">LA BARAJA</p>
-    <div class="flexContainer">
-        <div class="tittleField1">
-            <div class="tittleField2">
-                <span class="material-icons">
-                    supervisor_account
-                </span>
-                <strong>AMIGOS</strong>
-                <span class="material-icons" style="transform: rotate(-180deg); align-items: flex-end;">
-                    supervisor_account
-                </span>
-            </div>
-        </div>
-
-        <div class="friendsContainer">
-            <div style="display: flex; justify-items: flex-start; width: 100%;">
-                <button class="returnButton" routerLink="/home">
-                    <span class="material-icons">
-                        west
-                    </span>
-                    <b>Volver</b>
-                </button>
-            </div>
-            <div class="friendList">
-                <div class="friendInfo">
-                    <div style="display: flex;">
-                        <span class="material-icons">
-                            check_circle_outline
-                        </span>
-                        <div>JuanManuElMed</div>
-                    </div>
-                    <div style="display: flex;">
-                        <span class="material-icons">
-                            more_horiz
-                        </span>
-                        <b>Estado:  </b> Conectado
-                    </div>
-                </div>
-                <div class="friendInfo">
-                    <div style="display: flex;">
-                        <span class="material-icons" style="margin-right: 0.2em;">
-                            check_circle_outline
-                        </span>
-                        <div>Nikhil</div>
-                    </div>
-                    <div style="display: flex;">
-                        <span class="material-icons">
-                            more_horiz
-                        </span>
-                        <b>Estado:  </b> Conectado
-                    </div>
-                </div>
-                <div class="friendInfo">
-                    <div style="display: flex;">
-                        <span class="material-icons">
-                            check_circle_outline
-                        </span>
-                        <div>JuanManuElMed</div>
-                    </div>
-                    <div style="display: flex;">
-                        <span class="material-icons">
-                            more_horiz
-                        </span>
-                        <b>Estado:  </b> Conectado
-                    </div>
-                </div>
-                <div class="friendInfo">
-                    <div style="display: flex;">
-                        <span class="material-icons" style="margin-right: 0.2em;">
-                            check_circle_outline
-                        </span>
-                        <div>Nikhil</div>
-                    </div>
-                    <div style="display: flex;">
-                        <span class="material-icons">
-                            more_horiz
-                        </span>
-                        <b>Estado:  </b> Conectado
-                    </div>
-                </div>
-                <div class="friendInfo">
-                    <div style="display: flex;">
-                        <span class="material-icons">
-                            check_circle_outline
-                        </span>
-                        <div>JuanManuElMed</div>
-                    </div>
-                    <div style="display: flex;">
-                        <span class="material-icons">
-                            more_horiz
-                        </span>
-                        <b>Estado:  </b> Conectado
-                    </div>
-                </div>
-                <div class="friendInfo">
-                    <div style="display: flex;">
-                        <span class="material-icons" style="margin-right: 0.2em;">
-                            check_circle_outline
-                        </span>
-                        <div>Nikhil</div>
-                    </div>
-                    <div style="display: flex;">
-                        <span class="material-icons">
-                            more_horiz
-                        </span>
-                        <b>Estado:  </b> Conectado
-                    </div>
-                </div>
-            </div>
-
-            <div class="friendsButtonsContainer">
-                <button class="friendButton">
-                    <span class="material-icons" style="margin-right: 0.3em;">
-                        inbox
-                    </span>
-                    Buzón
-                </button>
-                <button class="friendButton">
-                    <span class="material-icons" style="margin-right: 0.3em;">
-                        person_add
-                    </span>    
-                    Añadir amigo
-                </button>
-            </div>    
+<div class="flexContainer">
+    <div class="tittleField1">
+        <div class="tittleField2">
+            <span class="material-icons">supervisor_account</span>
+            <strong>AMIGOS</strong>
+            <span class="material-icons" id="rotatedIcon">supervisor_account</span>
         </div>
     </div>
-<p class="appName2">LA BARAJA</p>
+
+    <div class="friendsContainer">
+        <div style="display: flex; justify-items: flex-start; width: 100%;">
+            <button class="returnButton" routerLink="/home">
+                <span class="material-icons">west</span>
+                <b>Volver</b>
+            </button>
+        </div>
+
+        <div class="friendList" *ngFor="let friendName of friendsNames">
+            <div class="friendInfo">
+                <div style="display: flex;">
+                    <span class="material-icons">check_circle_outline</span>
+                    <div>{{friendName.name}}</div>
+                </div>
+                <div style="display: flex;">
+                    <span class="material-icons">more_horiz</span>
+                    <b>Estado: </b> Conectado
+                </div>
+            </div>
+        </div>
+
+        <div class="friendsButtonsContainer">
+            <button class="friendButton">
+                <span class="material-icons" style="margin-right: 0.3em;">inbox</span>
+                Buzón
+            </button>
+            <button class="friendButton" (click)="addFriendDialog()">
+                <span class="material-icons" style="margin-right: 0.3em;">person_add</span>
+                Añadir amigo
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+#flexContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+div {
+    width: 100%;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+#flexContainer .inboxMessage{ 
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 1em;
+}
+
+button {
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-items: center;
+    align-items: center;
+    padding: 5px;
+}
+
+#flexContainer .inboxMessage .accept{ 
+    background-color: lightgreen;
+}
+
+#flexContainer .inboxMessage .reject{ 
+    background-color: lightcoral;
+}
