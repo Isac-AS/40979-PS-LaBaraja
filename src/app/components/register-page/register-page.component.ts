@@ -15,6 +15,8 @@ import { MatDialogRef } from "@angular/material/dialog";
 
 export class RegisterPageComponent implements OnInit {
 
+  errorMessage: string = "";
+
   newUser = this.fb.group({
     email : ['', [Validators.required, Validators.email]],
     username : [ '', [Validators.required, Validators.minLength(6)]],
@@ -52,10 +54,22 @@ export class RegisterPageComponent implements OnInit {
     this.userData.password = this.newUser.value.password;
 
     const res = await this.auth.register(this.userData).catch( error => {
-      this.utils.openMessageDialog( {
-        message: 'Error: No se puedo crear la cuenta de usuario',
-        status: false
-        })
+      switch(error.code){
+        
+        case "auth/email-already-in-use":
+          this.errorMessage = "Error: El email introducido ya está en uso";
+          break;
+        
+        case "auth/internal-error":
+          this.errorMessage = "Error del sistema. Inténtelo de nuevo";
+          break;
+
+        default:
+          this.errorMessage = "Error desconocido. Inténtelo de nuevo";
+      }
+
+      this.utils.openMessageDialog({
+        message: this.errorMessage, status: false})
     });
 
     if (res) {
@@ -72,7 +86,6 @@ export class RegisterPageComponent implements OnInit {
   }
 
   get password(): AbstractControl {
-    console.log(this.newUser.controls['password']);
     return this.newUser.controls['password'];
   }
   
