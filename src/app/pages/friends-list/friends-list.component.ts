@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import {AuthService} from "../../services/auth.service";
-import {FriendInfo, User} from "../../models/interfaces";
+import {DeleteFriendInfo, FriendInfo, User} from "../../models/interfaces";
 import {databaseService} from "../../services/database.service";
 import { AddFriendComponent } from "src/app/components/add-friend/add-friend.component";
 import { NotificationDialogComponent } from 'src/app/components/notification-Dialog/notification-Dialog.component';
+import { DeleteFriendComponent } from 'src/app/components/delete-friend/delete-friend.component';
 
 @Component({
   selector: 'app-friends-list',
@@ -50,8 +51,15 @@ export class FriendsListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(res => {});
   }
 
-  deleteFriend(friend: FriendInfo, currentId: string, currentUserName: string) {
-    this.db.removeFriend(friend, currentId, currentUserName);
+  deleteFriendDialog(friend: FriendInfo, currentUserId: string, currentUserName: string) {
+    let deleteFriendInfo: DeleteFriendInfo = {
+        friend:friend,
+        currentUserName: currentUserName,
+        currentUserId: currentUserId
+    }
+    const dialogRef = this.dialog.open(DeleteFriendComponent, {
+      data: deleteFriendInfo
+    });
   }
 
 }

@@ -51,3 +51,9 @@ export interface FriendInfo {
   name: string;
   id: string;
 }
+
+export interface DeleteFriendInfo {
+  friend: FriendInfo;
+  currentUserName: string;
+  currentUserId: string;
+}
