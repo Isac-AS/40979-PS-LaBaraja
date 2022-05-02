@@ -85,10 +85,18 @@ export class databaseService {
     return {receiver: receiverFriendInfo, sender: senderFriendInfo}
   }
 
-  removeFriend(friendInfo: FriendInfo, listOwnerId: string) {
+  removeFriend(friendInfo: FriendInfo, listOwnerId: string, listOwnerName: string) {
     this.readDocument<User>('users', listOwnerId).pipe(take(1)).subscribe(async receiverData => {
       receiverData!.friendList = this.utils.RemoveElementFromFriendList(receiverData!.friendList, friendInfo);
       this.updateDocument<User>(receiverData, 'users', listOwnerId);
+    });
+    let userInfo: FriendInfo = {
+      name: listOwnerName,
+      id: listOwnerId
+    }
+    this.readDocument<User>('users', friendInfo.id).pipe(take(1)).subscribe(async senderData => {
+      senderData!.friendList = this.utils.RemoveElementFromFriendList(senderData!.friendList, userInfo);
+      this.updateDocument<User>(senderData, 'users', friendInfo.id);
     });
   }
 

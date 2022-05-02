@@ -15,6 +15,7 @@ export class FriendsListComponent implements OnInit {
   
   friendList: FriendInfo[];
   currentUserId: string = '';
+  currentUserName: string = '';
 
   constructor(
     public dialog: MatDialog,
@@ -27,6 +28,7 @@ export class FriendsListComponent implements OnInit {
         this.currentUserId = currentUserUid;
         this.db.readDocument<User>('users', currentUserUid).subscribe( async currentUserData => {
           this.friendList = currentUserData!?.friendList;
+          this.currentUserName = currentUserData!?.name;
         })
       }
     });
@@ -49,8 +51,8 @@ export class FriendsListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(res => {});
   }
 
-  deleteFriend(friend: FriendInfo, currentId: string) {
-    this.db.removeFriend(friend, currentId);
+  deleteFriend(friend: FriendInfo, currentId: string, currentUserName: string) {
+    this.db.removeFriend(friend, currentId, currentUserName);
   }
 
 }
