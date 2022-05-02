@@ -45,10 +45,15 @@ export class LobbyPageComponent implements OnInit {
           if (currentUserData) this.currentUserData = currentUserData;
           if (currentUserData?.lobby != 'none') {
             this.db.readDocument<Lobby>('lobbies', currentUserData!?.lobby).subscribe( async usersLobby => {
-              if(usersLobby && this.onChange) this.currentLobby = usersLobby;
+              if(usersLobby) this.currentLobby = usersLobby;
               console.log(this.onChange);
               console.log(this.currentLobby.participants.length);
             })
+          }
+
+          else {
+            this.clearCurrentLobby();
+            this.changeDetection.detectChanges();
           }
         })
       }
