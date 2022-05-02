@@ -1,0 +1,43 @@
+<div id="pageContainer">
+    <div id="banner">
+        <span class="material-icons topIcon">play_arrow</span>
+        SALA
+        <span class="material-icons bottomIcon">play_arrow</span>
+    </div>
+
+    <div id="mainContainer">
+        <div id="buttonsContainer">
+            <button routerLink="/home">
+                <span class="material-icons">home</span>
+            </button>
+            <button (click)="openNotificationDialog()">
+                <span class="material-icons">inbox</span>
+                Buzón
+            </button>
+            <button *ngIf="!(currentUserData.lobby === 'none')" (click)="openFriendListDialog()">
+                <span class="material-icons">group_add</span>
+                Invitar amigos
+            </button>
+            <button *ngIf="!(currentUserData.lobby === 'none')" (click)="quitLobby()">
+                <span class="material-icons">logout</span>
+                Salir de la sala
+            </button>
+            <button *ngIf="currentUserData.lobby === 'none'" (click)="createLobby()">
+                <span class="material-icons">add</span>
+                Crear sala
+            </button>
+        </div>
+
+        <div id="peopleInLobby" *ngFor="let friend of currentLobby.participants">
+            <div class="friendRegister">
+                <span class="material-icons">check_circle_outline</span>
+                <u>{{friend.name}}</u>
+                <div class="friendInfoAndActions">
+                    <button (click)="removeFromLobby(friend)" class="deleteFriendButton">
+                        <span class="material-icons">delete</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,67 +1,52 @@
 <div id="pageContainer">
-    <h1>Formulario de modificación de usuarios</h1>
-    <div id="formContainer">
-      <form [formGroup]="currentUserForm" (ngSubmit)="onSubmit()">
-        <button type="button"
-                id="clearFormButton"
-                (click)="clearForm()">
-          <span class="material-icons">cleaning_services</span>
-          <u>Limpiar datos</u>
-        </button>
-    
-        <!-- Product Name -->
-        <label for="name">Nombre de usuario</label>
-        <input type="text"
-              class="form-control"
-              placeholder="Nombre de usuario"
-              formControlName="name">
-        <div *ngIf="currentUserForm.get('name')!.invalid &&
-                  (currentUserForm.get('name')!.dirty ||
-                  currentUserForm.get('name')!.touched)"
-            class="errorMessage">
-          <p *ngIf="currentUserForm.get('name')!.errors?.['required']">
-            Campo Obligatorio
-          </p>
-        </div>
-    
-        <!-- Extended Name -->
-        <label for="email">Correo electrónico</label>
-        <input type="text"
-              class="form-control"
-              placeholder="Correo electrónico"
-              formControlName="email">
-        <div *ngIf="currentUserForm.get('email')!.invalid &&
-                  (currentUserForm.get('email')!.dirty ||
-                  currentUserForm.get('email')!.touched)"
-            class="errorMessage">
-          <p *ngIf="currentUserForm.get('email')!.errors?.['required']">
-            Campo Obligatorio
-          </p>
-        </div>
-    
-        <!-- Description -->
-        <label for="password">Contraseña</label>
-        <input type="password"
-              class="form-control"
-              placeholder="Contraseña"
-              formControlName="password">
-        <div *ngIf="currentUserForm.get('password')!.invalid &&
-                  (currentUserForm.get('password')!.dirty ||
-                  currentUserForm.get('password')!.touched)"
-            class="errorMessage">
-          <p *ngIf="currentUserForm.get('password')!.errors?.['required']">
-            Campo Obligatorio
-          </p>
-        </div>
-
-        <button type="submit"
-                [disabled]="!currentUserForm.valid">
-          Modificar Usuario
-        </button>
-      </form>
-    </div>
+  <div id="banner">
+    <span class="material-icons topIcon">account_circle</span>
+    CUENTA
+    <span class="material-icons bottomIcon">account_circle</span>
   </div>
-  
-  
-  
-  
+  <div id="formContainer">
+    <form [formGroup]="currentUserForm" (ngSubmit)="onSubmit()">
+      <button type="button" id="clearFormButton" (click)="clearForm()">
+        <span class="material-icons">cleaning_services</span>
+        <u>Limpiar datos</u>
+      </button>
+
+      <!-- Product Name -->
+      <label for="name">Nombre de usuario</label>
+      <input type="text" class="form-control" placeholder="Nombre de usuario" formControlName="name">
+      <div *ngIf="currentUserForm.get('name')!.invalid &&
+                  (currentUserForm.get('name')!.dirty ||
+                  currentUserForm.get('name')!.touched)" class="errorMessage">
+        <p *ngIf="currentUserForm.get('name')!.errors?.['required']">
+          Campo Obligatorio
+        </p>
+      </div>
+
+      <!-- Extended Name -->
+      <label for="email">Correo electrónico</label>
+      <input type="text" class="form-control" placeholder="Correo electrónico" formControlName="email">
+      <div *ngIf="currentUserForm.get('email')!.invalid &&
+                  (currentUserForm.get('email')!.dirty ||
+                  currentUserForm.get('email')!.touched)" class="errorMessage">
+        <p *ngIf="currentUserForm.get('email')!.errors?.['required']">
+          Campo Obligatorio
+        </p>
+      </div>
+
+      <!-- Description -->
+      <label for="password">Contraseña</label>
+      <input type="password" class="form-control" placeholder="Contraseña" formControlName="password">
+      <div *ngIf="currentUserForm.get('password')!.invalid &&
+                  (currentUserForm.get('password')!.dirty ||
+                  currentUserForm.get('password')!.touched)" class="errorMessage">
+        <p *ngIf="currentUserForm.get('password')!.errors?.['required']">
+          Campo Obligatorio
+        </p>
+      </div>
+
+      <button type="submit" [disabled]="!currentUserForm.valid">
+        Modificar Usuario
+      </button>
+    </form>
+  </div>
+</div>

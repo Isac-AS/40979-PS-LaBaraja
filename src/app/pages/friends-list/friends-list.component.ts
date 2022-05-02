@@ -38,7 +38,6 @@ export class FriendsListComponent implements OnInit {
 
   addFriendDialog() {
     const dialogRef = this.dialog.open(AddFriendComponent, {
-      width: '60%'
     });
     dialogRef.afterClosed().subscribe(res => {});
   }

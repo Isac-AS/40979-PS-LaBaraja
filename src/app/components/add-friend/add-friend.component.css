@@ -9,20 +9,37 @@ input {
   border: 1px solid #000000;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-  min-width: 25%;
-  min-height: 30px;
-  margin-bottom: 3%;
-  font-size: 3em;
+  min-width: 20em;
+  margin: 1% auto 5% auto;
+  font-size: 2em;
 }
 
 button {
-  font-size: 2em;
   display: flex;
   align-items: center;
-  font-size: calc(12px + 0.5vw);
-  color: #FFFFFF;
-  background-color: #15580F;
-  padding: 0.5em;
-  border: 0px;
+  background: #15580F;
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
+  font-size: calc(12px + 0.5vw);
+  font-weight: normal;
+  padding: 0.3em;
+  color: white;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+
+  input {
+    min-width: 15em;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  input {
+    min-width: 10em;
+  }
+
 }

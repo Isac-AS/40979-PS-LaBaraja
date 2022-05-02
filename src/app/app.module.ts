@@ -37,7 +37,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { FriendsListComponent } from './pages/friends-list/friends-list.component';
 import { GameFinalScoreComponent } from './pages/game-final-score/game-final-score.component';
 import { PresentationPageComponent } from './pages/presentation-page/presentation-page.component';
-import { SalaPageComponent } from './pages/sala-page/sala-page.component';
+import { LobbyPageComponent } from './pages/sala-page/lobby-page.component';
 
 // Components
 import { LoginPageComponent } from './components/login-page/login-page.component';
@@ -47,6 +47,7 @@ import { RegisterPageComponent } from './components/register-page/register-page.
 import { SalaPageDialog1Component } from './components/sala-page-dialog1/sala-page-dialog1.component';
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
 import { NotificationDialogComponent } from './components/notification-Dialog/notification-Dialog.component';
+import { AddFriendsToLobbyComponent } from './pages/sala-page/add-friends-to-lobby/add-friends-to-lobby.component';
 
 
 @NgModule({
@@ -62,9 +63,10 @@ import { NotificationDialogComponent } from './components/notification-Dialog/no
 		PseudoheaderComponent,
 		NotificationDialogComponent,
 		GameFinalScoreComponent,
-    AddFriendComponent,
-    SalaPageComponent,
-    SalaPageDialog1Component
+		AddFriendComponent,
+		LobbyPageComponent,
+		SalaPageDialog1Component,
+		AddFriendsToLobbyComponent
 	],
 	imports: [
 		BrowserModule,

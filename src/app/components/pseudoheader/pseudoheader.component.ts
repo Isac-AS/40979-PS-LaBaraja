@@ -43,7 +43,7 @@ export class PseudoheaderComponent implements OnInit {
 
   openRegisterDialog(): void {
     const dialogRef = this.dialog.open(RegisterPageComponent, {
-      minWidth: "40%"
+      minWidth: "50%"
     });
     dialogRef.afterClosed().subscribe(res => {});
   }

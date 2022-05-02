@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SalaPageComponent } from './sala-page.component';
+import { LobbyPageComponent } from './lobby-page.component';
 
 describe('SalaPageComponent', () => {
-  let component: SalaPageComponent;
-  let fixture: ComponentFixture<SalaPageComponent>;
+  let component: LobbyPageComponent;
+  let fixture: ComponentFixture<LobbyPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SalaPageComponent ]
+      declarations: [ LobbyPageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SalaPageComponent);
+    fixture = TestBed.createComponent(LobbyPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

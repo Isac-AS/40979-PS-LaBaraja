@@ -38,6 +38,14 @@ export class NotificationDialogComponent implements OnInit {
     this.db.rejectFriendRequest(data);
   }
 
+  acceptJoinRequest(data: InboxInfo) {
+    this.db.acceptLobbyRequest(data);
+  }
+
+  rejectJoinRequest(data: InboxInfo) {
+    this.db.rejectLobbyRequest(data);
+  }
+
   trackItem(index: number, data: InboxInfo) {
     return data.reason + data.receiverId + data.senderId
   }

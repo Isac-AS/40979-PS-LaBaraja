@@ -10,12 +10,12 @@
         <span class="material-icons">clear</span>
       </button>
     </div>
-    <div class="inboxMessage" *ngIf="inboxInfo.reason === 'InviteToGame'">
+    <div class="inboxMessage" *ngIf="inboxInfo.reason === 'InviteToLobby'">
       {{ inboxInfo.senderName }} quiere invitarte a jugar!
-      <button class="accept">
+      <button class="accept"  (click)="acceptJoinRequest(inboxInfo)" >
         <span class="material-icons">done</span>
       </button>
-      <button class="reject">
+      <button class="reject"  (click)="rejectJoinRequest(inboxInfo)" >
         <span class="material-icons">clear</span>
       </button>
     </div>

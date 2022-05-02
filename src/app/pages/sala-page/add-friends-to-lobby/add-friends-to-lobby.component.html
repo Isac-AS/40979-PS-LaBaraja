@@ -1,0 +1,12 @@
+<div id="friendList" *ngFor="let friend of friendList">
+    <h1>Invita a tus amigos a la sala!</h1>
+  <div class="friendRegister">
+      <span class="material-icons">check_circle_outline</span>
+      <u>{{friend.name}}</u>
+      <div class="friendInfoAndActions">
+          <button (click)="sendInvite(friend)" class="sendInviteButton">
+              <span class="material-icons">send</span>
+          </button>
+      </div>
+  </div>
+</div>

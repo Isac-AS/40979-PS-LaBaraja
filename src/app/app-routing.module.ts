@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {AngularFireAuthGuard} from "@angular/fire/compat/auth-guard";
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { SalaPageComponent } from './pages/sala-page/sala-page.component';
+import { LobbyPageComponent } from './pages/sala-page/lobby-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { FriendsListComponent } from './pages/friends-list/friends-list.component';
 import { InvitationPopupComponent } from './invitation-popup/invitation-popup.component';
@@ -11,7 +11,7 @@ import { PresentationPageComponent } from './pages/presentation-page/presentatio
 import { SalaPageDialog1Component } from './components/sala-page-dialog1/sala-page-dialog1.component';
 
 const routes: Routes = [
-  { path: 'sala', component: SalaPageComponent },
+  { path: 'sala', component: LobbyPageComponent },
   { path: 'home', component: HomePageComponent },
   { path: '', component: PresentationPageComponent },
   { path: 'friends', component: FriendsListComponent },
