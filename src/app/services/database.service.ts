@@ -137,5 +137,13 @@ export class databaseService {
     if (data.participants.length === 0 ) this.deleteDocument('lobbies', data.id);
   }
 
+  exists(id: any, path:string): boolean {
+    const collection = this.db.collection(path);
+    collection.doc(id).valueChanges().pipe(take(1)).subscribe( async res => {
+      if (res) return true;
+      else return false;
+    })
+    return false
+  }
 
 }

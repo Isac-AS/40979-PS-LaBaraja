@@ -33,7 +33,8 @@ export class ProfilePageComponent implements OnInit {
     profile: 'regular',
     friendList: [],
     inbox: [],
-    lobby: ''
+    lobby: '',
+    shortNameId: ''
   }
 
   constructor(

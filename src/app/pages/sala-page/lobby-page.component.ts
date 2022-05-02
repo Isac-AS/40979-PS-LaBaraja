@@ -27,6 +27,7 @@ export class LobbyPageComponent implements OnInit {
     friendList: [],
     inbox: [],
     lobby: '',
+    shortNameId: ''
   };
 
   constructor(

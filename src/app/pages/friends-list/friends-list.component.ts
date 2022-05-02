@@ -14,7 +14,7 @@ import { NotificationDialogComponent } from 'src/app/components/notification-Dia
 export class FriendsListComponent implements OnInit {
   
   friendList: FriendInfo[];
-  currentUserId: string = '';
+  currentUserFriendIdentifier: string = '';
 
   constructor(
     public dialog: MatDialog,
@@ -24,9 +24,9 @@ export class FriendsListComponent implements OnInit {
     this.friendList = [];
     this.auth.getUid().then(async currentUserUid => {
       if (currentUserUid){
-        this.currentUserId = currentUserUid;
         this.db.readDocument<User>('users', currentUserUid).subscribe( async currentUserData => {
           this.friendList = currentUserData!?.friendList;
+          this.currentUserFriendIdentifier = currentUserData!.shortNameId;
         })
       }
     });

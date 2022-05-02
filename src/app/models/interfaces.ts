@@ -11,6 +11,7 @@ export interface User {
   friendList: FriendInfo[];
   inbox: InboxInfo[];
   lobby: 'none' | string;
+  shortNameId: string;
 }
 
 export interface Lobby {
@@ -18,6 +19,10 @@ export interface Lobby {
   participants: FriendInfo[];
 }
 
+export interface NameMapper {
+  id: string;
+  shortNameId: string;
+}
 
 /*
   #################### Auxiliary types to pass around probably to dialogs  ####################
