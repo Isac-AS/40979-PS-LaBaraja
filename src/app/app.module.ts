@@ -42,12 +42,15 @@ import { LobbyPageComponent } from './pages/sala-page/lobby-page.component';
 // Components
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { AddFriendComponent } from './components/add-friend/add-friend.component';
+import { DeleteFriendComponent } from './components/delete-friend/delete-friend.component';
 import { PseudoheaderComponent } from './components/pseudoheader/pseudoheader.component';
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { SalaPageDialog1Component } from './components/sala-page-dialog1/sala-page-dialog1.component';
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
 import { NotificationDialogComponent } from './components/notification-Dialog/notification-Dialog.component';
 import { AddFriendsToLobbyComponent } from './pages/sala-page/add-friends-to-lobby/add-friends-to-lobby.component';
+import { UserCardViewPageComponent } from './pages/user-card-view-page/user-card-view-page.component';
+import { PlayerTurnCardsComponent } from './pages/player-turn-cards/player-turn-cards.component';
 
 
 @NgModule({
@@ -64,9 +67,12 @@ import { AddFriendsToLobbyComponent } from './pages/sala-page/add-friends-to-lob
 		NotificationDialogComponent,
 		GameFinalScoreComponent,
 		AddFriendComponent,
+		DeleteFriendComponent,
 		LobbyPageComponent,
 		SalaPageDialog1Component,
-		AddFriendsToLobbyComponent
+		AddFriendsToLobbyComponent,
+  UserCardViewPageComponent,
+  PlayerTurnCardsComponent
 	],
 	imports: [
 		BrowserModule,

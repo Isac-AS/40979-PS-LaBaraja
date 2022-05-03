@@ -1,0 +1,14 @@
+<div id="flexContainer">
+  <p>¿Desea eliminar a <b>{{this.friend.name}}</b> de su lista de amigos?</p>
+  <div id="buttonContainer">
+    <button id="accept" (click)="deleteFriend()">
+        <span class="material-icons" style="font-size: 40px;">
+            check_circle
+        </span>
+    </button>
+    <button id="reject" (click)="close()">
+        <span class="material-icons" style="font-size: 40px;">
+            cancel
+        </span>
+    </button>
+</div>

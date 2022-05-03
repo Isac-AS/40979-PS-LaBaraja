@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { take } from 'rxjs';
-import { InboxInfo, User } from 'src/app/models/interfaces';
+import { InboxInfo, NameMapper, User } from 'src/app/models/interfaces';
 import { AuthService } from 'src/app/services/auth.service';
 import { databaseService } from 'src/app/services/database.service';
 
@@ -43,8 +43,11 @@ export class AddFriendComponent implements OnInit {
   ngOnInit(): void { }
 
   addFriend() {
-    this.inboxMessage.receiverId = this.id.value;
-    this.db.pushIntoInbox(this.inboxMessage);
+    this.db.readDocument<NameMapper>('shortNames', this.id.value).pipe(take(1)).subscribe( async map => {
+      console.log(map?.id)
+      this.inboxMessage.receiverId = map!?.id;
+      this.db.pushIntoInbox(this.inboxMessage);
+    })
     this.dialogRef.close()
   }
 

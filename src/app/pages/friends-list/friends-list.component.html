@@ -6,7 +6,7 @@
     </div>
 
     <div id="friendsContainer">
-        <h1>Mi identificador: {{ currentUserId }}</h1>
+        <h1>Mi identificador: {{ currentUserFriendIdentifier }}</h1>
         <div id="buttonsContainer">
             <button routerLink="/home">
                 <span class="material-icons">home</span>
@@ -26,7 +26,7 @@
                 <span class="material-icons">check_circle_outline</span>
                 <u>{{friend.name}}</u>
                 <div class="friendInfoAndActions">
-                    <button (click)="deleteFriend(friend, currentUserId)" class="deleteFriendButton">
+                    <button (click)="deleteFriendDialog(friend, currentUserId, currentUserName)" class="deleteFriendButton">
                         <span class="material-icons">delete</span>
                     </button>
                 </div>
