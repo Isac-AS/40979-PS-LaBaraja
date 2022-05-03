@@ -48,6 +48,8 @@ import { SalaPageDialog1Component } from './components/sala-page-dialog1/sala-pa
 import { InfoMessagePopupComponent } from './components/info-message-popup/info-message-popup.component';
 import { NotificationDialogComponent } from './components/notification-Dialog/notification-Dialog.component';
 import { AddFriendsToLobbyComponent } from './pages/sala-page/add-friends-to-lobby/add-friends-to-lobby.component';
+import { UserCardViewPageComponent } from './pages/user-card-view-page/user-card-view-page.component';
+import { PlayerTurnCardsComponent } from './pages/player-turn-cards/player-turn-cards.component';
 
 
 @NgModule({
@@ -66,7 +68,9 @@ import { AddFriendsToLobbyComponent } from './pages/sala-page/add-friends-to-lob
 		AddFriendComponent,
 		LobbyPageComponent,
 		SalaPageDialog1Component,
-		AddFriendsToLobbyComponent
+		AddFriendsToLobbyComponent,
+  UserCardViewPageComponent,
+  PlayerTurnCardsComponent
 	],
 	imports: [
 		BrowserModule,
