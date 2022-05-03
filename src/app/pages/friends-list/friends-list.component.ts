@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import {AuthService} from "../../services/auth.service";
-import {FriendInfo, User} from "../../models/interfaces";
+import {DeleteFriendInfo, FriendInfo, User} from "../../models/interfaces";
 import {databaseService} from "../../services/database.service";
 import { AddFriendComponent } from "src/app/components/add-friend/add-friend.component";
 import { NotificationDialogComponent } from 'src/app/components/notification-Dialog/notification-Dialog.component';
+import { DeleteFriendComponent } from 'src/app/components/delete-friend/delete-friend.component';
 
 @Component({
   selector: 'app-friends-list',
@@ -15,6 +16,8 @@ export class FriendsListComponent implements OnInit {
   
   friendList: FriendInfo[];
   currentUserFriendIdentifier: string = '';
+  currentUserId: string = '';
+  currentUserName: string = '';
 
   constructor(
     public dialog: MatDialog,
@@ -27,6 +30,7 @@ export class FriendsListComponent implements OnInit {
         this.db.readDocument<User>('users', currentUserUid).subscribe( async currentUserData => {
           this.friendList = currentUserData!?.friendList;
           this.currentUserFriendIdentifier = currentUserData!.shortNameId;
+          this.currentUserName = currentUserData!?.name;
         })
       }
     });
@@ -48,8 +52,15 @@ export class FriendsListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(res => {});
   }
 
-  deleteFriend(friend: FriendInfo, currentId: string) {
-    this.db.removeFriend(friend, currentId);
+  deleteFriendDialog(friend: FriendInfo, currentUserId: string, currentUserName: string) {
+    let deleteFriendInfo: DeleteFriendInfo = {
+        friend:friend,
+        currentUserName: currentUserName,
+        currentUserId: currentUserId
+    }
+    const dialogRef = this.dialog.open(DeleteFriendComponent, {
+      data: deleteFriendInfo
+    });
+    dialogRef.afterClosed().subscribe(res => {});
   }
-
 }

@@ -6,6 +6,7 @@ import { AuthService } from "../../services/auth.service";
 import { databaseService } from "../../services/database.service";
 import { CustomUtilsService } from "../../services/customUtils.service";
 import { MatDialogRef } from "@angular/material/dialog";
+import { signInWithCustomToken } from "firebase/auth";
 
 @Component({
   selector: 'app-register-page',

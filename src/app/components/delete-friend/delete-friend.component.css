@@ -1,0 +1,28 @@
+#flexContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    font-size: 1.5em;
+    width: 100%;
+}
+
+#flexContainer #buttonContainer{ 
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 0.6em;
+}
+
+#flexContainer #buttonContainer #accept{ 
+    background-color: white;
+    border: 0;
+    color: rgb(71, 255, 71);
+    margin-right: 2em;
+}
+
+#flexContainer #buttonContainer #reject{ 
+    background-color: white;
+    border: 0;
+    color: rgb(250, 14, 14);
+}

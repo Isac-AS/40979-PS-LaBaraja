@@ -42,6 +42,7 @@ import { LobbyPageComponent } from './pages/sala-page/lobby-page.component';
 // Components
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { AddFriendComponent } from './components/add-friend/add-friend.component';
+import { DeleteFriendComponent } from './components/delete-friend/delete-friend.component';
 import { PseudoheaderComponent } from './components/pseudoheader/pseudoheader.component';
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { SalaPageDialog1Component } from './components/sala-page-dialog1/sala-page-dialog1.component';
@@ -66,6 +67,7 @@ import { PlayerTurnCardsComponent } from './pages/player-turn-cards/player-turn-
 		NotificationDialogComponent,
 		GameFinalScoreComponent,
 		AddFriendComponent,
+		DeleteFriendComponent,
 		LobbyPageComponent,
 		SalaPageDialog1Component,
 		AddFriendsToLobbyComponent,

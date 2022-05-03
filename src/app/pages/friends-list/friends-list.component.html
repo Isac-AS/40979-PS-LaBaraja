@@ -26,7 +26,7 @@
                 <span class="material-icons">check_circle_outline</span>
                 <u>{{friend.name}}</u>
                 <div class="friendInfoAndActions">
-                    <button (click)="deleteFriend(friend, currentUserFriendIdentifier)" class="deleteFriendButton">
+                    <button (click)="deleteFriendDialog(friend, currentUserId, currentUserName)" class="deleteFriendButton">
                         <span class="material-icons">delete</span>
                     </button>
                 </div>
