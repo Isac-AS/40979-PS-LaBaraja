@@ -60,6 +60,6 @@ export class FriendsListComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteFriendComponent, {
       data: deleteFriendInfo
     });
+    dialogRef.afterClosed().subscribe(res => {});
   }
-
 }
