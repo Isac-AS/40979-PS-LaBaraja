@@ -24,9 +24,26 @@ export interface NameMapper {
   shortNameId: string;
 }
 
+export interface Game {
+  participants: Participant[],
+  board: Card[],
+  stack: Card[]
+}
+
 /*
-  #################### Auxiliary types to pass around probably to dialogs  ####################
+  #################### Auxiliary types ####################
 */
+
+export interface Card {
+  number: number,
+  type: 'Oros' | 'Copas' | 'Espadas' | 'Bastos'
+}
+
+export interface Participant {
+  id: string,
+  ready: boolean,
+  hand: Card[]
+}
 
 export interface IdPair {
   id: string;
