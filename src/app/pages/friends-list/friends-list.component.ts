@@ -27,6 +27,7 @@ export class FriendsListComponent implements OnInit {
     this.friendList = [];
     this.auth.getUid().then(async currentUserUid => {
       if (currentUserUid){
+        this.currentUserId = currentUserUid;
         this.db.readDocument<User>('users', currentUserUid).subscribe( async currentUserData => {
           this.friendList = currentUserData!?.friendList;
           this.currentUserFriendIdentifier = currentUserData!.shortNameId;
