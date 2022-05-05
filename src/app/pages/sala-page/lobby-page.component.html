@@ -39,5 +39,11 @@
                 </div>
             </div>
         </div>
+
+        <div>
+            <button *ngIf="!(currentUserData.lobby === 'none')" class="deleteFriendButton">
+                <span class="material-icons">delete</span>
+            </button>
+        </div>
     </div>
 </div>
