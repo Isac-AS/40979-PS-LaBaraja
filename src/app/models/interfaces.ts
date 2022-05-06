@@ -12,6 +12,7 @@ export interface User {
   inbox: InboxInfo[];
   lobby: 'none' | string;
   shortNameId: string;
+  isOwner: boolean;
 }
 
 export interface Lobby {
@@ -61,7 +62,7 @@ export interface MessagePopupPair {
 }
   
 export interface InboxInfo {
-  reason: 'AddFriend' | 'InviteToLobby';
+  reason: 'AddFriend' | 'InviteToLobby' | 'StartGame';
   senderName: string;
   receiverName: string;
   senderId: string;

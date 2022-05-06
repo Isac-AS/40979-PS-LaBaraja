@@ -117,6 +117,7 @@ export class databaseService {
 
     this.readDocument<User>('users', data.receiverId).pipe(take(1)).subscribe(async receiverData => {
       receiverData!.lobby = data.lobbyId;
+      receiverData!.isOwner = false;
       receiverData!.inbox = this.utils.RemoveElementFromInbox(receiverData!.inbox, data);
       this.updateDocument<User>(receiverData, 'users', data.receiverId);
     });
@@ -137,6 +138,7 @@ export class databaseService {
   removeFromLobby(data: Lobby, user: FriendInfo) {
     this.readDocument<User>('users', user.id).pipe(take(1)).subscribe(async userData => {
       userData!.lobby = 'none';
+      userData!.isOwner = true;
       this.updateDocument<User>(userData, 'users', user.id);
     });
 

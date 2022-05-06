@@ -34,7 +34,9 @@ export class ProfilePageComponent implements OnInit {
     friendList: [],
     inbox: [],
     lobby: '',
-    shortNameId: ''
+    shortNameId: '',
+    isOwner: false
+
   }
 
   constructor(

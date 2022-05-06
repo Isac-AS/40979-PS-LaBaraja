@@ -4,6 +4,7 @@ import { take, takeLast } from 'rxjs';
 import { NotificationDialogComponent } from 'src/app/components/notification-Dialog/notification-Dialog.component';
 import { FriendInfo, Lobby, User } from 'src/app/models/interfaces';
 import { AuthService } from 'src/app/services/auth.service';
+import { CustomUtilsService } from 'src/app/services/customUtils.service';
 import { databaseService } from 'src/app/services/database.service';
 import { AddFriendsToLobbyComponent } from './add-friends-to-lobby/add-friends-to-lobby.component';
 
@@ -13,7 +14,7 @@ import { AddFriendsToLobbyComponent } from './add-friends-to-lobby/add-friends-t
   styleUrls: ['./lobby-page.component.css']
 })
 export class LobbyPageComponent implements OnInit {
-
+ 
   currentLobby: Lobby = {
     id: '',
     participants : []
@@ -28,7 +29,8 @@ export class LobbyPageComponent implements OnInit {
     friendList: [],
     inbox: [],
     lobby: '',
-    shortNameId: ''
+    shortNameId: '',
+    isOwner: false
   };
 
   onChange: boolean = true;
@@ -37,21 +39,20 @@ export class LobbyPageComponent implements OnInit {
     public dialog: MatDialog,
     private auth: AuthService,
     private db: databaseService,
-    private changeDetection: ChangeDetectorRef
+    private changeDetection: ChangeDetectorRef,
+    private utils: CustomUtilsService
   ) {
     this.auth.getUid().then(async currentUserUid => {
       if (currentUserUid){
         this.db.readDocument<User>('users', currentUserUid).subscribe( async currentUserData => {
-          console.log("aaaaa");
-          if (currentUserData) this.currentUserData = currentUserData;
+          if (currentUserData) {
+            this.currentUserData = currentUserData;
+          }
           if (currentUserData?.lobby != 'none') {
             this.db.readDocument<Lobby>('lobbies', currentUserData!?.lobby).subscribe( async usersLobby => {
               if(usersLobby) this.currentLobby = usersLobby;
-              console.log(this.onChange);
-              console.log(this.currentLobby.participants.length);
             })
           }
-
           else {
             this.clearCurrentLobby();
             this.changeDetection.detectChanges();
@@ -75,7 +76,8 @@ export class LobbyPageComponent implements OnInit {
       ]
     }
     this.db.createDocument<Lobby>(lobby, 'lobbies', lobby.id);
-    this.currentUserData.lobby = lobby.id
+    this.currentUserData.lobby = lobby.id;
+    this.currentUserData.isOwner = true;
     this.db.updateDocument<User>(this.currentUserData, 'users', this.currentUserData.uid)
   }
 
@@ -110,6 +112,10 @@ export class LobbyPageComponent implements OnInit {
       id: '',
       participants : []
     }
+  }
+
+  startGame() {
+    
   }
   
 }
