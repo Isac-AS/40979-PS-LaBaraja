@@ -118,18 +118,16 @@ export class LobbyPageComponent implements OnInit {
   }
 
   startGame() {
-    let inboxInfo: InboxInfo = {
-      reason: 'StartGame',
-      senderId: this.currentUserData.uid,
-      senderName: this.currentUserData.name,
-      receiverId: '',
-      receiverName: '',
-      lobbyId: this.currentLobby.id
-    }
     for (let player of this.currentLobby.participants) {
       if (player.id != this.currentUserData.uid) {
-        inboxInfo.receiverId = player.id;
-        inboxInfo.receiverName = player.name;
+        let inboxInfo: InboxInfo = {
+          reason: 'StartGame',
+          senderId: this.currentUserData.uid,
+          senderName: this.currentUserData.name,
+          receiverId: player.id,
+          receiverName: player.name,
+          lobbyId: this.currentLobby.id
+        }
         this.db.pushIntoInbox(inboxInfo)
       }
     }
@@ -140,6 +138,7 @@ export class LobbyPageComponent implements OnInit {
 
   createGame(): Game {
     let game : Game =  this.utils.getCleanGame();
+    game.id = this.currentLobby.id;
     this.db.createDocument<Game>(game, 'games', game.id)
     return game;
   }
