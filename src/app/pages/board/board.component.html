@@ -1,0 +1,24 @@
+<div id="pageContainer">
+    <div id="buttonsContainer">
+        <button routerLink="/home">
+            <span class="material-icons">home</span>
+        </button>
+        <button routerLink="/sala" *ngIf="!(user.lobby === 'none')">
+            <span class="material-icons">keyboard_return</span>
+            Volver a la sala
+        </button>
+        <button *ngIf="!(user.lobby === 'none')" (click)="quitGame()">
+            <span class="material-icons">logout</span>
+            Salir de la partida
+        </button>
+    </div>
+    <h1 *ngIf="!hasStarted">Esperando al resto de jugadores...</h1>
+    <div id="players">
+        <ng-container *ngFor="let player of game.participants">
+            <div id="player">
+                <span class="material-icons">person</span>
+                <u>{{ player.name }}</u>
+            </div>
+        </ng-container>
+    </div>
+</div>

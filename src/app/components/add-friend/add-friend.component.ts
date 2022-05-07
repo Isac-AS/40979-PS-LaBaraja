@@ -44,7 +44,6 @@ export class AddFriendComponent implements OnInit {
 
   addFriend() {
     this.db.readDocument<NameMapper>('shortNames', this.id.value).pipe(take(1)).subscribe( async map => {
-      console.log(map?.id)
       this.inboxMessage.receiverId = map!?.id;
       this.db.pushIntoInbox(this.inboxMessage);
     })

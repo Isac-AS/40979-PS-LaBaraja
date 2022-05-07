@@ -13,6 +13,7 @@ export interface User {
   lobby: 'none' | string;
   shortNameId: string;
   isOwner: boolean;
+  inGame: boolean;
 }
 
 export interface Lobby {
@@ -26,6 +27,7 @@ export interface NameMapper {
 }
 
 export interface Game {
+  id: string;
   participants: Participant[],
   board: Card[],
   stack: Card[]
@@ -36,13 +38,15 @@ export interface Game {
 */
 
 export interface Card {
+  id: string
   number: number,
-  type: 'Oros' | 'Copas' | 'Espadas' | 'Bastos'
+  type: string
 }
 
 export interface Participant {
+  name: string,
   id: string,
-  ready: boolean,
+  turn: boolean,
   hand: Card[]
 }
 

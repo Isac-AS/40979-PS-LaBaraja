@@ -7,22 +7,14 @@
 
     <div id="mainContainer">
         <div id="buttonsContainer">
-            <button routerLink="/home" *ngIf="!currentUserData.isOwner">
+            <button routerLink="/home">
                 <span class="material-icons">home</span>
             </button>
             <button (click)="openNotificationDialog()">
                 <span class="material-icons">inbox</span>
                 Buzón
             </button>
-            <button *ngIf="!(currentUserData.lobby === 'none') && currentUserData.isOwner" (click)="startGame()">
-                <span class="material-icons">start</span>
-                Comenzar!
-            </button>
-            <button *ngIf="!(currentUserData.lobby === 'none') && currentUserData.isOwner" (click)="openFriendListDialog()">
-                <span class="material-icons">group_add</span>
-                Invitar
-            </button>
-            <button *ngIf="!(currentUserData.lobby === 'none') && !currentUserData.isOwner" (click)="openFriendListDialog()">
+            <button *ngIf="!(currentUserData.lobby === 'none')" (click)="openFriendListDialog()">
                 <span class="material-icons">group_add</span>
                 Invitar amigos
             </button>
@@ -46,6 +38,17 @@
                     </button>
                 </div>
             </div>
+        </div>
+
+        <div id="buttonsContainer">
+            <button *ngIf="!(currentUserData.lobby === 'none') && currentUserData.isOwner && !currentUserData.inGame" (click)="startGame()">
+                <span class="material-icons">start</span>
+                Comenzar partida!
+            </button>
+            <button *ngIf="!(currentUserData.lobby === 'none') && currentUserData.inGame" routerLink="/board">
+                <span class="material-icons">play_arrow</span>
+                Volver a la partida
+            </button>
         </div>
     </div>
 </div>

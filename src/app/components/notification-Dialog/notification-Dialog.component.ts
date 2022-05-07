@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { InboxInfo, User } from 'src/app/models/interfaces';
 import { AuthService } from 'src/app/services/auth.service';
 import { databaseService } from 'src/app/services/database.service';
@@ -16,6 +17,7 @@ export class NotificationDialogComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private db: databaseService,
+    private router: Router,
     public dialogRef: MatDialogRef<NotificationDialogComponent>
   ) {
     this.inbox = [];
@@ -34,16 +36,18 @@ export class NotificationDialogComponent implements OnInit {
     this.db.acceptFriendRequest(data);
   }
 
-  rejectFriendRequest(data: InboxInfo) {
-    this.db.rejectFriendRequest(data);
+  removeFromInbox(data: InboxInfo) {
+    this.db.removeFromInbox(data);
   }
 
   acceptJoinRequest(data: InboxInfo) {
     this.db.acceptLobbyRequest(data);
   }
 
-  rejectJoinRequest(data: InboxInfo) {
-    this.db.rejectLobbyRequest(data);
+  joinGame(data: InboxInfo) {
+    this.db.joinGame(data);
+    this.dialogRef.close();
+    this.router.navigate(['/board']);
   }
 
   trackItem(index: number, data: InboxInfo) {

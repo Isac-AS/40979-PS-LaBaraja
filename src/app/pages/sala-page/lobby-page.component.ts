@@ -1,8 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { take, takeLast } from 'rxjs';
 import { NotificationDialogComponent } from 'src/app/components/notification-Dialog/notification-Dialog.component';
-import { FriendInfo, Lobby, User } from 'src/app/models/interfaces';
+import { FriendInfo, Game, InboxInfo, Lobby, User } from 'src/app/models/interfaces';
 import { AuthService } from 'src/app/services/auth.service';
 import { CustomUtilsService } from 'src/app/services/customUtils.service';
 import { databaseService } from 'src/app/services/database.service';
@@ -30,7 +31,8 @@ export class LobbyPageComponent implements OnInit {
     inbox: [],
     lobby: '',
     shortNameId: '',
-    isOwner: false
+    isOwner: false,
+    inGame: false,
   };
 
   onChange: boolean = true;
@@ -40,7 +42,7 @@ export class LobbyPageComponent implements OnInit {
     private auth: AuthService,
     private db: databaseService,
     private changeDetection: ChangeDetectorRef,
-    private utils: CustomUtilsService
+    private router: Router
   ) {
     this.auth.getUid().then(async currentUserUid => {
       if (currentUserUid){
@@ -115,7 +117,35 @@ export class LobbyPageComponent implements OnInit {
   }
 
   startGame() {
-    
+    let inboxInfo: InboxInfo = {
+      reason: 'StartGame',
+      senderId: this.currentUserData.uid,
+      senderName: this.currentUserData.name,
+      receiverId: '',
+      receiverName: '',
+      lobbyId: this.currentLobby.id
+    }
+    for (let player of this.currentLobby.participants) {
+      if (player.id != this.currentUserData.uid) {
+        inboxInfo.receiverId = player.id;
+        inboxInfo.receiverName = player.name;
+        this.db.pushIntoInbox(inboxInfo)
+      }
+    }
+    this.createGame()
+    this.db.joinGameAsOwner({ id: this.currentUserData.uid, name: this.currentUserData.name})
+    this.router.navigate(['/board']);
+  }
+
+  createGame(): Game {
+    let game : Game =  {
+      id: this.currentLobby.id, 
+      participants: [],
+      board: [],
+      stack: []
+    }
+    this.db.createDocument<Game>(game, 'games', game.id)
+    return game;
   }
   
 }

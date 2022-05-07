@@ -35,8 +35,8 @@ export class ProfilePageComponent implements OnInit {
     inbox: [],
     lobby: '',
     shortNameId: '',
-    isOwner: false
-
+    isOwner: false,
+    inGame: false,
   }
 
   constructor(
