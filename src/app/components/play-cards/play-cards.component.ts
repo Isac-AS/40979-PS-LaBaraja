@@ -69,6 +69,7 @@ export class PlayCardsComponent implements OnInit {
   }
 
   updateElements() {
+    this.game.passCounter = 0;
     this.db.updateDocument(this.game, 'games', this.game.id);
   }
 
@@ -110,6 +111,7 @@ export class PlayCardsComponent implements OnInit {
     }
     this.game.participants.forEach((value, index) => {
       if (value.hand.length == 0) {
+        this.game.winners.push(value);
         this.game.participants.splice(index, 1);
       }
     })
