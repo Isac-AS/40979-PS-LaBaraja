@@ -30,6 +30,9 @@
       <p *ngIf="newUser.get('username')!.errors?.['required']">
         Campo Obligatorio
       </p>
+      <p *ngIf="newUser.get('username')!.errors?.['minlength']">
+        Debe tener una longitud mínima de 6 caracteres
+      </p>
     </div>
 
     <div id="passwordFlex">
