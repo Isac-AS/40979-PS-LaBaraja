@@ -112,9 +112,14 @@ export class PlayCardsComponent implements OnInit {
     this.game.participants.forEach((value, index) => {
       if (value.hand.length == 0) {
         this.game.winners.push(value);
+        this.advanceTurn();
         this.game.participants.splice(index, 1);
       }
     })
+    if (this.game.participants.length === 1) {
+      this.game.winners.push(this.game.participants[0]);
+      this.game.participants = []
+    }
   }
 
   removeCardFromArray(array: Card[], element: Card): Card[] {
