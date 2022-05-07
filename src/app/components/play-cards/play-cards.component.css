@@ -1,0 +1,47 @@
+#dialogContainer {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+img {
+    width: 10em;
+}
+
+#cards {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.card {
+    margin: 0.5em;
+    border-radius: 5px;
+    padding: 0.5em;
+}
+
+#buttonsContainer {
+    display: flex;
+    margin-top: 2em;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    width: auto;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    margin-bottom: 1em;
+}
+
+button {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    background-color: #15580F;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    padding: 0.4em;
+    font-size: 1.4em;
+    margin: 0.5em;
+}

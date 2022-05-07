@@ -1,7 +1,9 @@
+import { typeWithParameters } from '@angular/compiler/src/render3/util';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
+import { PlayCardsComponent } from 'src/app/components/play-cards/play-cards.component';
 import { ViewCardsComponent } from 'src/app/components/view-cards/view-cards.component';
 import { Card, Game, Lobby, Participant, User } from 'src/app/models/interfaces';
 import { AuthService } from 'src/app/services/auth.service';
@@ -83,7 +85,7 @@ export class BoardComponent implements OnInit {
     return game;
   }
 
-  dealCards(deck: Card[], game:Game): Game {
+  dealCards(deck: Card[], game: Game): Game {
     let player = 0;
     while (deck.length > 0) {
       let randomCardIndex = Math.floor(Math.random() * (deck.length));
@@ -134,9 +136,41 @@ export class BoardComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe();
   }
-  
-  delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-}
 
+  openPlayDialog() {
+    const dialogRef = this.dialog.open(PlayCardsComponent, {
+      data: {
+        userAsAParticipant: this.userAsAParticipant,
+        game: this.game
+      },
+      width: '80%'
+    });
+    dialogRef.afterClosed().subscribe();
+  }
+
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  clearBoard() {
+    this.game.board = [];
+    this.db.updateDocument(this.game, 'games', this.lobby.id);
+  }
+
+  canPlay(): boolean {
+    let cardsWithMoreValueThanBoard: any[] = []
+    for (let card of this.userAsAParticipant.hand) {
+      if (card.number > this.game.board[0].number && this.game.board.length > 0) {
+        cardsWithMoreValueThanBoard.push(card)
+      }
+    }
+    let groupingArray: any[] = [[], [], [], [], [], [], [], [], [], [], [], []]
+    for (let card of cardsWithMoreValueThanBoard) {
+      groupingArray[card.number].push(card)
+    }
+    for (let group of groupingArray) {
+      if (group.length >= this.game.board.length) return true;
+    }
+    return false;
+  }
 }

@@ -45,10 +45,10 @@ export class CustomUtilsService {
       id: '',
       participants: [],
       board: [],
-      stack: [],
       turn: 0,
       winners: [],
-      hasStarted: false
+      hasStarted: false,
+      passCounter: 0,
     }
   }
 

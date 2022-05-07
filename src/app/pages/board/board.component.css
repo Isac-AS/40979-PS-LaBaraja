@@ -9,6 +9,16 @@ h1 {
     font-weight: 500;
 }
 
+#board {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#board img {
+    width: 15em;
+    margin: 2em;
+}
+
 #players {
     display: flex;
     flex-flow: row wrap;

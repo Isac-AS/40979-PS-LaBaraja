@@ -30,10 +30,10 @@ export interface Game {
   id: string;
   participants: Participant[],
   board: Card[],
-  stack: Card[],
   turn: number,
   winners: Participant[],
-  hasStarted: boolean
+  hasStarted: boolean,
+  passCounter: number 
 }
 
 /*
