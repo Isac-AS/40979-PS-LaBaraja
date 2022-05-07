@@ -31,7 +31,9 @@ export interface Game {
   participants: Participant[],
   board: Card[],
   stack: Card[],
-  turn: number
+  turn: number,
+  winners: Participant[],
+  hasStarted: boolean
 }
 
 /*
@@ -41,7 +43,8 @@ export interface Game {
 export interface Card {
   id: string
   number: number,
-  suit: string
+  suit: string, 
+  imageUrl: string
 }
 
 export interface Participant {
@@ -84,4 +87,9 @@ export interface DeleteFriendInfo {
   friend: FriendInfo;
   currentUserName: string;
   currentUserId: string;
+}
+
+export interface InGameCardDialogs {
+  userAsAParticipant: Participant,
+  game: Game,
 }

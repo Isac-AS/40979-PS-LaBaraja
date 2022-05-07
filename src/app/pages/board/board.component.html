@@ -3,7 +3,7 @@
         <button routerLink="/home">
             <span class="material-icons">home</span>
         </button>
-        <button (click)="startGame()" *ngIf="user.isOwner">
+        <button (click)="startGame()" *ngIf="user.isOwner && !game.hasStarted">
             <span class="material-icons">play_arrow</span>
             Comenzar Partida
         </button>
@@ -16,20 +16,39 @@
             Salir de la partida
         </button>
     </div>
-    <h1 *ngIf="!hasStarted">Esperando al resto de jugadores...</h1>
+    <h1 *ngIf="!game.hasStarted">Esperando al resto de jugadores...</h1>
     <div id="players">
         <ng-container *ngFor="let player of game.participants">
-            <div id="player">
+            <div id="player" *ngIf="player.turn" style="background-color: rgb(224, 128, 18);">
                 <span class="material-icons">person</span>
                 <u>{{ player.name }}</u>
+                <u>Cartas {{ player.hand.length }}</u>
+            </div>
+            <div id="player" *ngIf="!player.turn">
+                <span class="material-icons">person</span>
+                <u>{{ player.name }}</u>
+                <u>Cartas {{ player.hand.length }}</u>
             </div>
         </ng-container>
     </div>
 
-
-    <ng-container *ngFor="let player of game.participants">
-        <ng-container *ngFor="let card of player.hand">
-            {{ card.id }}
-        </ng-container>
+    <ng-container *ngFor="let card of game.board">
+        <img [src]="card.imageUrl">
     </ng-container>
+
+    <div id="buttonsContainer" *ngIf="game.hasStarted">
+        <button (click)="openHandViewDialog()">
+            <span class="material-icons">visibility</span>
+            Ver Cartas
+        </button>
+        <button *ngIf="userAsAParticipant.turn">
+            <span class="material-icons">play_arrow</span>
+            Jugar
+        </button>
+        <button *ngIf="userAsAParticipant.turn" (click)="advanceTurn()">
+            <span class="material-icons">navigate_next</span>
+            Pasar turno
+        </button>
+    </div>
+
 </div>

@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import { Card, FriendInfo, Game, InboxInfo, Lobby, MessagePopupPair, Participant, User } from "../models/interfaces";
 import { InfoMessagePopupComponent } from "../components/info-message-popup/info-message-popup.component";
 import { MatDialog } from "@angular/material/dialog";
+import { StorageService } from "./storage.service";
+import { take } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,8 @@ export class CustomUtilsService {
   timeout: number = 0;
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private storage: StorageService
   ) { }
 
   getCleanUser(): User {
@@ -43,7 +46,9 @@ export class CustomUtilsService {
       participants: [],
       board: [],
       stack: [],
-      turn: 0
+      turn: 0,
+      winners: [],
+      hasStarted: false
     }
   }
 
@@ -112,40 +117,17 @@ export class CustomUtilsService {
     let deck: Card[] = [];
     for (let suit of ['oros', 'copas', 'espadas', 'bastos']) {
       for (let i = 1; i < 8; i++) {
-        deck.push({ id: suit + '-' + i, number: i, suit: suit })
+        deck.push({ id: suit + '-' + i, number: i, suit: suit, imageUrl: 'a' })
       }
       for (let i = 10; i < 13; i++) {
-        deck.push({ id: suit + '-' + i, number: i, suit: suit })
+        deck.push({ id: suit + '-' + i, number: i, suit: suit, imageUrl: 'b' })
       }
     }
-    return deck;
-  }
-
-  shuffle(deck: Card[]): Card[] {
-    for (let i = 0; i < 1000; i++) {
-      let location1 = Math.floor((Math.random() * deck.length));
-      let location2 = Math.floor((Math.random() * deck.length));
-      let tmp = deck[location1];
-
-      deck[location1] = deck[location2];
-      deck[location2] = tmp;
+    for (let card of deck) {
+      this.storage.getRef('Cards/' + card.id + '.JPG').getDownloadURL().pipe(take(1)).subscribe( async url => {
+        card.imageUrl = await url;
+      })
     }
     return deck;
   }
-
-  /* // Alternative algorithm
-  dealCards(deck: Card[]) {
-    console.log('Deck -> ', deck)
-    let player = 0;
-    while (deck.length > 0) {
-      let randomCardIndex = Math.floor(Math.random() * (deck.length));
-      let randomCard = deck.splice(randomCardIndex, 1)[0];
-      this.game.participants[player].hand.push(randomCard);
-      ++player;
-      if (player >= this.game.participants.length) player = 0;
-      console.log(this.game.participants[player].hand)
-    }
-    console.log(this.game)
-  }
-  */
 }
