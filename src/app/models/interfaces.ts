@@ -30,7 +30,8 @@ export interface Game {
   id: string;
   participants: Participant[],
   board: Card[],
-  stack: Card[]
+  stack: Card[],
+  turn: number
 }
 
 /*
@@ -40,7 +41,7 @@ export interface Game {
 export interface Card {
   id: string
   number: number,
-  type: string
+  suit: string
 }
 
 export interface Participant {

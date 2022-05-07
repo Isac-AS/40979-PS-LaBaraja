@@ -43,6 +43,7 @@ export class CustomUtilsService {
       participants: [],
       board: [],
       stack: [],
+      turn: 0
     }
   }
 
@@ -107,16 +108,44 @@ export class CustomUtilsService {
     return array;
   }
 
-  getCompleteDeck(): Card[]{
+  getCompleteDeck(): Card[] {
     let deck: Card[] = [];
-    for (let palo of ['oros', 'copas', 'espadas', 'bastos']) {
-      for (let i = 0; i < 8; i++) {
-        deck.push({id: palo + '-' + i, number: i, type: palo})
+    for (let suit of ['oros', 'copas', 'espadas', 'bastos']) {
+      for (let i = 1; i < 8; i++) {
+        deck.push({ id: suit + '-' + i, number: i, suit: suit })
       }
       for (let i = 10; i < 13; i++) {
-        deck.push({id: palo + '-' + i, number: i, type: palo})
+        deck.push({ id: suit + '-' + i, number: i, suit: suit })
       }
     }
     return deck;
   }
+
+  shuffle(deck: Card[]): Card[] {
+    for (let i = 0; i < 1000; i++) {
+      let location1 = Math.floor((Math.random() * deck.length));
+      let location2 = Math.floor((Math.random() * deck.length));
+      let tmp = deck[location1];
+
+      deck[location1] = deck[location2];
+      deck[location2] = tmp;
+    }
+    return deck;
+  }
+
+  /* // Alternative algorithm
+  dealCards(deck: Card[]) {
+    console.log('Deck -> ', deck)
+    let player = 0;
+    while (deck.length > 0) {
+      let randomCardIndex = Math.floor(Math.random() * (deck.length));
+      let randomCard = deck.splice(randomCardIndex, 1)[0];
+      this.game.participants[player].hand.push(randomCard);
+      ++player;
+      if (player >= this.game.participants.length) player = 0;
+      console.log(this.game.participants[player].hand)
+    }
+    console.log(this.game)
+  }
+  */
 }

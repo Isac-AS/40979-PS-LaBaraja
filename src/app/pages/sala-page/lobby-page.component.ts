@@ -42,6 +42,7 @@ export class LobbyPageComponent implements OnInit {
     private auth: AuthService,
     private db: databaseService,
     private changeDetection: ChangeDetectorRef,
+    private utils: CustomUtilsService,
     private router: Router
   ) {
     this.auth.getUid().then(async currentUserUid => {
@@ -138,12 +139,7 @@ export class LobbyPageComponent implements OnInit {
   }
 
   createGame(): Game {
-    let game : Game =  {
-      id: this.currentLobby.id, 
-      participants: [],
-      board: [],
-      stack: []
-    }
+    let game : Game =  this.utils.getCleanGame();
     this.db.createDocument<Game>(game, 'games', game.id)
     return game;
   }

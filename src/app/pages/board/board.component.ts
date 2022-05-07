@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Game, Lobby, User } from 'src/app/models/interfaces';
+import { Card, Game, Lobby, User } from 'src/app/models/interfaces';
 import { AuthService } from 'src/app/services/auth.service';
 import { CustomUtilsService } from 'src/app/services/customUtils.service';
 import { databaseService } from 'src/app/services/database.service';
@@ -54,6 +54,24 @@ export class BoardComponent implements OnInit {
     this.db.quitGame(this.user);
     this.router.navigate(['/sala']);
   }
-  
+
+  startGame() {
+    let deck = this.utils.getCompleteDeck();
+    this.dealCards(deck);
+    console.log(this.game)
+    //this.db.updateDocument(this.game, 'games', this.lobby.id);
+    //this.hasStarted = true;
+  }
+
+  dealCards(deck: Card[]) {
+    let player = 0;
+    while (deck.length > 0) {
+      let randomCardIndex = Math.floor(Math.random() * (deck.length));
+      let randomCard = deck.splice(randomCardIndex, 1)[0];
+      this.game.participants[player].hand.push(randomCard);
+      ++player;
+      if (player >= this.game.participants.length) player = 0;
+    }
+  }
 
 }

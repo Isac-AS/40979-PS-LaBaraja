@@ -3,6 +3,10 @@
         <button routerLink="/home">
             <span class="material-icons">home</span>
         </button>
+        <button (click)="startGame()" *ngIf="user.isOwner">
+            <span class="material-icons">play_arrow</span>
+            Comenzar Partida
+        </button>
         <button routerLink="/sala" *ngIf="!(user.lobby === 'none')">
             <span class="material-icons">keyboard_return</span>
             Volver a la sala
@@ -21,4 +25,11 @@
             </div>
         </ng-container>
     </div>
+
+
+    <ng-container *ngFor="let player of game.participants">
+        <ng-container *ngFor="let card of player.hand">
+            {{ card.id }}
+        </ng-container>
+    </ng-container>
 </div>
