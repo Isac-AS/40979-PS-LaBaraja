@@ -9,6 +9,7 @@ import { Card, Game, Lobby, Participant, User } from 'src/app/models/interfaces'
 import { AuthService } from 'src/app/services/auth.service';
 import { CustomUtilsService } from 'src/app/services/customUtils.service';
 import { databaseService } from 'src/app/services/database.service';
+import { GameFinalScoreComponent } from '../game-final-score/game-final-score.component';
 
 @Component({
   selector: 'app-board',
@@ -27,6 +28,8 @@ export class BoardComponent implements OnInit {
     name: '',
     turn: false
   }
+
+  ableToPlay: boolean = true;
 
   constructor(
     private utils: CustomUtilsService,
@@ -57,6 +60,7 @@ export class BoardComponent implements OnInit {
                     this.userAsAParticipant = participant;
                   }
                 }
+                this.ableToPlay = this.canPlay();
               }
             })
           }
@@ -123,7 +127,10 @@ export class BoardComponent implements OnInit {
     if (this.game.turn >= this.game.participants.length) this.game.turn = 0;
     this.userAsAParticipant.turn = false;
     this.game.participants[this.game.turn].turn = true;
+    this.game.passCounter++;
     this.db.updateDocument(this.game, 'games', this.lobby.id);
+    console.log(this.ableToPlay)
+    console.log(this.game.passCounter)
   }
 
   openHandViewDialog() {
@@ -154,6 +161,8 @@ export class BoardComponent implements OnInit {
 
   clearBoard() {
     this.game.board = [];
+    this.ableToPlay = true;
+    this.game.passCounter = 0;
     this.db.updateDocument(this.game, 'games', this.lobby.id);
   }
 
@@ -164,6 +173,7 @@ export class BoardComponent implements OnInit {
         cardsWithMoreValueThanBoard.push(card)
       }
     }
+    if (cardsWithMoreValueThanBoard.length == 0) return false;
     let groupingArray: any[] = [[], [], [], [], [], [], [], [], [], [], [], []]
     for (let card of cardsWithMoreValueThanBoard) {
       groupingArray[card.number].push(card)
@@ -172,5 +182,13 @@ export class BoardComponent implements OnInit {
       if (group.length >= this.game.board.length) return true;
     }
     return false;
+  }
+
+  showWinners() {
+    const dialogRef = this.dialog.open(GameFinalScoreComponent, {
+      data: this.game.winners,
+      width: '80%'
+    });
+    dialogRef.afterClosed().subscribe();
   }
 }

@@ -32,29 +32,38 @@
         </ng-container>
     </div>
 
-    <div id="board">
-        <ng-container *ngFor="let card of game.board">
-            <img [src]="card.imageUrl">
-        </ng-container>
+    <div id="gameStuff" *ngIf="game.participants.length > 0">
+        <div id="board">
+            <ng-container *ngFor="let card of game.board">
+                <img [src]="card.imageUrl">
+            </ng-container>
+        </div>
+    
+        <div id="buttonsContainer" *ngIf="game.hasStarted">
+            <button (click)="clearBoard()" *ngIf="!ableToPlay && game.passCounter >= game.participants.length && userAsAParticipant.turn">
+                <span class="material-icons">play_arrow</span>
+                Limpiar Mesa
+            </button>
+            <button (click)="openHandViewDialog()">
+                <span class="material-icons">visibility</span>
+                Ver Cartas
+            </button>
+            <button *ngIf="userAsAParticipant.turn" (click)="openPlayDialog()">
+                <span class="material-icons">play_arrow</span>
+                Jugar
+            </button>
+            <button *ngIf="userAsAParticipant.turn" (click)="advanceTurn()">
+                <span class="material-icons">navigate_next</span>
+                Pasar turno
+            </button>
+        </div>
     </div>
 
-    <div id="buttonsContainer" *ngIf="game.hasStarted">
-        <button (click)="clearBoard()">
-            <span class="material-icons">play_arrow</span>
-            Limpiar Mesa
-        </button>
-        <button (click)="openHandViewDialog()">
-            <span class="material-icons">visibility</span>
-            Ver Cartas
-        </button>
-        <button *ngIf="userAsAParticipant.turn" (click)="openPlayDialog()">
-            <span class="material-icons">play_arrow</span>
-            Jugar
-        </button>
-        <button *ngIf="userAsAParticipant.turn" (click)="advanceTurn()">
-            <span class="material-icons">navigate_next</span>
-            Pasar turno
+    <div id="viewWinners" *ngIf="game.participants.length == 0">
+        <button (click)="showWinners()">
+            Ver ganadores
         </button>
     </div>
+    
 
 </div>

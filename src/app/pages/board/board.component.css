@@ -4,6 +4,12 @@
     align-items: center;
 }
 
+#gameStuff {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
 h1 {
     color: #FFFFFF;
     font-weight: 500;

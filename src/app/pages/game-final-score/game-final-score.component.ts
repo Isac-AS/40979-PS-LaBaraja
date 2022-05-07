@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Participant } from 'src/app/models/interfaces';
 
 @Component({
   selector: 'app-game-final-score',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameFinalScoreComponent implements OnInit {
 
-  constructor() { }
+  winners: Participant[];
+
+  constructor(
+    public dialogRef: MatDialogRef<GameFinalScoreComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Participant[]
+  ) { 
+    this.winners = data;
+  }
 
   ngOnInit(): void {
+    
   }
 
 }

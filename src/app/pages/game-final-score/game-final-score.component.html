@@ -1,42 +1,17 @@
 <div id="pageContainer">
-
     <div id="resultado">
         Resultado
     </div>
-
     <div id="friendsContainer">
-
         <div class="table-config">
             <div>
                 <table class="table">
-                    <tr>
-                        <td><button class="btn" style="background-color:red;">Usuario 1</button></td>
-                        <td class="classif">1º</td>
+                    <tr *ngFor="let participant of winners; let i = index">
+                        <td><button class="btn">{{ participant.name }}</button></td>
+                        <td class="classif">{{ i }}º</td>
                     </tr>
-
-                    <tr>
-                        <td><button class="btn" style="background-color:yellow;">Usuario 2</button></td>
-                        <td class="classif">2º</td>
-                    </tr>
-
-                    <tr>
-                        <td><button class="btn" style="background-color:blue;">Usuario 3</button></td>
-                        <td class="classif">3º</td>
-                    </tr>
-
-                    <tr>
-                        <td><button class="btn" style="background-color:green;">Usuario 4</button></td>
-                        <td class="classif">4º</td>
-                    </tr>
-
-                    <tr>
-                        <td class="classif"><button class="btn" style="background-color:silver;">Usuario 5</button></td>
-                        <td class="classif">5º</td>
-                    </tr>
-                    
                 </table>
             </div>
-            
             <div class="juego">
                 <label>Modo de Juego:</label> 
                 <label class="label_culo">Culo</label>
@@ -45,10 +20,6 @@
             <div class="btn-volver-config">
                 <button class="btn-volver">Volver a la Sala</button>
             </div>
-            
-
         </div>
-
     </div>
-
 </div>
