@@ -1,0 +1,41 @@
+.playerInfo {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 15%;
+}
+
+.playerInfo .userIcon {
+    color: aqua;
+    font-size: 38px;
+}
+
+.playerInfo .userName {
+    border-radius: 10px;
+    width: 100%;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    text-align: center;
+    background-color: aqua;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.playerInfo .userCards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.3em;
+    width: 40%;
+    border-radius: 10px;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    padding-right: 0.1em;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+}

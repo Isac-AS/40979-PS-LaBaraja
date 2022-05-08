@@ -11,6 +11,7 @@ import { PresentationPageComponent } from './pages/presentation-page/presentatio
 import { SalaPageDialog1Component } from './components/sala-page-dialog1/sala-page-dialog1.component';
 import { UserCardViewPageComponent } from './pages/user-card-view-page/user-card-view-page.component';
 import { PlayerTurnCardsComponent } from './pages/player-turn-cards/player-turn-cards.component';
+import { BoardComponent } from './pages/board/board.component';
 
 const routes: Routes = [
   { path: 'sala', component: LobbyPageComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'invitation-popup', component: InvitationPopupComponent },
   { path: 'account', component: ProfilePageComponent, canActivate: [AngularFireAuthGuard] },
   { path: 'user-cards', component: UserCardViewPageComponent},
-  { path: 'player-turn-cards', component: PlayerTurnCardsComponent}
+  { path: 'player-turn-cards', component: PlayerTurnCardsComponent},
+  { path: 'board', component: BoardComponent}
 ];
 
 @NgModule({

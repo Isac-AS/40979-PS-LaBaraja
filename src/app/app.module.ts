@@ -51,6 +51,7 @@ import { NotificationDialogComponent } from './components/notification-Dialog/no
 import { AddFriendsToLobbyComponent } from './pages/sala-page/add-friends-to-lobby/add-friends-to-lobby.component';
 import { UserCardViewPageComponent } from './pages/user-card-view-page/user-card-view-page.component';
 import { PlayerTurnCardsComponent } from './pages/player-turn-cards/player-turn-cards.component';
+import { BoardComponent } from './pages/board/board.component';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { PlayerTurnCardsComponent } from './pages/player-turn-cards/player-turn-
 		SalaPageDialog1Component,
 		AddFriendsToLobbyComponent,
   UserCardViewPageComponent,
-  PlayerTurnCardsComponent
+  PlayerTurnCardsComponent,
+  BoardComponent
 	],
 	imports: [
 		BrowserModule,
