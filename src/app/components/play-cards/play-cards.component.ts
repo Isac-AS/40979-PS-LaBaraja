@@ -15,7 +15,7 @@ export class PlayCardsComponent implements OnInit {
   cardsToDisplay: any[] = [];
   error: boolean = false;
   errorMessage: string = '';
-  
+
 
   constructor(
     private db: databaseService,
@@ -95,7 +95,7 @@ export class PlayCardsComponent implements OnInit {
       if (this.userAsAParticipant.id === participant.id) {
         let selectedCards = this.retrieveSelectedAsCards();
         if (participant.hand.length == selectedCards.length) {
-            participant.hand = [];
+          participant.hand = [];
         } else {
           for (let card of selectedCards) {
             participant.hand = this.removeCardFromArray(participant.hand, card);
@@ -169,19 +169,24 @@ export class PlayCardsComponent implements OnInit {
   processSelection(): boolean {
     let selectedCards: any[] = this.retrieveSelected();
     let cardNumbers: number[] = [];
-    if(this.game.board.length > 0 && this.game.board[0].number == 1) return true;
-    if (selectedCards.length != this.game.board.length && (this.game.board.length != 0)) {
-      this.error = true;
-      this.errorMessage = '¡Se debe seleccionar el mismo número de cartas que hay en el tablero!'
-      return false;
-    }
-    for (let element of selectedCards) {
-      if (this.game.board.length > 0) {
-        if ((element.card.number <= this.game.board[0].number) && (element.card.number != 1)) {
-          this.error = true;
-          this.errorMessage = 'Las cartas seleccionadas deben tener un valor superior a las del tablero.'
-          return false;
+    if (!(this.game.board.length > 0 && this.game.board[0].number == 1)) {
+      if (selectedCards.length != this.game.board.length && (this.game.board.length != 0)) {
+        this.error = true;
+        this.errorMessage = '¡Se debe seleccionar el mismo número de cartas que hay en el tablero!'
+        return false;
+      }
+      for (let element of selectedCards) {
+        if (this.game.board.length > 0) {
+          if ((element.card.number <= this.game.board[0].number) && (element.card.number != 1)) {
+            this.error = true;
+            this.errorMessage = 'Las cartas seleccionadas deben tener un valor superior a las del tablero.'
+            return false;
+          }
+          cardNumbers.push(element.card.number)
         }
+      }
+    } else {
+      for (let element of selectedCards) {
         cardNumbers.push(element.card.number)
       }
     }
@@ -195,5 +200,5 @@ export class PlayCardsComponent implements OnInit {
     return true;
   }
 
-  
+
 }

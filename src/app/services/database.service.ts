@@ -207,7 +207,8 @@ export class databaseService {
   quitGame(user: User) {
     this.readDocument<Game>('games', user!?.lobby).pipe(take(1)).subscribe(gameData => {
       gameData!.participants = this.utils.RemoveParticipant(gameData!.participants, { id: user.uid, name: '', turn: false, hand: [] });
-      if (gameData!.participants.length === 0) this.deleteDocument('games', user!?.lobby)
+      gameData!.winners = this.utils.RemoveParticipant(gameData!.winners, { id: user.uid, name: '', turn: false, hand: [] });
+      if (gameData!.participants.length == 0 && gameData!.winners.length == 0) this.deleteDocument('games', user!?.lobby)
       else this.updateDocument<Game>(gameData, 'games', user!.lobby)
     })
     user.inGame = false;

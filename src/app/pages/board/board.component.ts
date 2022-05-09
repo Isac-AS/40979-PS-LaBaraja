@@ -29,7 +29,7 @@ export class BoardComponent implements OnInit {
     turn: false
   }
 
-  ableToPlay: boolean = true;
+  //ableToPlay: boolean = true;
 
   constructor(
     private utils: CustomUtilsService,
@@ -60,7 +60,7 @@ export class BoardComponent implements OnInit {
                     this.userAsAParticipant = participant;
                   }
                 }
-                this.ableToPlay = this.canPlay();
+                //this.ableToPlay = this.canPlay();
               }
             })
           }
@@ -129,8 +129,6 @@ export class BoardComponent implements OnInit {
     this.game.participants[this.game.turn].turn = true;
     this.game.passCounter++;
     this.db.updateDocument(this.game, 'games', this.lobby.id);
-    console.log(this.ableToPlay)
-    console.log(this.game.passCounter)
   }
 
   openHandViewDialog() {
@@ -161,12 +159,12 @@ export class BoardComponent implements OnInit {
 
   clearBoard() {
     this.game.board = [];
-    this.ableToPlay = true;
+    //this.ableToPlay = true;
     this.game.passCounter = 0;
     this.db.updateDocument(this.game, 'games', this.lobby.id);
   }
 
-  canPlay(): boolean {
+  /*canPlay(): boolean {
     if(this.game.board.length == 0) return true;
     let cardsWithMoreValueThanBoard: any[] = []
     for (let card of this.userAsAParticipant.hand) {
@@ -183,7 +181,7 @@ export class BoardComponent implements OnInit {
       if (group.length >= this.game.board.length) return true;
     }
     return false;
-  }
+  }*/
 
   showWinners() {
     const dialogRef = this.dialog.open(GameFinalScoreComponent, {
