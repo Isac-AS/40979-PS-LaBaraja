@@ -40,7 +40,7 @@
         </div>
     
         <div id="buttonsContainer" *ngIf="game.hasStarted">
-            <button (click)="clearBoard()" *ngIf="!ableToPlay && game.passCounter >= game.participants.length && userAsAParticipant.turn">
+            <button (click)="clearBoard()" *ngIf="!ableToPlay && (game.passCounter >= game.participants.length-1) && userAsAParticipant.turn">
                 <span class="material-icons">play_arrow</span>
                 Limpiar Mesa
             </button>

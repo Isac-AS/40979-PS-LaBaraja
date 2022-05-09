@@ -7,8 +7,8 @@
             <div>
                 <table class="table">
                     <tr *ngFor="let participant of winners; let i = index">
-                        <td><button class="btn">{{ participant.name }}</button></td>
-                        <td class="classif">{{ i }}º</td>
+                        <td><p class="btn">{{ participant.name }}</p></td>
+                        <td class="classif">{{ i+1 }}º</td>
                     </tr>
                 </table>
             </div>

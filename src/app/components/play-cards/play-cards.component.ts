@@ -59,18 +59,111 @@ export class PlayCardsComponent implements OnInit {
 
   makeMove() {
     if (this.retrieveSelected()[0].card.number == 1) {
-      this.game.board = [];
+      this.game.board = this.retrieveSelectedAsCards();
       this.removeSelectedFromParticipantHand();
     } else {
       this.game.board = this.retrieveSelectedAsCards();
       this.removeSelectedFromParticipantHand();
       this.advanceTurn();
     }
+    this.updateParticipants()
   }
 
   updateElements() {
     this.game.passCounter = 0;
     this.db.updateDocument(this.game, 'games', this.game.id);
+  }
+
+
+  updateParticipants() {
+    this.game.participants.forEach((value, index) => {
+      if (value.hand.length == 0) {
+        this.game.winners.push(value);
+        this.advanceTurn();
+        this.game.participants.splice(index, 1);
+        if (this.game.participants.length == 1) {
+          this.game.winners.push(this.game.participants[0]);
+          this.game.participants = []
+          console.log("final de la partida")
+        }
+      }
+    })
+  }
+
+  removeSelectedFromParticipantHand() {
+    for (let participant of this.game.participants) {
+      if (this.userAsAParticipant.id === participant.id) {
+        let selectedCards = this.retrieveSelectedAsCards();
+        if (participant.hand.length == selectedCards.length) {
+            participant.hand = [];
+        } else {
+          for (let card of selectedCards) {
+            participant.hand = this.removeCardFromArray(participant.hand, card);
+          }
+        }
+      }
+    }
+  }
+
+  removeCardFromArray(array: Card[], element: Card): Card[] {
+    array.forEach((value, index) => {
+      if (value.id == element.id
+      ) {
+        array.splice(index, 1);
+      }
+    });
+    return array;
+  }
+
+  toggleSelection(element: any) {
+    for (let displayInfo of this.cardsToDisplay) {
+      if (displayInfo.card.id === element.card.id) {
+        displayInfo.isSelected = !displayInfo.isSelected;
+      }
+    }
+  }
+
+  isFirst(): boolean {
+    for (let element of this.cardsToDisplay) {
+      if (element.card.id === 'bastos-2') {
+        return true
+      }
+    }
+    return false;
+  }
+
+  retrieveSelected(): any[] {
+    let result: any[] = [];
+    for (let element of this.cardsToDisplay) {
+      if (element.isSelected) result.push(element)
+    }
+    return result
+  }
+
+  retrieveSelectedAsCards(): Card[] {
+    let result: Card[] = [];
+    for (let element of this.cardsToDisplay) {
+      if (element.isSelected) result.push(element.card)
+    }
+    return result
+  }
+
+  processSelectionAsFirst(): boolean {
+    let selectedCards: any[] = this.retrieveSelected();
+    let necessaryCardCounter: boolean = false;
+    for (let element of selectedCards) {
+      if (element.card.number != 2) {
+        this.error = true;
+        this.errorMessage = 'Todas las cartas seleccionadas deben tener el mismo número en este caso como se trata de la primera jugada, deben ser 2.'
+        return false;
+      }
+      if (element.card.id === 'bastos-2') necessaryCardCounter = true;
+    }
+    if (!necessaryCardCounter) {
+      this.error = true;
+      this.errorMessage = 'Al ser la primera jugada, se tiene que seleccionar el dos de bastos.'
+    }
+    return necessaryCardCounter;
   }
 
   processSelection(): boolean {
@@ -99,83 +192,6 @@ export class PlayCardsComponent implements OnInit {
       }
     }
     return true;
-  }
-
-  removeSelectedFromParticipantHand() {
-    for (let participant of this.game.participants) {
-      if (this.userAsAParticipant.id === participant.id) {
-        for (let card of this.retrieveSelectedAsCards()) {
-          participant.hand = this.removeCardFromArray(participant.hand, card);
-        }
-      }
-    }
-    this.game.participants.forEach((value, index) => {
-      if (value.hand.length == 0) {
-        this.game.winners.push(value);
-        this.game.participants.splice(index, 1);
-      }
-    })
-  }
-
-  removeCardFromArray(array: Card[], element: Card): Card[] {
-    array.forEach((value, index) => {
-      if (value.id === element.id
-      ) {
-        array.splice(index, 1);
-      }
-    });
-    return array;
-  }
-
-  toggleSelection(element: any) {
-    for (let displayInfo of this.cardsToDisplay) {
-      if (displayInfo.card.id === element.card.id) {
-        displayInfo.isSelected = !displayInfo.isSelected;
-      }
-    }
-  }
-
-  isFirst(): boolean {
-    for (let element of this.cardsToDisplay) {
-      if (element.card.id === 'bastos-2') {
-        return true
-      }
-    }
-    return false;
-  }
-
-  processSelectionAsFirst(): boolean {
-    let selectedCards: any[] = this.retrieveSelected();
-    let necessaryCardCounter: boolean = false;
-    for (let element of selectedCards) {
-      if (element.card.number != 2) {
-        this.error = true;
-        this.errorMessage = 'Todas las cartas seleccionadas deben tener el mismo número en este caso como se trata de la primera jugada, deben ser 2.'
-        return false;
-      }
-      if (element.card.id === 'bastos-2') necessaryCardCounter = true;
-    }
-    if (!necessaryCardCounter) {
-      this.error = true;
-      this.errorMessage = 'Al ser la primera jugada, se tiene que seleccionar el dos de bastos.'
-    }
-    return necessaryCardCounter;
-  }
-
-  retrieveSelected(): any[] {
-    let result: any[] = [];
-    for (let element of this.cardsToDisplay) {
-      if (element.isSelected) result.push(element)
-    }
-    return result
-  }
-
-  retrieveSelectedAsCards(): Card[] {
-    let result: Card[] = [];
-    for (let element of this.cardsToDisplay) {
-      if (element.isSelected) result.push(element.card)
-    }
-    return result
   }
 
   
