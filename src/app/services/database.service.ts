@@ -209,9 +209,9 @@ export class databaseService {
       gameData!.participants = this.utils.RemoveParticipant(gameData!.participants, { id: user.uid, name: '', turn: false, hand: [] });
       if (gameData!.participants.length === 0) this.deleteDocument('games', user!?.lobby)
       else this.updateDocument<Game>(gameData, 'games', user!.lobby)
-      user!.inGame = false;
-      this.updateDocument<Game>(user, 'users', user!.uid);
     })
+    user.inGame = false;
+    this.updateDocument<User>(user, 'users', user.uid);
   }
 
 
