@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { take } from "rxjs";
-import { FriendInfo, InboxInfo, Lobby, User } from "../models/interfaces";
+import { FriendInfo, Game, InboxInfo, Lobby, User } from "../models/interfaces";
 import { CustomUtilsService } from "./customUtils.service";
 
 @Injectable({
@@ -69,6 +69,13 @@ export class databaseService {
     return { receiver: receiverFriendInfo, sender: senderFriendInfo }
   }
 
+  removeFromInbox(data: InboxInfo) {
+    this.readDocument<User>('users', data.receiverId).pipe(take(1)).subscribe(async receiverData => {
+      receiverData!.inbox = this.utils.RemoveElementFromInbox(receiverData!.inbox, data);
+      this.updateDocument<User>(receiverData, 'users', data.receiverId);
+    });
+  }
+
   /*
     Friend handling
   */
@@ -84,13 +91,6 @@ export class databaseService {
     this.readDocument<User>('users', data.senderId).pipe(take(1)).subscribe(async senderData => {
       senderData!.friendList.push(elementFriendInfo.receiver)
       this.updateDocument<User>(senderData, 'users', data.senderId);
-    });
-  }
-
-  rejectFriendRequest(data: InboxInfo) {
-    this.readDocument<User>('users', data.receiverId).pipe(take(1)).subscribe(async receiverData => {
-      receiverData!.inbox = this.utils.RemoveElementFromInbox(receiverData!.inbox, data);
-      this.updateDocument<User>(receiverData, 'users', data.receiverId);
     });
   }
 
@@ -117,6 +117,7 @@ export class databaseService {
 
     this.readDocument<User>('users', data.receiverId).pipe(take(1)).subscribe(async receiverData => {
       receiverData!.lobby = data.lobbyId;
+      receiverData!.isOwner = false;
       receiverData!.inbox = this.utils.RemoveElementFromInbox(receiverData!.inbox, data);
       this.updateDocument<User>(receiverData, 'users', data.receiverId);
     });
@@ -127,31 +128,93 @@ export class databaseService {
     });
   }
 
-  rejectLobbyRequest(data: InboxInfo) {
+
+
+  removeFromLobby(data: Lobby, user: FriendInfo) {
+    this.readDocument<User>('users', user.id).pipe(take(1)).subscribe(async userData => {
+      userData!.lobby = 'none';
+      userData!.isOwner = false;
+      userData!.inGame = false;
+      this.updateDocument<User>(userData, 'users', user.id);
+    });
+
+    data.participants = this.utils.RemoveElementFromFriendList(data.participants, user);
+    this.updateDocument<Lobby>(data, 'lobbies', data.id);
+    if (data.participants.length === 0) this.deleteDocument('lobbies', data.id);
+
+    this.readDocument<Game>('games', data.id).pipe(take(1)).subscribe(async gameData => {
+      gameData!.participants = this.utils.RemoveParticipant(gameData!.participants, { id: user.id, name: '', turn: false, hand: [] });
+      if (gameData!.participants.length === 0) this.deleteDocument('games', data.id)
+      else this.updateDocument<Game>(gameData, 'games', data.id)
+    })
+  }
+
+  exists(id: any, path: string): boolean {
+    const collection = this.db.collection(path);
+    collection.doc(id).valueChanges().pipe(take(1)).subscribe(async res => {
+      if (res) return true;
+      else return false;
+    })
+    return false
+  }
+
+  /*
+  Game
+  */
+  joinGame(data: InboxInfo) {
+    this.readDocument<User>('users', data.receiverId).pipe(take(1)).subscribe(userData => {
+      this.readDocument<Game>('games', userData!?.lobby).pipe(take(1)).subscribe(gameData => {
+        gameData?.participants.push({
+          name: userData!?.name,
+          id: userData!?.uid,
+          turn: false,
+          hand: []
+        })
+        this.updateDocument<Game>(gameData, 'games', userData!.lobby);
+        userData!.inGame = true;
+        this.updateDocument<Game>(userData, 'users', userData!.uid);
+        userData!.inbox = this.utils.RemoveElementFromInbox(userData!.inbox, data);
+        this.updateDocument<User>(userData, 'users', data.receiverId);
+      })
+    })
+
+
+  }
+
+  rejectGameInvite(data: InboxInfo) {
     this.readDocument<User>('users', data.receiverId).pipe(take(1)).subscribe(async receiverData => {
       receiverData!.inbox = this.utils.RemoveElementFromInbox(receiverData!.inbox, data);
       this.updateDocument<User>(receiverData, 'users', data.receiverId);
     });
   }
 
-  removeFromLobby(data: Lobby, user: FriendInfo) {
-    this.readDocument<User>('users', user.id).pipe(take(1)).subscribe(async userData => {
-      userData!.lobby = 'none';
-      this.updateDocument<User>(userData, 'users', user.id);
-    });
-
-    data.participants = this.utils.RemoveElementFromFriendList(data.participants, user);
-    this.updateDocument<Lobby>(data, 'lobbies', data.id);
-    if (data.participants.length === 0 ) this.deleteDocument('lobbies', data.id);
-  }
-
-  exists(id: any, path:string): boolean {
-    const collection = this.db.collection(path);
-    collection.doc(id).valueChanges().pipe(take(1)).subscribe( async res => {
-      if (res) return true;
-      else return false;
+  joinGameAsOwner(data: FriendInfo) {
+    this.readDocument<User>('users', data.id).pipe(take(1)).subscribe(userData => {
+      this.readDocument<Game>('games', userData!?.lobby).pipe(take(1)).subscribe(gameData => {
+        gameData?.participants.push({
+          name: userData!?.name,
+          id: userData!?.uid,
+          turn: false,
+          hand: []
+        })
+        this.updateDocument<Game>(gameData, 'games', userData!.lobby)
+        userData!.inGame = true;
+        this.updateDocument<Game>(userData, 'users', userData!.uid);
+      })
     })
-    return false
   }
+
+  quitGame(user: User) {
+    this.readDocument<Game>('games', user!?.lobby).pipe(take(1)).subscribe(gameData => {
+      gameData!.participants = this.utils.RemoveParticipant(gameData!.participants, { id: user.uid, name: '', turn: false, hand: [] });
+      gameData!.winners = this.utils.RemoveParticipant(gameData!.winners, { id: user.uid, name: '', turn: false, hand: [] });
+      if (gameData!.participants.length == 0 && gameData!.winners.length == 0) this.deleteDocument('games', user!?.lobby)
+      else this.updateDocument<Game>(gameData, 'games', user!.lobby)
+    })
+    user.inGame = false;
+    this.updateDocument<User>(user, 'users', user.uid);
+  }
+
+
 
 }

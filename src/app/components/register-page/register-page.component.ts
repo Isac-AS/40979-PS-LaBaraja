@@ -34,7 +34,9 @@ export class RegisterPageComponent implements OnInit {
     friendList: [],
     inbox: [],
     lobby: 'none',
-    shortNameId: ''
+    shortNameId: '',
+    isOwner: false,
+    inGame: false,
   };
 
   path: string = 'users';

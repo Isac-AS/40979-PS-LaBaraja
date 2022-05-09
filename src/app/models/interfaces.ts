@@ -12,6 +12,8 @@ export interface User {
   inbox: InboxInfo[];
   lobby: 'none' | string;
   shortNameId: string;
+  isOwner: boolean;
+  inGame: boolean;
 }
 
 export interface Lobby {
@@ -25,9 +27,14 @@ export interface NameMapper {
 }
 
 export interface Game {
+  id: string;
   participants: Participant[],
   board: Card[],
-  stack: Card[]
+  turn: number,
+  winners: Participant[],
+  hasStarted: boolean,
+  passCounter: number,
+  lastPlayed: string
 }
 
 /*
@@ -35,13 +42,16 @@ export interface Game {
 */
 
 export interface Card {
+  id: string
   number: number,
-  type: 'Oros' | 'Copas' | 'Espadas' | 'Bastos'
+  suit: string, 
+  imageUrl: string
 }
 
 export interface Participant {
+  name: string,
   id: string,
-  ready: boolean,
+  turn: boolean,
   hand: Card[]
 }
 
@@ -61,7 +71,7 @@ export interface MessagePopupPair {
 }
   
 export interface InboxInfo {
-  reason: 'AddFriend' | 'InviteToLobby';
+  reason: 'AddFriend' | 'InviteToLobby' | 'StartGame';
   senderName: string;
   receiverName: string;
   senderId: string;
@@ -78,4 +88,9 @@ export interface DeleteFriendInfo {
   friend: FriendInfo;
   currentUserName: string;
   currentUserId: string;
+}
+
+export interface InGameCardDialogs {
+  userAsAParticipant: Participant,
+  game: Game,
 }

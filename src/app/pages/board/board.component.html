@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div style="height: 38em">
     <div class="playerInfo">
         <span class="material-icons userIcon">account_circle</span>
@@ -11,3 +12,75 @@
     </div>
     <p>board works!</p>
 </div>
+=======
+<div id="pageContainer">
+    <div id="buttonsContainer">
+        <button routerLink="/home">
+            <span class="material-icons">home</span>
+        </button>
+        <button (click)="startGame()" *ngIf="user.isOwner && !game.hasStarted">
+            <span class="material-icons">play_arrow</span>
+            Comenzar Partida
+        </button>
+        <button routerLink="/sala" *ngIf="!(user.lobby === 'none')">
+            <span class="material-icons">keyboard_return</span>
+            Volver a la sala
+        </button>
+        <button *ngIf="!(user.lobby === 'none')" (click)="quitGame()">
+            <span class="material-icons">logout</span>
+            Salir de la partida
+        </button>
+    </div>
+    <h1 *ngIf="!game.hasStarted">Esperando al resto de jugadores...</h1>
+    <div id="players">
+        <ng-container *ngFor="let player of game.participants">
+            <div id="player" *ngIf="player.turn" style="background-color: rgb(224, 128, 18);">
+                <span class="material-icons">person</span>
+                <u>{{ player.name }}</u>
+                <u>Cartas {{ player.hand.length }}</u>
+            </div>
+            <div id="player" *ngIf="!player.turn">
+                <span class="material-icons">person</span>
+                <u>{{ player.name }}</u>
+                <u>Cartas {{ player.hand.length }}</u>
+            </div>
+        </ng-container>
+    </div>
+
+    <div id="gameStuff" *ngIf="game.participants.length > 0">
+        <div id="board">
+            <ng-container *ngFor="let card of game.board">
+                <img [src]="card.imageUrl">
+            </ng-container>
+        </div>
+    
+        <div id="buttonsContainer" *ngIf="game.hasStarted">
+            <button (click)="clearBoard()" 
+            *ngIf="((game.passCounter >= game.participants.length-1) && canClear)  && userAsAParticipant.turn">
+                <span class="material-icons">play_arrow</span>
+                Limpiar Mesa
+            </button>
+            <button (click)="openHandViewDialog()">
+                <span class="material-icons">visibility</span>
+                Ver Cartas
+            </button>
+            <button *ngIf="userAsAParticipant.turn" (click)="openPlayDialog()">
+                <span class="material-icons">play_arrow</span>
+                Jugar
+            </button>
+            <button *ngIf="userAsAParticipant.turn" (click)="advanceTurn()">
+                <span class="material-icons">navigate_next</span>
+                Pasar turno
+            </button>
+        </div>
+    </div>
+
+    <div id="viewWinners" *ngIf="game.participants.length == 0">
+        <button (click)="showWinners()">
+            Ver ganadores
+        </button>
+    </div>
+    
+
+</div>
+>>>>>>> b5496418b23998e85621857bd93a9b2e80e2e5d3

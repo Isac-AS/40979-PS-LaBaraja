@@ -39,5 +39,16 @@
                 </div>
             </div>
         </div>
+
+        <div id="buttonsContainer">
+            <button *ngIf="!(currentUserData.lobby === 'none') && currentUserData.isOwner && !currentUserData.inGame" (click)="startGame()">
+                <span class="material-icons">start</span>
+                Comenzar partida!
+            </button>
+            <button *ngIf="!(currentUserData.lobby === 'none') && currentUserData.inGame" routerLink="/board">
+                <span class="material-icons">play_arrow</span>
+                Volver a la partida
+            </button>
+        </div>
     </div>
 </div>

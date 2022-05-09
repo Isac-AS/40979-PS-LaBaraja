@@ -6,7 +6,7 @@
       <button class="accept" (click)="acceptFriendRequest(inboxInfo)">
         <span class="material-icons">done</span>
       </button>
-      <button class="reject" (click)="rejectFriendRequest(inboxInfo)">
+      <button class="reject" (click)="removeFromInbox(inboxInfo)">
         <span class="material-icons">clear</span>
       </button>
     </div>
@@ -15,7 +15,16 @@
       <button class="accept"  (click)="acceptJoinRequest(inboxInfo)" >
         <span class="material-icons">done</span>
       </button>
-      <button class="reject"  (click)="rejectJoinRequest(inboxInfo)" >
+      <button class="reject"  (click)="removeFromInbox(inboxInfo)" >
+        <span class="material-icons">clear</span>
+      </button>
+    </div>
+    <div class="inboxMessage" *ngIf="inboxInfo.reason === 'StartGame'">
+      {{ inboxInfo.senderName }} quiere comenzar la partida, ¡Únete!
+      <button class="accept"  (click)="joinGame(inboxInfo)" >
+        <span class="material-icons">done</span>
+      </button>
+      <button class="reject"  (click)="removeFromInbox(inboxInfo)" >
         <span class="material-icons">clear</span>
       </button>
     </div>
