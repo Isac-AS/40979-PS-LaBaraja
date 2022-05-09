@@ -71,6 +71,7 @@ export class PlayCardsComponent implements OnInit {
 
   updateElements() {
     this.game.passCounter = 0;
+    this.game.lastPlayed = this.userAsAParticipant.id;
     this.db.updateDocument(this.game, 'games', this.game.id);
   }
 
@@ -79,7 +80,6 @@ export class PlayCardsComponent implements OnInit {
     this.game.participants.forEach((value, index) => {
       if (value.hand.length == 0) {
         this.game.winners.push(value);
-        this.advanceTurn();
         this.game.participants.splice(index, 1);
         if (this.game.participants.length == 1) {
           this.game.winners.push(this.game.participants[0]);
@@ -169,27 +169,38 @@ export class PlayCardsComponent implements OnInit {
   processSelection(): boolean {
     let selectedCards: any[] = this.retrieveSelected();
     let cardNumbers: number[] = [];
-    if (!(this.game.board.length > 0 && this.game.board[0].number == 1)) {
-      if (selectedCards.length != this.game.board.length && (this.game.board.length != 0)) {
-        this.error = true;
-        this.errorMessage = '¡Se debe seleccionar el mismo número de cartas que hay en el tablero!'
-        return false;
-      }
-      for (let element of selectedCards) {
-        if (this.game.board.length > 0) {
-          if ((element.card.number <= this.game.board[0].number) && (element.card.number != 1)) {
-            this.error = true;
-            this.errorMessage = 'Las cartas seleccionadas deben tener un valor superior a las del tablero.'
-            return false;
-          }
-          cardNumbers.push(element.card.number)
-        }
-      }
-    } else {
-      for (let element of selectedCards) {
-        cardNumbers.push(element.card.number)
+    for (let element of selectedCards) cardNumbers.push(element.card.number);
+    if (this.game.board.length > 0) {
+      if (this.game.board[0].number != 1) {
+        if (!this.numberOfSelectedMustBeTheSameAsInBoardConstraint(selectedCards)) return false;
+        if (!this.selectedCardsMustHaveMoreValueThanThoseInBoardConstraint(selectedCards)) return false;
       }
     }
+    if (!this.cardsMustHaveSameNumberConstraint(cardNumbers)) return false;
+    return true;
+  }
+
+  numberOfSelectedMustBeTheSameAsInBoardConstraint(selectedCards: any[]): boolean {
+    if (selectedCards.length != this.game.board.length && (this.game.board.length != 0)) {
+      this.error = true;
+      this.errorMessage = '¡Se debe seleccionar el mismo número de cartas que hay en el tablero!'
+      return false;
+    }
+    return true;
+  }
+
+  selectedCardsMustHaveMoreValueThanThoseInBoardConstraint(selectedCards: any[]): boolean {
+    for (let element of selectedCards) {
+      if ((element.card.number != 1) && element.card.number <= this.game.board[0].number) {
+        this.error = true;
+        this.errorMessage = 'Las cartas seleccionadas deben tener un valor superior a las del tablero.'
+        return false;
+      }
+    }
+    return true;
+  }
+
+  cardsMustHaveSameNumberConstraint(cardNumbers: number[]): boolean{
     for (let cardNumber of cardNumbers) {
       if (cardNumber != cardNumbers[0]) {
         this.error = true;
@@ -199,6 +210,4 @@ export class PlayCardsComponent implements OnInit {
     }
     return true;
   }
-
-
 }

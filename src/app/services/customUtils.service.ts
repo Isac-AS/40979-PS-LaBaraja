@@ -49,6 +49,7 @@ export class CustomUtilsService {
       winners: [],
       hasStarted: false,
       passCounter: 0,
+      lastPlayed: ''
     }
   }
 
