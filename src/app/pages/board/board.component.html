@@ -38,6 +38,10 @@
                 <img [src]="card.imageUrl">
             </ng-container>
         </div>
+
+        <div>
+            <p id="lastPlayed">Ultimo que jugo: {{ lastPlayedName }}</p>
+        </div>
     
         <div id="buttonsContainer" *ngIf="game.hasStarted">
             <button (click)="clearBoard()" 

@@ -30,6 +30,7 @@ export class BoardComponent implements OnInit {
   }
 
   //ableToPlay: boolean = true;
+  lastPlayedName: string = '';
   canClear:boolean = false;
 
   constructor(
@@ -70,6 +71,11 @@ export class BoardComponent implements OnInit {
                   }
                 }
                 //this.ableToPlay = this.canPlay();
+                for (let participant of this.game.participants) {
+                  if (participant.id == currentGame.lastPlayed) {
+                    this.lastPlayedName = participant.name;
+                  }
+                }
               }
             })
           }
