@@ -81,10 +81,10 @@ export class PlayCardsComponent implements OnInit {
       if (value.hand.length == 0) {
         this.game.winners.push(value);
         this.game.participants.splice(index, 1);
+        if (this.game.turn >= this.game.participants.length) this.game.turn = 0;
         if (this.game.participants.length == 1) {
           this.game.winners.push(this.game.participants[0]);
           this.game.participants = []
-          console.log("final de la partida")
         }
       }
     })

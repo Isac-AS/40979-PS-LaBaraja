@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+<div style="height: 38em">
+    <div class="playerInfo">
+        <span class="material-icons userIcon">account_circle</span>
+        <div class="userName">
+            JuanmaElMed
+        </div>
+        <div class="userCards">
+            <img src="/assets/dos-de-copas.png" style="width: 40px;">
+            <p>8</p>
+        </div>
+    </div>
+    <p>board works!</p>
+</div>
+=======
 <div id="pageContainer">
     <div id="buttonsContainer">
         <button routerLink="/home">
@@ -41,7 +56,7 @@
     
         <div id="buttonsContainer" *ngIf="game.hasStarted">
             <button (click)="clearBoard()" 
-            *ngIf="((game.passCounter >= game.participants.length-1) || canClear)  && userAsAParticipant.turn">
+            *ngIf="((game.passCounter >= game.participants.length-1) && canClear)  && userAsAParticipant.turn">
                 <span class="material-icons">play_arrow</span>
                 Limpiar Mesa
             </button>
@@ -68,3 +83,4 @@
     
 
 </div>
+>>>>>>> b5496418b23998e85621857bd93a9b2e80e2e5d3

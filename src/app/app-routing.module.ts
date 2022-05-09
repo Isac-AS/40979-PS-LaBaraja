@@ -8,6 +8,11 @@ import { FriendsListComponent } from './pages/friends-list/friends-list.componen
 import { GameFinalScoreComponent } from './pages/game-final-score/game-final-score.component';
 import { PresentationPageComponent } from './pages/presentation-page/presentation-page.component';
 import { SalaPageDialog1Component } from './components/sala-page-dialog1/sala-page-dialog1.component';
+<<<<<<< HEAD
+import { UserCardViewPageComponent } from './pages/user-card-view-page/user-card-view-page.component';
+import { PlayerTurnCardsComponent } from './pages/player-turn-cards/player-turn-cards.component';
+=======
+>>>>>>> b5496418b23998e85621857bd93a9b2e80e2e5d3
 import { BoardComponent } from './pages/board/board.component';
 
 const routes: Routes = [
@@ -19,6 +24,12 @@ const routes: Routes = [
   { path: 'game-score', component: GameFinalScoreComponent },
   { path: 'sala_dialog1', component: SalaPageDialog1Component },
   { path: 'account', component: ProfilePageComponent, canActivate: [AngularFireAuthGuard] },
+<<<<<<< HEAD
+  { path: 'user-cards', component: UserCardViewPageComponent},
+  { path: 'player-turn-cards', component: PlayerTurnCardsComponent},
+  { path: 'board', component: BoardComponent}
+=======
+>>>>>>> b5496418b23998e85621857bd93a9b2e80e2e5d3
 ];
 
 @NgModule({

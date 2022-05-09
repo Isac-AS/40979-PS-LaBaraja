@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+import { Component, OnInit } from '@angular/core';
+=======
 import { typeWithParameters } from '@angular/compiler/src/render3/util';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -10,6 +13,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { CustomUtilsService } from 'src/app/services/customUtils.service';
 import { databaseService } from 'src/app/services/database.service';
 import { GameFinalScoreComponent } from '../game-final-score/game-final-score.component';
+>>>>>>> b5496418b23998e85621857bd93a9b2e80e2e5d3
 
 @Component({
   selector: 'app-board',
@@ -18,6 +22,13 @@ import { GameFinalScoreComponent } from '../game-final-score/game-final-score.co
 })
 export class BoardComponent implements OnInit {
 
+<<<<<<< HEAD
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+=======
   user: User;
   lobby: Lobby;
   game: Game;
@@ -196,4 +207,5 @@ export class BoardComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe();
   }
+>>>>>>> b5496418b23998e85621857bd93a9b2e80e2e5d3
 }
