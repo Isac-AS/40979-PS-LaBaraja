@@ -169,6 +169,7 @@ export class PlayCardsComponent implements OnInit {
   processSelection(): boolean {
     let selectedCards: any[] = this.retrieveSelected();
     let cardNumbers: number[] = [];
+    if(this.game.board.length > 0 && this.game.board[0].number == 1) return true;
     if (selectedCards.length != this.game.board.length && (this.game.board.length != 0)) {
       this.error = true;
       this.errorMessage = '¡Se debe seleccionar el mismo número de cartas que hay en el tablero!'
