@@ -77,7 +77,7 @@ export class BoardComponent implements OnInit {
   async startGame() {
     let auxGame = this.game;
     auxGame = this.initializeGameElements(auxGame);
-    await this.delay(1000);
+    await this.delay(2000);
     this.db.updateDocument(auxGame, 'games', this.lobby.id);
   }
 
