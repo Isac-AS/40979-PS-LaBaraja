@@ -33,7 +33,8 @@ export interface Game {
   turn: number,
   winners: Participant[],
   hasStarted: boolean,
-  passCounter: number 
+  passCounter: number,
+  lastPlayed: string
 }
 
 /*

@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { databaseService } from 'src/app/services/database.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Card, Game, InGameCardDialogs, Participant } from 'src/app/models/interfaces';
-import { BoardComponent } from 'src/app/pages/board/board.component';
 
 @Component({
   selector: 'app-play-cards',
@@ -72,6 +71,7 @@ export class PlayCardsComponent implements OnInit {
 
   updateElements() {
     this.game.passCounter = 0;
+    this.game.lastPlayed = this.userAsAParticipant.id;
     this.db.updateDocument(this.game, 'games', this.game.id);
   }
 
@@ -80,7 +80,6 @@ export class PlayCardsComponent implements OnInit {
     this.game.participants.forEach((value, index) => {
       if (value.hand.length == 0) {
         this.game.winners.push(value);
-        this.advanceTurn();
         this.game.participants.splice(index, 1);
         if (this.game.participants.length == 1) {
           this.game.winners.push(this.game.participants[0]);

@@ -30,6 +30,7 @@ export class BoardComponent implements OnInit {
   }
 
   //ableToPlay: boolean = true;
+  canClear:boolean = false;
 
   constructor(
     private utils: CustomUtilsService,
@@ -58,6 +59,11 @@ export class BoardComponent implements OnInit {
                 for (let participant of this.game.participants) {
                   if (participant.id == currentUserUid) {
                     this.userAsAParticipant = participant;
+                    if (currentUserUid == currentGame.lastPlayed) {
+                      this.canClear = true;
+                    } else {
+                      this.canClear = false;
+                    }
                   }
                 }
                 //this.ableToPlay = this.canPlay();
