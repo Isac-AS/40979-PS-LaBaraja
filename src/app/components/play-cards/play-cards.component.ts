@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { databaseService } from 'src/app/services/database.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Card, Game, InGameCardDialogs, Participant } from 'src/app/models/interfaces';
+import { BoardComponent } from 'src/app/pages/board/board.component';
 
 @Component({
   selector: 'app-play-cards',
@@ -169,27 +170,38 @@ export class PlayCardsComponent implements OnInit {
   processSelection(): boolean {
     let selectedCards: any[] = this.retrieveSelected();
     let cardNumbers: number[] = [];
-    if (!(this.game.board.length > 0 && this.game.board[0].number == 1)) {
-      if (selectedCards.length != this.game.board.length && (this.game.board.length != 0)) {
-        this.error = true;
-        this.errorMessage = '¡Se debe seleccionar el mismo número de cartas que hay en el tablero!'
-        return false;
-      }
-      for (let element of selectedCards) {
-        if (this.game.board.length > 0) {
-          if ((element.card.number <= this.game.board[0].number) && (element.card.number != 1)) {
-            this.error = true;
-            this.errorMessage = 'Las cartas seleccionadas deben tener un valor superior a las del tablero.'
-            return false;
-          }
-          cardNumbers.push(element.card.number)
-        }
-      }
-    } else {
-      for (let element of selectedCards) {
-        cardNumbers.push(element.card.number)
+    for (let element of selectedCards) cardNumbers.push(element.card.number);
+    if (this.game.board.length > 0) {
+      if (this.game.board[0].number != 1) {
+        if (!this.numberOfSelectedMustBeTheSameAsInBoardConstraint(selectedCards)) return false;
+        if (!this.selectedCardsMustHaveMoreValueThanThoseInBoardConstraint(selectedCards)) return false;
       }
     }
+    if (!this.cardsMustHaveSameNumberConstraint(cardNumbers)) return false;
+    return true;
+  }
+
+  numberOfSelectedMustBeTheSameAsInBoardConstraint(selectedCards: any[]): boolean {
+    if (selectedCards.length != this.game.board.length && (this.game.board.length != 0)) {
+      this.error = true;
+      this.errorMessage = '¡Se debe seleccionar el mismo número de cartas que hay en el tablero!'
+      return false;
+    }
+    return true;
+  }
+
+  selectedCardsMustHaveMoreValueThanThoseInBoardConstraint(selectedCards: any[]): boolean {
+    for (let element of selectedCards) {
+      if ((element.card.number != 1) && element.card.number <= this.game.board[0].number) {
+        this.error = true;
+        this.errorMessage = 'Las cartas seleccionadas deben tener un valor superior a las del tablero.'
+        return false;
+      }
+    }
+    return true;
+  }
+
+  cardsMustHaveSameNumberConstraint(cardNumbers: number[]): boolean{
     for (let cardNumber of cardNumbers) {
       if (cardNumber != cardNumbers[0]) {
         this.error = true;
@@ -199,6 +211,4 @@ export class PlayCardsComponent implements OnInit {
     }
     return true;
   }
-
-
 }
