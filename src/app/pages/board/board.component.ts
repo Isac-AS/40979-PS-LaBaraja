@@ -167,6 +167,7 @@ export class BoardComponent implements OnInit {
   }
 
   canPlay(): boolean {
+    if(this.game.board.length == 0) return true;
     let cardsWithMoreValueThanBoard: any[] = []
     for (let card of this.userAsAParticipant.hand) {
       if (card.number > this.game.board[0].number && this.game.board.length > 0) {
