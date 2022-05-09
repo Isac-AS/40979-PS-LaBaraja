@@ -63,6 +63,9 @@ export class BoardComponent implements OnInit {
                       this.canClear = true;
                     } else {
                       this.canClear = false;
+                      for (let winner of currentGame.winners) {
+                        if (currentGame.lastPlayed == winner.id) this.canClear = true
+                      }
                     }
                   }
                 }
